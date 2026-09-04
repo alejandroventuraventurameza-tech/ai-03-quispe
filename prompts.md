@@ -25,3 +25,11 @@ Ok, ya hice el conventional commit. ¿Qué sigue?
 ## Assistant
 
 Sigue el bloque matemático central. Voy a contrastar la sección 4 y su apéndice directamente con el paper, y trabajaré solo en: modos de producción, umbrales, ventaja de delegación $B$ y Proposición 2. Al terminar dejaré otro checkpoint con su conventional commit; la Proposición 3 vendrá después como bloque separado para la derivación a mano y Lean.
+
+## User
+
+Sigamos, por favor
+
+## Assistant
+
+Continuamos con la Proposición 3 como bloque independiente. Contrastaremos la fórmula, la prueba del apéndice y los casos límite directamente con el paper. El resultado incluirá una derivación pedagógica completa, una guía concreta para la hoja manuscrita y el inventario del teorema que después formalizaremos en Lean.

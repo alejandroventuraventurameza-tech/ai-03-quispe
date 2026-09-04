@@ -68,6 +68,17 @@ Menu expansion also implies the weak path-by-path result $N^2_{it}\ge N^1_{it}$ 
 
 A line-by-line derivation and the first endpoint audit are in [the model tutorial](extra/02-model-thresholds-and-activation-band.md).
 
+### Dynamic implication
+
+Let $p^g_{ik}$ be the constant per-period first-use hazard for an initially unfamiliar language under generation $g$. For an integer horizon $s\ge0$, if $0\le p^1_{ik}\le p^2_{ik}\le1$ for every unfamiliar language, Proposition 3 gives
+
+$$
+\Delta C_i(s)=\sum_{k\in\mathcal U_i}
+\left[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}\right]\ge0.
+$$
+
+In the closed-frontier benchmark $p^1_{ik}=0$, the effect is strictly increasing and strictly concave when $0<p^2_{ik}<1$. The endpoint $p^2_{ik}=1$ requires a correction to the paper’s strict claim: the language enters immediately and the cumulative effect is flat thereafter. The [Proposition 3 tutorial](extra/03-proposition-3-dynamics.md) gives the proof and endpoint audit.
+
 ## Evidence in one paragraph
 
 The paper studies 5,346 developers over a 28-month panel and reconstructs approximately 3.2 million commits touching 57 million files. Around first detectable Claude Code use, active languages rise by 2.5 from a pre-adoption mean of 0.9, newly used languages rise by 1.2, and language entropy rises by 0.38. The estimates survive several mechanical-exposure and activity checks, but they cannot eliminate selection into the timing of adoption.
