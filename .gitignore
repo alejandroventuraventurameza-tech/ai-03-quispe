@@ -1,6 +1,7 @@
 # Local instructions and quality-assurance artifacts
 Prompt 01 AI and Economic Modeling.docx
 .docx_qa/
+.work/
 
 # LaTeX build artifacts
 *.aux
@@ -19,6 +20,7 @@ Prompt 01 AI and Economic Modeling.docx
 *.vrb
 
 # Local paper/source downloads
+paper/source/
 paper/*.pdf
 paper/*.tar
 paper/*.tar.gz
@@ -27,4 +29,3 @@ paper/*.tar.gz
 .DS_Store
 Thumbs.db
 .vscode/
-

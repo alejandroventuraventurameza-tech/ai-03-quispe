@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "paper": "QX26AgenticDelegation",
+  "source_url": "https://arxiv.org/abs/2605.25438v2",
+  "source_version": "arXiv v2",
+  "source_artifact_path": "papers/QX26AgenticDelegation/source-audited.pdf",
+  "source_artifact_sha256": "cddc048711c43022d5fd01b995bfb1114c728c8c879b809b5fdc354a391d3c35",
+  "source_inventory_kind": "pinned_statement_target_scaffold",
+  "source_curated": false,
+  "seed_scaffold": true,
+  "source_coverage_mode": "named_theoretical_statements",
+  "semantic_contract_policy": {
+    "schema": 1,
+    "activation": "Before Lean drafting, independently inventory every material source atom against exact pinned source quote bytes; do not infer that inventory from declaration, binder, field, or function names. After a source item has an audited paper-local specification and a theorem/lemma proving or refuting it, add top-level semantic_contract_schema: 1, classify every item with an explicit claim_bearing Boolean, and record semantic_contract for each true item. At formalized closeout, also add source_claim_atoms_schema: 1 and source_spec_correspondence_schema: 1. Bind each atom to an elaborated Spec component and account for every material Lean-closure terminal, including proof and instance arguments, by source atom, approved source correction/additional assumption, checked Lean derivation, or version-pinned foundation basis. Each statement-first row supplies an inactive semantic_contract_template pairing its transparent `...Spec : Prop` with its theorem/lemma. Promote that exact template only after the independent source audit passes, the theorem has exactly the transparent Spec type, the closure record passes, and the proof hole is replaced. Do not manufacture a contract from the temporary by-sorry statement skeleton alone. Legacy v10 evidence remains readable but is not a v11 realization credential. For a source-game result whose feasible-action equilibrium comparison uses a conditional/posterior or observation-contingent value, add the separately byte-pinned `semantic_context_requirements` kind `strategic_observation_totality`; it requires an explicit off-path/zero-probability totality audit and cannot be satisfied by a Lean-only default value.",
+    "required_fields": [
+      "spec_declaration",
+      "evidence_declaration",
+      "evidence_mode",
+      "semantic_shape"
+    ],
+    "evidence_modes": [
+      "proves",
+      "refutes"
+    ],
+    "semantic_shapes": [
+      "plain"
+    ],
+    "shape_policy": "Only plain exact-proposition contracts are currently enforced. Do not record a specialized runtime, preprocessing, or refinement shape until the audit implements its structural check.",
+    "source_defect_routing": "Every repaired_in_lean source-proof defect must be linked from a successfully checked contract item through source_defect_ids."
+  },
+  "items": {
+    "frontier_expansion": {
+      "statement": "For every developer, language, date, and opportunity realization, Z^2_ik,t >= Z^1_ik,t, hence N^2_it >= N^1_it path by path (M_1={S,C} subset {S,C,D}=M_2 so V^2 >= V^1).",
+      "source_item": "Proposition 1 (Frontier expansion)",
+      "source_kind": "proposition",
+      "source_location": "sections/03_theory.tex:155-163 (label prop:frontier); proof sections/10_appendix.tex:90-105",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "frontier_expansionSpec"
+      ],
+      "proof_lean_declarations": [
+        "frontier_expansion"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "frontier_expansionSpec",
+        "evidence_declaration": "frontier_expansion",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "activation_band": {
+      "statement": "For an unfamiliar language with T^1=T^S (Assumption foothold), if B=T^S-T^D>0 then Z^2-Z^1 = 1[T^D <= omega < T^S].",
+      "source_item": "Proposition 2 (Activation band for unfamiliar languages)",
+      "source_kind": "proposition",
+      "source_location": "sections/03_theory.tex:165-193 (label prop:band, Eq. band-indicator L173); proof sections/10_appendix.tex:107-123",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "activation_bandSpec"
+      ],
+      "proof_lean_declarations": [
+        "activation_band"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "activation_bandSpec",
+        "evidence_declaration": "activation_band",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "cumulative_effect_nonneg": {
+      "statement": "If p^2_ik >= p^1_ik then Delta C_i(s) = sum_{k in U_i}[(1-p^1_ik)^{s+1}-(1-p^2_ik)^{s+1}] >= 0.",
+      "source_item": "Proposition 3 (Dynamic cumulative-language effect) -- nonnegativity",
+      "source_kind": "proposition",
+      "source_location": "sections/03_theory.tex:282-298 (label prop:dynamic, Eq. cumulative-gap); proof sections/10_appendix.tex:172-210",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "cumulative_effect_nonnegSpec"
+      ],
+      "proof_lean_declarations": [
+        "cumulative_effect_nonneg"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "cumulative_effect_nonnegSpec",
+        "evidence_declaration": "cumulative_effect_nonneg",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "cumulative_gap_first_difference": {
+      "statement": "[(1-p1)^{s+2}-(1-p2)^{s+2}]-[(1-p1)^{s+1}-(1-p2)^{s+1}] = p2(1-p2)^{s+1}-p1(1-p1)^{s+1}.",
+      "source_item": "Proposition 3 proof -- one-language first-difference identity",
+      "source_kind": "lemma",
+      "source_location": "sections/10_appendix.tex:188-198 (first-difference align block)",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "cumulative_gap_first_differenceSpec"
+      ],
+      "proof_lean_declarations": [
+        "cumulative_gap_first_difference"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "cumulative_gap_first_differenceSpec",
+        "evidence_declaration": "cumulative_gap_first_difference",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "cumulative_effect_strict_mono_closedFrontier": {
+      "statement": "Source writes p^1=0<p^2 => strictly increasing. DEVIATION: strictness also requires p^2<1; corrected hypothesis 0<p^2<1.",
+      "source_item": "Proposition 3 -- closed-frontier strict increase (corrected hypothesis)",
+      "source_kind": "proposition",
+      "source_location": "sections/03_theory.tex:296-297; proof sections/10_appendix.tex:206-209",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "cumulative_effect_strict_mono_closedFrontierSpec"
+      ],
+      "proof_lean_declarations": [
+        "cumulative_effect_strict_mono_closedFrontier"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "cumulative_effect_strict_mono_closedFrontierSpec",
+        "evidence_declaration": "cumulative_effect_strict_mono_closedFrontier",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "cumulative_effect_strict_concave_closedFrontier": {
+      "statement": "Source: p^1=0<p^2 => strictly concave. DEVIATION: strictness requires 0<p^2<1.",
+      "source_item": "Proposition 3 -- closed-frontier strict concavity (corrected hypothesis)",
+      "source_kind": "proposition",
+      "source_location": "sections/03_theory.tex:296-297; proof sections/10_appendix.tex:206-209 (second difference -(p2)^2(1-p2)^{s+1}<0)",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "cumulative_effect_strict_concave_closedFrontierSpec"
+      ],
+      "proof_lean_declarations": [
+        "cumulative_effect_strict_concave_closedFrontier"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "cumulative_effect_strict_concave_closedFrontierSpec",
+        "evidence_declaration": "cumulative_effect_strict_concave_closedFrontier",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "cumulative_effect_endpoint_flat": {
+      "statement": "At p1=0,p2=1 the one-language gap is d(s)=1-(1-1)^{s+1}=1 for all s, hence d(s+1)=d(s): the strict conclusion fails at the included endpoint p2=1.",
+      "source_item": "Proposition 3 -- included-endpoint counterexample to strictness (audit finding)",
+      "source_kind": "claim",
+      "source_location": "audit of sections/03_theory.tex:296-297 vs proof L206-209; benchmark p1=0<p2 admits p2=1",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "cumulative_effect_endpoint_flatSpec"
+      ],
+      "proof_lean_declarations": [
+        "cumulative_effect_endpoint_flat"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "cumulative_effect_endpoint_flatSpec",
+        "evidence_declaration": "cumulative_effect_endpoint_flat",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "specialist_heterogeneity": {
+      "statement": "Under Assumption exchangeable, E[E_i | a_i,U_i] = U_i p_i(a_i,A) (linearity of expectation over U_i identical increments).",
+      "source_item": "Proposition 4 (Specialist and ability heterogeneity)",
+      "source_kind": "proposition",
+      "source_location": "sections/10_appendix.tex:138-146 (label prop:specialist, Eq. specialist-expansion); proof L148-165",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "specialist_heterogeneitySpec"
+      ],
+      "proof_lean_declarations": [
+        "specialist_heterogeneity"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "specialist_heterogeneitySpec",
+        "evidence_declaration": "specialist_heterogeneity",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "repository_expansion": {
+      "statement": "If delegation weakly lowers entry cost per repository (c^2<=c^1), the expected number of enterable repositories weakly increases.",
+      "source_item": "Proposition 5 (Repository expansion)",
+      "source_kind": "proposition",
+      "source_location": "sections/10_appendix.tex:251-272 (label prop:repos)",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "repository_expansionSpec"
+      ],
+      "proof_lean_declarations": [
+        "repository_expansion"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "repository_expansionSpec",
+        "evidence_declaration": "repository_expansion",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    }
+  }
+}
