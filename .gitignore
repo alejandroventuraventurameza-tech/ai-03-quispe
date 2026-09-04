@@ -1,0 +1,30 @@
+# Local instructions and quality-assurance artifacts
+Prompt 01 AI and Economic Modeling.docx
+.docx_qa/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Local paper/source downloads
+paper/*.pdf
+paper/*.tar
+paper/*.tar.gz
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
