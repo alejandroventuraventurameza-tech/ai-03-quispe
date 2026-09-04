@@ -83,6 +83,18 @@ In the closed-frontier benchmark $p^1_{ik}=0$, the effect is strictly increasing
 
 The paper studies 5,346 developers over a 28-month panel and reconstructs approximately 3.2 million commits touching 57 million files. Around first detectable Claude Code use, active languages rise by 2.5 from a pre-adoption mean of 0.9, newly used languages rise by 1.2, and language entropy rises by 0.38. The estimates survive several mechanical-exposure and activity checks, but they cannot eliminate selection into the timing of adoption.
 
+## Lean formalization
+
+The repository includes the complete paper folder produced by the local
+EconCSLib run in [`lean/`](lean/). Its nine proof endpoints compile without
+`sorry`, including separate proofs of the corrected interior result for
+Proposition 3 and the flat path at the omitted endpoint $p^2=1$.
+
+The required paper-scoped development check passed in WSL. The command,
+environment, and scope limitation are recorded in [`lean-check.txt`](lean-check.txt).
+This is a successful focused Lean build, not a completed source-to-`Spec` audit:
+the copied EconCSLib status and audit files honestly retain their pending state.
+
 ## Sources
 
 - [Paper, version 2](https://arxiv.org/abs/2605.25438v2)

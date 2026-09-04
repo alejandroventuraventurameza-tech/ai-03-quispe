@@ -1,0 +1,401 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\usetheme{default}
+\usecolortheme{seahorse}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{frametitle}{size=\large}
+
+\definecolor{qxblue}{HTML}{163A5F}
+\definecolor{qxrust}{HTML}{A0442C}
+\definecolor{qxgreen}{HTML}{276749}
+\definecolor{qxgray}{HTML}{F1F4F7}
+\setbeamercolor{structure}{fg=qxblue}
+\setbeamercolor{alerted text}{fg=qxrust}
+
+\lstdefinelanguage{Lean}{
+  morekeywords={def,theorem,lemma,by,intro,have,apply,exact,rw,linarith,nlinarith,ring,norm_num},
+  sensitive=true,
+  morecomment=[l]{--},
+  morecomment=[s]{/-}{-/}
+}
+\lstset{
+  language=Lean,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{qxblue}\bfseries,
+  commentstyle=\color{qxgreen},
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black!20},
+  backgroundcolor=\color{qxgray},
+  breaklines=true,
+  xleftmargin=0.4em,
+  xrightmargin=0.4em
+}
+
+\newcommand{\sourcefoot}[1]{\vfill{\scriptsize\color{black!60}Fuente: #1}}
+\newcommand{\handphoto}[2]{%
+  \IfFileExists{#1}{%
+    \includegraphics[width=\linewidth,height=.43\textheight,keepaspectratio]{#1}%
+  }{%
+    \fbox{\parbox[c][.36\textheight][c]{.90\linewidth}{\centering
+      \textbf{Fotografía pendiente}\\[0.5em]
+      \texttt{#1}\\[0.8em]
+      #2}}%
+  }%
+}
+
+\title{Quispe \& Xu (2026)}
+\subtitle{\emph{Agentic Delegation and the Language Frontier of Software Developers}}
+\author{Alejandro Ventura Ventura Meza}
+\date{Repository 3 \textperiodcentered{} 4 de septiembre de 2026}
+
+\begin{document}
+
+%================= PORTADA ============================================
+\begin{frame}[plain]
+  \titlepage
+  \begin{center}\small
+    \href{https://github.com/alejandroventuraventurameza-tech/ai-03-quispe}
+      {\texttt{github.com/alejandroventuraventurameza-tech/ai-03-quispe}}
+  \end{center}
+\end{frame}
+
+%================= CITA ===============================================
+\begin{frame}{1 \textperiodcentered{} La cita cambió el objeto de estudio}
+  \begin{tabularx}{\textwidth}{@{}>{\bfseries}p{.20\textwidth}X@{}}
+    \toprule
+    Antes de verificar & ``Coding Beyond Your Training: Claude Code and the Technological Frontier of Software Developers'' \\
+    \midrule
+    Registro v2 & Alexander Quispe y Kevin Xu, \emph{Agentic Delegation and the Language Frontier of Software Developers} \\
+    \midrule
+    Fecha & arXiv registra v2 el 7 de julio. El PDF está fechado el 8 de julio de 2026 \\
+    \midrule
+    Muestra & 5,346 desarrolladores durante 28 meses \\
+    \bottomrule
+  \end{tabularx}
+
+  \medskip
+  El paper estudia una \alert{frontera de producción observada}. No demuestra
+  que el desarrollador haya aprendido a programar solo en el nuevo lenguaje.
+
+  \sourcefoot{Quispe y Xu (2026), arXiv:2605.25438v2, portada y resumen.}
+\end{frame}
+
+%================= PROBLEMA ===========================================
+\begin{frame}{2 \textperiodcentered{} El problema del desarrollador}
+  Para cada oportunidad desarrollador--lenguaje--mes, el desarrollador elige
+  el modo con mayor excedente equivalente cierto:
+  \[
+    V^g_{ik,t}=\max_{m\in\mathcal M_g}V^m_{ik,t},
+    \qquad
+    Z^g_{ik,t}=\mathbf 1\!\left[V^g_{ik,t}\ge 0\right].
+  \]
+
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \textbf{Antes del agente}
+    \[
+      \mathcal M_1=\{S,C\}
+    \]
+    \begin{itemize}\small
+      \item $S$: producción individual.
+      \item $C$: conversación o autocompletado.
+      \item La ganancia $\gamma s-r_C$ necesita habilidad previa.
+    \end{itemize}
+
+    \column{.48\textwidth}
+    \textbf{Después de la adopción}
+    \[
+      \mathcal M_2=\{S,C,D\}
+    \]
+    \begin{itemize}\small
+      \item $D$: ejecución delegada al agente.
+      \item El valor depende de la habilidad general $a$ para especificar y verificar.
+    \end{itemize}
+  \end{columns}
+
+  \sourcefoot{Sección 3, entorno y modos de producción.}
+\end{frame}
+
+%================= UMBRALES ===========================================
+\begin{frame}{3 \textperiodcentered{} Umbrales de entrada}
+  Un lenguaje se activa cuando la oportunidad $\omega$ supera el menor umbral
+  disponible. Para un lenguaje desconocido, el supuesto de \emph{foothold}
+  implica
+  \[
+    T^1=\min\{T^S,T^C\}=T^S.
+  \]
+
+  La delegación añade un umbral $T^D$. Su ventaja frente a producir solo es
+  \begin{align*}
+    B=T^S-T^D
+    ={}&\lambda[az(A)-s\mu]-\kappa(a,s)-r_D \\
+      &+\frac{\rho}{2}\left[
+        \frac{(2\lambda-\lambda^2)s^2}{\pi}
+        -\sigma_D^2(a,s,A)
+      \right].
+  \end{align*}
+
+  \begin{center}
+    \alert{$B>0$ equivale a $T^D<T^S$: delegar permite entrar antes.}
+  \end{center}
+
+  \sourcefoot{Sección 3, ecuaciones de umbrales y ventaja de delegación.}
+\end{frame}
+
+%================= BANDA ==============================================
+\begin{frame}{4 \textperiodcentered{} La banda de activación}
+  Si el lenguaje es desconocido y $B>0$, la Proposición 2 establece
+  \[
+    Z^2_{ik,t}-Z^1_{ik,t}
+    =\mathbf 1\!\left[T^D_{ik,t}\le\omega_{ik,t}<T^S_{ik,t}\right].
+  \]
+
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1.2em}}c@{\hspace{1.2em}}c}
+      $\omega<T^D$ & $T^D\le\omega<T^S$ & $T^S\le\omega$ \\
+      \cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}
+      Inactivo & \alert{Solo se activa con delegación} & Activo con ambos menús
+    \end{tabular}
+  \end{center}
+
+  \medskip
+  Con una CDF condicional continua $F$, la probabilidad de entrar en la banda es
+  \[
+    F(T^S_{ik,t})-F(T^D_{ik,t}).
+  \]
+
+  \small
+  Condiciones que cargan el resultado: lenguaje inicialmente desconocido,
+  $\gamma s-r_C\le0$, $B>0$ y continuidad de $F$ para la fórmula probabilística.
+
+  \sourcefoot{Proposición 2 y ecuación de la banda de activación.}
+\end{frame}
+
+%================= EVIDENCIA ==========================================
+\begin{frame}{5 \textperiodcentered{} Predicciones y evidencia de GitHub}
+  \begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{.25\textwidth}@{}}
+    \toprule
+    Resultado alrededor de la primera coautoría detectable con Claude Code & Estimación \\
+    \midrule
+    Lenguajes activos & $+2.5$ sobre una media previa de $0.9$ \\
+    Lenguajes usados por primera vez & $+1.2$ \\
+    Entropía de lenguajes & $+0.38$ \\
+    Archivos reconstruidos & $57$ millones \\
+    \bottomrule
+  \end{tabularx}
+
+  \medskip
+  Los estudios de evento usan comparaciones con desarrolladores aún no tratados
+  y varias pruebas de robustez. La adopción es voluntaria y puede coincidir con
+  el inicio de un proyecto nuevo.
+
+  \begin{center}
+    \alert{La evidencia describe asociaciones en tiempo de evento, no un efecto causal definitivo.}
+  \end{center}
+
+  \sourcefoot{Resumen, Secciones 4--7 y tablas principales.}
+\end{frame}
+
+%================= IDENTIFICACION =====================================
+\begin{frame}{6 \textperiodcentered{} Dos límites de identificación}
+  \begin{columns}[T,onlytextwidth]
+    \column{.48\textwidth}
+    \textbf{La geometría no identifica al agente}
+
+    Cualquier cambio que reduzca el umbral de entrada puede crear una banda:
+    un subsidio, mejor documentación, un colaborador o un choque favorable de
+    productividad.
+
+    \medskip
+    La Proposición 2 demuestra que la tecnología $D$ \emph{puede} producir la
+    expansión. No demuestra que solo un agente pueda producirla.
+
+    \column{.48\textwidth}
+    \textbf{Selección en la adopción}
+
+    Un desarrollador puede adoptar Claude Code precisamente cuando empieza un
+    proyecto en Rust, Go u otro lenguaje nuevo.
+
+    \medskip
+    Los controles eliminan explicaciones mecánicas importantes. No observan el
+    proyecto contrafactual que motivó la fecha de adopción.
+  \end{columns}
+
+  \sourcefoot{Auditoría propia del mecanismo e identificación, basada en las limitaciones del paper.}
+\end{frame}
+
+%================= COMPARACION ========================================
+\begin{frame}{7 \textperiodcentered{} La decisión de modelado cambia la predicción}
+  \begin{tabularx}{\textwidth}{@{}p{.22\textwidth}XX@{}}
+    \toprule
+      & Aouad--Lykouris--Zhong & Quispe--Xu \\
+    \midrule
+    Papel de la IA
+      & Input sustituible dentro de $s+e+a$
+      & Nuevo modo de ejecución delegada $D$ \\
+    \addlinespace
+    Margen central
+      & La asistencia desplaza esfuerzo humano
+      & La delegación reduce umbrales específicos por lenguaje \\
+    \addlinespace
+    Aprendizaje
+      & Menor esfuerzo puede frenar acumulación de habilidad
+      & Las interacciones generan señales que actualizan $\mu$ y $\pi$ \\
+    \addlinespace
+    Predicción
+      & Menor esfuerzo y posible deskilling
+      & Expansión de la frontera de producción \\
+    \bottomrule
+  \end{tabularx}
+
+  \medskip
+  No existe una conclusión universal de que la IA expanda o reduzca capacidad.
+  La predicción depende de qué decisión humana sustituye, de qué opción nueva
+  incorpora el modelo y de si la interacción genera aprendizaje.
+
+  \sourcefoot{Comparación con el paper de la semana 1 solicitada en el issue del curso.}
+\end{frame}
+
+%================= PROP 3 / HAND 1 ====================================
+\begin{frame}{8 \textperiodcentered{} Proposición 3: del flujo al stock}
+  \begin{columns}[T,onlytextwidth]
+    \column{.53\textwidth}
+    Para un lenguaje inicialmente desconocido, el hazard constante $p^g_{ik}$
+    produce
+    \[
+      \Pr(\mathcal T^g_{ik}>s)=(1-p^g_{ik})^{s+1}.
+    \]
+    Por complemento y suma sobre $k\in\mathcal U_i$,
+    \[
+      \Delta C_i(s)=\sum_{k\in\mathcal U_i}
+      \left[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}\right].
+    \]
+    Si $0\le p^1_{ik}\le p^2_{ik}\le1$, cada sumando es no negativo.
+
+    \column{.43\textwidth}
+    \centering
+    \handphoto{hand/prop-3-page-1.jpg}{Supervivencia, complemento, suma y no negatividad.}
+  \end{columns}
+
+  \sourcefoot{Proposición 3 y Apéndice teórico.}
+\end{frame}
+
+%================= ENDPOINT / HAND 2 ==================================
+\begin{frame}{9 \textperiodcentered{} El extremo $p^2=1$ rompe la estrictez}
+  \begin{columns}[T,onlytextwidth]
+    \column{.54\textwidth}
+    Con frontera cerrada, $p^1=0$:
+    \[
+      d(s)=1-(1-p^2)^{s+1}.
+    \]
+    \[
+      d(s+1)-d(s)=p^2(1-p^2)^{s+1},
+    \]
+    \[
+      \Delta^2 d(s)=-(p^2)^2(1-p^2)^{s+1}.
+    \]
+    Ambas desigualdades son estrictas cuando $0<p^2<1$.
+
+    En el extremo incluido por el texto,
+    \[
+      p^2=1 \quad\Longrightarrow\quad d(s)=1
+      \quad\text{para todo }s\ge0.
+    \]
+    \alert{El efecto salta al inicio y luego permanece plano.}
+
+    \column{.42\textwidth}
+    \centering
+    \handphoto{hand/prop-3-page-2.jpg}{Primera diferencia, concavidad y prueba del extremo.}
+  \end{columns}
+\end{frame}
+
+%================= LEAN SPEC ==========================================
+\begin{frame}[fragile]{10 \textperiodcentered{} Lean: de la ecuación al \texttt{Spec}}
+  \textbf{Enunciado matemático corregido}
+  \[
+    p^1=0,\quad 0<p^2<1
+    \quad\Longrightarrow\quad
+    d(s)<d(s+1).
+  \]
+
+  \textbf{Traducción fuente en \texttt{PaperInterface.lean}}
+\begin{lstlisting}
+def cumulative_effect_strict_mono_closedFrontierSpec : Prop :=
+  forall (p2 : Real) (s : Nat),
+    0 < p2 -> p2 < 1 ->
+    (1 - (1 - p2) ^ (s + 1)) <
+    (1 - (1 - p2) ^ (s + 2))
+\end{lstlisting}
+
+  \small
+  \texttt{Real} representa el hazard, \texttt{Nat} el horizonte discreto y las
+  dos hipótesis abiertas excluyen los extremos donde la desigualdad deja de ser
+  estricta. El \texttt{Spec} expone la afirmación que debe revisar una persona.
+\end{frame}
+
+%================= LEAN PROOF =========================================
+\begin{frame}[fragile]{11 \textperiodcentered{} Lean: prueba, extremo y límite de la revisión}
+  \begin{columns}[T,onlytextwidth]
+    \column{.58\textwidth}
+\begin{lstlisting}
+theorem cumulative_effect_strict_mono_closedFrontier :
+    cumulative_effect_strict_mono_closedFrontierSpec := by
+  intro p2 s h0 h1
+  have hb : 0 < 1 - p2 := by linarith
+  have hpos : 0 < (1 - p2) ^ (s + 1) :=
+    pow_pos hb (s + 1)
+  rw [pow_succ]
+  nlinarith [mul_pos hpos h0]
+\end{lstlisting}
+
+    \column{.38\textwidth}
+    \small
+    \textbf{Qué verifica Lean}
+    \begin{itemize}
+      \item $p^2<1$ hace positiva la base $1-p^2$.
+      \item La potencia conserva positividad.
+      \item Otro teorema prueba que $p^2=1$ produce una trayectoria plana.
+    \end{itemize}
+
+    \textbf{Resultado registrado}
+    \begin{itemize}
+      \item Nueve endpoints sin \texttt{sorry}.
+      \item \texttt{check --fast}: PASS en WSL.
+      \item Auditoría fuente--\texttt{Spec}: pendiente.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+%================= CIERRE =============================================
+\begin{frame}{12 \textperiodcentered{} Conclusiones}
+  \begin{enumerate}
+    \item El agente expande la frontera cuando añade una opción delegada con
+      $T^D<T^S$ para lenguajes desconocidos.
+    \item El estudio de GitHub encuentra la dinámica prevista, pero la selección
+      en la adopción impide interpretar el evento como causalidad definitiva.
+    \item La formalización cerró nueve resultados algebraicos y detectó una
+      condición ausente: la estrictez de la Proposición 3 requiere $p^2<1$.
+  \end{enumerate}
+
+  \medskip
+  \begin{center}
+    \alert{La contribución verificable es el límite exacto del argumento, no una afirmación más amplia sobre lo que la IA siempre hace.}
+  \end{center}
+
+  \sourcefoot{Material analítico, derivación manuscrita y módulo Lean disponibles en el repositorio.}
+\end{frame}
+
+\end{document}
