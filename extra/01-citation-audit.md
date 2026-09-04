@@ -12,13 +12,16 @@ The course issue deliberately begins with a citation-verification exercise. The 
 | Authors | Alexander Quispe and Kevin Xu |
 | arXiv identifier | 2605.25438v2 |
 | arXiv history | Submitted May 25, 2026; version 2 posted July 7, 2026 |
-| Manuscript date shown in the paper | August 24, 2026 |
+| Date on the version 2 PDF title page | July 8, 2026 |
+| Date shown by the experimental HTML rendering | August 24, 2026; this does not match the versioned PDF |
 | Analysis sample | 5,346 developers observed over 28 months |
 | Reconstructed activity | About 3.2 million commits and 57 million changed files |
 
 ## The discrepancy to show in the presentation
 
 “Coding Beyond Your Training: Claude Code and the Technological Frontier of Software Developers” is not the current title. The version 2 manuscript states that this was an earlier title. The current title changes the emphasis from a broad technological frontier to the specific mechanism of **agentic delegation** and the measured **language-production frontier**.
+
+There is also a source-surface discrepancy in the manuscript date. The arXiv history records version 2 on July 7 and the version 2 PDF is dated July 8, while the experimental HTML rendering displays August 24. We use the versioned PDF for page-level analysis and retain this discrepancy in the audit rather than silently choosing the convenient date.
 
 The honest sequence in this run is also informative: the original Word heading pointed to the wrong authors, the user challenged the identification, and the arXiv record resolved it. We will not fabricate a supposedly pre-verification model answer after having already opened the source.
 
@@ -39,4 +42,3 @@ These are research questions for later analytical blocks, not conclusions record
 - [Current arXiv record](https://arxiv.org/abs/2605.25438v2)
 - [Current paper in HTML](https://arxiv.org/html/2605.25438v2)
 - [Course issue](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2)
-

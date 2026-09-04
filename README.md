@@ -42,6 +42,15 @@ $$
 B=T^S-T^D.
 $$
 
+Using the model’s primitives, this difference is
+
+$$
+B=\lambda[az(A)-s\mu]-\kappa(a,s)-r_D
++\frac{\rho}{2}\left[
+\frac{(2\lambda-\lambda^2)s^2}{\pi}-\sigma_D^2(a,s,A)
+\right].
+$$
+
 If $B>0$, then $T^D<T^S$ and Proposition 2 gives
 
 $$
@@ -57,6 +66,8 @@ $$
 
 Menu expansion also implies the weak path-by-path result $N^2_{it}\ge N^1_{it}$ because the developer can always ignore the delegation option. This is an expansion of the **production frontier**, not proof that the developer learned the unfamiliar language.
 
+A line-by-line derivation and the first endpoint audit are in [the model tutorial](extra/02-model-thresholds-and-activation-band.md).
+
 ## Evidence in one paragraph
 
 The paper studies 5,346 developers over a 28-month panel and reconstructs approximately 3.2 million commits touching 57 million files. Around first detectable Claude Code use, active languages rise by 2.5 from a pre-adoption mean of 0.9, newly used languages rise by 1.2, and language entropy rises by 0.38. The estimates survive several mechanical-exposure and activity checks, but they cannot eliminate selection into the timing of adoption.
@@ -66,4 +77,3 @@ The paper studies 5,346 developers over a 28-month panel and reconstructs approx
 - [Paper, version 2](https://arxiv.org/abs/2605.25438v2)
 - [Course issue and submission requirements](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2)
 - [Worked repository template](https://github.com/alexanderquispe/ai-01-aouad)
-

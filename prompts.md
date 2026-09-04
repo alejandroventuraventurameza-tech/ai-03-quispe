@@ -18,3 +18,10 @@ Lo confirman tanto la consigna oficial del issue como la versión v2 en arXiv, c
 
 El encabezado del Word que menciona a “Agrawal, Gans & Goldfarb” está desactualizado y no corresponde a la asignación vigente. Trabajaré exclusivamente con Quispe y Xu (2026), versión v2.
 
+## User
+
+Ok, ya hice el conventional commit. ¿Qué sigue?
+
+## Assistant
+
+Sigue el bloque matemático central. Voy a contrastar la sección 4 y su apéndice directamente con el paper, y trabajaré solo en: modos de producción, umbrales, ventaja de delegación $B$ y Proposición 2. Al terminar dejaré otro checkpoint con su conventional commit; la Proposición 3 vendrá después como bloque separado para la derivación a mano y Lean.
