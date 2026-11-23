@@ -6,12 +6,16 @@ on:
       - work/issue2-quality-closeout-20261123
     paths:
       - lean/**
-      - scripts/ci_gpt6_review.py
+      - extensions/**
       - .github/workflows/lean-verify.yml
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: repository-3-lean-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   econcslib-lean:
@@ -42,6 +46,7 @@ jobs:
           test -f lean/ProofInterface.lean
           mkdir -p "upstream/papers/$PAPER" ci-evidence
           cp -a lean/. "upstream/papers/$PAPER/"
+          cp extensions/Prop3NoCatchUp.lean "upstream/papers/$PAPER/Prop3NoCatchUp.lean"
           printf 'import QX26AgenticDelegation.ProofInterface\n' > "upstream/papers/$PAPER.lean"
           (cd upstream && python3 scripts/paper_target_registration.py register "$PAPER")
           printf 'weekly_sha=%s\nupstream_sha=%s\nlean_toolchain=%s\n' \
@@ -49,7 +54,7 @@ jobs:
             "$(git -C upstream rev-parse HEAD)" \
             "$(cat upstream/lean-toolchain)" > ci-evidence/versions.txt
           find "upstream/papers/$PAPER" -maxdepth 3 -type f -print | LC_ALL=C sort > ci-evidence/paper-file-inventory.txt
-          sha256sum lean/*.lean > ci-evidence/weekly-lean-sha256.txt
+          sha256sum lean/*.lean extensions/*.lean > ci-evidence/weekly-lean-sha256.txt
           echo "Prepared $PAPER under the pinned upstream checkout." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Install Lean and compile all proof endpoints
@@ -57,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.ProofInterface"
+          build-args: "QX26AgenticDelegation.Prop3NoCatchUp"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -73,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.ProofInterface
+          import QX26AgenticDelegation.Prop3NoCatchUp
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -83,6 +88,8 @@ jobs:
           #print axioms QX26AgenticDelegation.cumulative_effect_endpoint_flat
           #print axioms QX26AgenticDelegation.specialist_heterogeneity
           #print axioms QX26AgenticDelegation.repository_expansion
+          #print axioms QX26AgenticDelegation.auditedCumulativeGap_step
+          #print axioms QX26AgenticDelegation.auditedCumulativeGap_nocatchup_iff
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
