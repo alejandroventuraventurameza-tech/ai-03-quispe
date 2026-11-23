@@ -17,6 +17,7 @@ No se utiliza Codex, una CLI de agente generativo ni una API de modelos para com
 | --- | --- | --- |
 | [Actions #45234775082](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45234775082) | Nueve teoremas del archivo original `lean/ProofInterface.lean` | **PASS:** 8,316 jobs compilados, `#print axioms` sin `sorryAx`, `check ... --fast` PASS |
 | [Actions #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712) | Nueve teoremas originales + dos resultados adicionales en `extensions/Prop3NoCatchUp.lean` | **PASS:** 8,317 jobs compilados, once endpoints inspeccionados sin `sorryAx`, `check ... --fast` PASS |
+| [Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) | Los once resultados previos + nueve identidades y teoremas de [Prop2ThresholdBridge.lean](../extensions/Prop2ThresholdBridge.lean) | **PASS:** 8,318 jobs compilados, 20 endpoints sin `sorryAx`, `check ... --fast` PASS |
 
 El workflow emplea `leanprover/lean4:v4.30.0-rc2` y la revisión `nikhgarg/AppliedModelingLib@194edcc95df74806a39b961d10dedddc6e730cce`, fijada para permitir reproducibilidad. El archivo `lean/` original permanece intacto; la extensión se copia a la carpeta temporal de compilación.
 
