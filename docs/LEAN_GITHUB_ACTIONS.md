@@ -19,14 +19,15 @@ No se utiliza Codex, una CLI de agente generativo ni una API de modelos para com
 | [Actions #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712) | Nueve teoremas originales + dos resultados adicionales en `extensions/Prop3NoCatchUp.lean` | **PASS:** 8,317 jobs compilados, once endpoints inspeccionados sin `sorryAx`, `check ... --fast` PASS |
 | [Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) | Los once resultados previos + nueve identidades y teoremas de [Prop2ThresholdBridge.lean](../extensions/Prop2ThresholdBridge.lean) | **PASS:** 8,318 jobs compilados, 20 endpoints sin `sorryAx`, `check ... --fast` PASS |
 | [Actions #45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690) | Los 20 resultados previos + cuatro teoremas con ley condicional suministrada en [Prop4ExpectedExpansion.lean](../extensions/Prop4ExpectedExpansion.lean) | **PASS:** 8,319 jobs, 24 endpoints inspeccionados sin `sorryAx`, `check ... --fast` PASS |
+| [Actions #45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429) | Los 24 anteriores + cuatro teoremas en [Prop5RepositoryExpectation.lean](../extensions/Prop5RepositoryExpectation.lean), incluyendo estrictez bajo masa positiva | **PASS:** 8,320 jobs, 28 endpoints sin `sorryAx`, `check ... --fast` PASS |
 
 El workflow emplea `leanprover/lean4:v4.30.0-rc2` y la revisión `nikhgarg/AppliedModelingLib@194edcc95df74806a39b961d10dedddc6e730cce`, fijada para permitir reproducibilidad. El archivo `lean/` original permanece intacto; la extensión se copia a la carpeta temporal de compilación.
 
-**Evidencia descargable:** [artefacto actualizado con 24 teoremas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690/artifacts/14869933519).
+**Evidencia descargable:** [artefacto actualizado con 28 teoremas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429/artifacts/14873163272).
 
 ## Diferencia entre compilación y equivalencia económica
 
-- **DEMOSTRADO EN LEAN:** **24 endpoints** (nueve del módulo EconCSLib original y quince en extensiones separadas: dos no-catch-up, nueve del puente económico de Proposición 2 y cuatro de Proposición 4 con ley condicional suministrada), bajo los supuestos declarados. Ni los tipos Lean ni el CI prueban una ley condicional no construida.
+- **DEMOSTRADO EN LEAN:** **28 endpoints** (nueve de EconCSLib original y diecinueve de extensiones separadas: dos no-catch-up, nueve del puente de Proposición 2, cuatro de Proposición 4 y cuatro de Proposición 5, todos bajo sus supuestos explícitos). Ni los tipos Lean ni el CI construyen una distribución condicional no especificada, ni derivan los costes de entrada de los repositorios desde las primitivas.
 - **VERIFICADO COMO PROCESO:** los imports y compilación con herramienta fija, `check --fast` y la inspección de axiomas.
 - **PENDIENTE:** revisión independiente completa de si cada `Spec` corresponde exactamente a todo el contenido probabilístico y económico de las proposiciones del artículo.
 - **PENDIENTE POR REQUISITO DOCENTE:** la entrega original exigía que el agente generador fuera GPT-5.6 Sol/`xhigh`. La compilación Lean no depende de esa elección, pero tampoco acredita qué modelo escribió el código de 2026-09-04. El commit original declara colaboración con Claude Opus 4.8.
