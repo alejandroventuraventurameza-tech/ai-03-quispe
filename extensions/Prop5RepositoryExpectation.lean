@@ -112,6 +112,7 @@ theorem prop5_expected_count_strict_of_positive_band_mass
       Function.support gap := by
     intro ω hEvent
     have hBandPos : 0 < repo5Band Ω c1 c2 r ω := by
+      change c2 r ≤ Ω r ω ∧ Ω r ω < c1 r at hEvent
       simp [repo5Band, hEvent]
     have hSumPos :
         0 < ∑ k ∈ R, repo5Band Ω c1 c2 k ω := by
