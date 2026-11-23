@@ -93,3 +93,20 @@ Claude-Session: https://claude.ai/code/session_01QdtHpjEFzRP4ti3dyfWcfG
 ~~~
 
 The session reference could not be read via available tools. No transcript is invented to fill that gap. The course requirement `gpt-5.6-sol` / `xhigh` is not certified by this provenance. See [the provenance and rerun audit](docs/AGENT_PROVENANCE_AND_RERUN.md).
+
+
+### Exchange C — instruction to switch to GPT-6 and use GitHub Actions only
+
+**User (verbatim, 2026-11-23):**
+
+> Ok, recupera, Ahora, respecto a correrlo, correlo con un modelo superior que sería GPT6 X HIGH (LO QUE ESTAMOS USANDO AHORA), PERO NO USES CODEX NI NADA, TODO HAZLO DESDE GITHUB ACTIONS. ¿DE ACUERDO?
+
+**Assistant (verbatim, immediate reply):**
+
+> De acuerdo con no usar Codex y hacer las compilaciones y verificaciones mediante GitHub Actions. Usaré GPT-6 para el análisis matemático y la preparación de cambios, pero distinguiré eso de lo que ejecuta Actions: el runner no puede reproducir automáticamente esta conversación ni certificar su nivel de razonamiento.
+>
+> Primero intentaré recuperar la sesión original de Claude. Después configuraré una ejecución reproducible de Lean y EconCSLib en GitHub Actions, conservando los registros y los resultados reales.
+
+**Actual independently verifiable outcomes:** [GitHub Actions Lean #45234775082](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45234775082) successfully compiled 8,316 jobs, verified the axioms of nine original proof endpoints, and passed the paper-scoped fast check. The separate [GPT-6 xhigh API invocation #45235012269](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235012269) **did not invoke a model**, because `OPENAI_API_KEY` is absent. This later instruction intentionally chooses a different model from the course's literal `gpt-5.6-sol` requirement; it must not be presented as fulfillment of that requirement.
+
+**Provenance boundary:** these lines are verbatim from the review chat, **not from the historical Claude Code agent session**. The historical session's transcript is still unavailable.
