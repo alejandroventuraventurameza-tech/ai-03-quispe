@@ -33,6 +33,6 @@ Weak hazard ordering alone **does not** guarantee that the gap grows at every ho
 
 The paper follows 5,346 developers for 28 months and reports sharp event-time increases in language breadth around detectable Claude Code adoption. **Selection into adoption remains a causal-identification limitation.** Our mathematical critique checks the \(p^2=1\) endpoint; the threshold geometry is not exclusive to AI agents, since another productivity improvement could also lower an entry threshold.
 
-The archived EconCSLib run reports **nine proved algebraic endpoints without \`sorry\` and a passing fast check** ([record](lean-check.txt)). These do **not** certify exact source-to-\`Spec\` equivalence or completion of the paper's probabilistic model; source-first semantic review and human sign-off remain open. The unmodified generated status/audit files deliberately retain those limitations.
+The archived EconCSLib run reports **nine proved algebraic endpoints without `sorry` and a passing fast check** ([record](lean-check.txt)). These do **not** certify exact source-to-`Spec` equivalence or completion of the paper's probabilistic model; source-first semantic review and human sign-off remain open. The unmodified generated status/audit files deliberately retain those limitations.
 
 **Further detail:** [thresholds and activation](extra/02-model-thresholds-and-activation-band.md) · [Proposition 3 derivation](extra/03-proposition-3-dynamics.md) · [citation audit](extra/01-citation-audit.md) · [handwritten work requirements](hand/README.md).
