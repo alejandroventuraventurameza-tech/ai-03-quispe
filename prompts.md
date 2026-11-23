@@ -110,3 +110,16 @@ The session reference could not be read via available tools. No transcript is in
 **Actual independently verifiable outcomes:** [GitHub Actions Lean #45234775082](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45234775082) successfully compiled 8,316 jobs, verified the axioms of nine original proof endpoints, and passed the paper-scoped fast check. The separate [GPT-6 xhigh API invocation #45235012269](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235012269) **did not invoke a model**, because `OPENAI_API_KEY` is absent. This later instruction intentionally chooses a different model from the course's literal `gpt-5.6-sol` requirement; it must not be presented as fulfillment of that requirement.
 
 **Provenance boundary:** these lines are verbatim from the review chat, **not from the historical Claude Code agent session**. The historical session's transcript is still unavailable.
+
+
+### Correction after user clarification — 2026-11-23
+
+**User (verbatim):**
+
+> pero no entiendo para que quieres una API compila Lean nomas, o sea que es el problema si para lo de IE project no necesitamos ninguna API.
+
+**Assistant (verbatim, immediate reply):**
+
+> Tienes razón. Para trabajar como en IE project no necesitamos una API de OpenAI: yo preparo y reviso el código Lean aquí, y GitHub Actions lo compila. Ya comprobamos que ese procedimiento funciona. Voy a retirar el workflow de GPT-6 por API y dejar únicamente la verificación reproducible de Lean.
+
+**Action:** the optional Responses API workflow and its script were withdrawn from the review branch; [the Lean-only verification method](docs/LEAN_GITHUB_ACTIONS.md) remains, with the successful [11-endpoint GitHub Actions run](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712). The historical failed API attempt is retained as historical evidence, not a pending instruction to configure a key.
