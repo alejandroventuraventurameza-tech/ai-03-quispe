@@ -46,26 +46,26 @@ La identidad de indicadores es *puntual*; la probabilidad \(F(T^S)-F(T^D)\) nece
 
 ## 2. Qué fue insuficiente en el módulo original
 
-La declaración existente [\`activation_bandSpec\`](../lean/PaperInterface.lean) y su prueba en [\`ProofInterface.lean\`](../lean/ProofInterface.lean) reciben directamente \(T^D\), \(T^S\) y la premisa \(T^D\le T^S\). La igualdad es correcta como álgebra de indicadores, pero **no explicita** los tres valores de producción, la minimización del menú, el supuesto foothold, la expresión de \(B\) ni la prueba de que \(B>0\) produce el orden económico de umbrales.
+La declaración existente [`activation_bandSpec`](../lean/PaperInterface.lean) y su prueba en [`ProofInterface.lean`](../lean/ProofInterface.lean) reciben directamente \(T^D\), \(T^S\) y la premisa \(T^D\le T^S\). La igualdad es correcta como álgebra de indicadores, pero **no explicita** los tres valores de producción, la minimización del menú, el supuesto foothold, la expresión de \(B\) ni la prueba de que \(B>0\) produce el orden económico de umbrales.
 
 ## 3. La extensión adicional y sus límites
 
-La nueva estructura \`DelegationPrimitives\` contiene los once insumos reales de la comparación (con \(az(A)\) ya multiplicado), sin hacer pasar sus signos económicos por teoremas deducidos.
+La nueva estructura `DelegationPrimitives` contiene los once insumos reales de la comparación (con \(az(A)\) ya multiplicado), sin hacer pasar sus signos económicos por teoremas deducidos.
 
 | Teorema Lean nuevo | Resultado verificado que se pretende compilar | Origen económico |
 | --- | --- | --- |
-| \`soloValue_eq_opportunity_sub_threshold\` | \(V^S=\omega-T^S\) | (16) |
-| \`copilotValue_eq_opportunity_sub_threshold\` | \(V^C=\omega-T^C\) | (17) |
-| \`delegationValue_eq_opportunity_sub_threshold\` | \(V^D=\omega-T^D\) | (19) |
-| \`delegationAdvantage_eq_threshold_difference\` | Identidad completa \(B=T^S-T^D\) | (20) |
-| \`preThreshold_eq_solo_of_foothold\` | \(\gamma s-r_C\le0\Rightarrow T^1=T^S\) | (18) + supuesto 1 |
-| \`postThreshold_eq_delegation_of_advantage\` | \(\gamma s-r_C\le0,\ B>0\Rightarrow T^2=T^D\) | A.4 |
-| \`postThreshold_eq_pre_of_nonpositive_advantage\` | \(\gamma s-r_C\le0,\ B\le0\Rightarrow T^2=T^1\) | Diagnóstico del extremo y caso no favorable |
-| \`activation_band_from_economic_primitives\` | Banda completa desde los insumos, usando la prueba de indicadores original | Proposición 2 |
-| \`menu_surplus_weak_expansion\` | \(\max(V^S,V^C)\le\max(V^S,V^C,V^D)\) | Proposición 1, apéndice A.3 |
+| `soloValue_eq_opportunity_sub_threshold` | \(V^S=\omega-T^S\) | (16) |
+| `copilotValue_eq_opportunity_sub_threshold` | \(V^C=\omega-T^C\) | (17) |
+| `delegationValue_eq_opportunity_sub_threshold` | \(V^D=\omega-T^D\) | (19) |
+| `delegationAdvantage_eq_threshold_difference` | Identidad completa \(B=T^S-T^D\) | (20) |
+| `preThreshold_eq_solo_of_foothold` | \(\gamma s-r_C\le0\Rightarrow T^1=T^S\) | (18) + supuesto 1 |
+| `postThreshold_eq_delegation_of_advantage` | \(\gamma s-r_C\le0,\ B>0\Rightarrow T^2=T^D\) | A.4 |
+| `postThreshold_eq_pre_of_nonpositive_advantage` | \(\gamma s-r_C\le0,\ B\le0\Rightarrow T^2=T^1\) | Diagnóstico del extremo y caso no favorable |
+| `activation_band_from_economic_primitives` | Banda completa desde los insumos, usando la prueba de indicadores original | Proposición 2 |
+| `menu_surplus_weak_expansion` | \(\max(V^S,V^C)\le\max(V^S,V^C,V^D)\) | Proposición 1, apéndice A.3 |
 
 **Restricciones no derivadas ni representadas como distribuciones:** \(\pi>0\), \(\rho>0\), \(s\in[0,1]\), \(\lambda\in(0,1]\), varianzas no negativas, supuestos de derivadas de \(\kappa\) y \(\sigma_D^2\), normalidad/CARA y el origen estocástico de \(\omega\). Las identidades son polinomiales/racionales y pueden verificarse para entradas reales generales; la interpretación económica únicamente es válida bajo el dominio correcto de la fuente.
 
-**Estado de verificación:** la compilación Lean es independiente de esta auditoría textual. Solo debe marcarse **DEMOSTRADO EN LEAN** cuando [GitHub Actions](../.github/workflows/lean-verify.yml) informe un resultado \`success\` que incluya explícitamente \`Prop2ThresholdBridge.lean\` y sus nuevos \`#print axioms\`. Un fallo o un run pendiente se reporta como **PENDIENTE**, no como completado.
+**Estado de verificación — DEMOSTRADO EN LEAN (alcance algebraico):** [GitHub Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) informó **success**. Compiló `Prop2ThresholdBridge.lean` junto con ambos módulos previos (**8,318 jobs**) y verificó mediante `#print axioms` los **20 endpoints** (9 originales + 2 de Prop. 3 + 9 de este puente), sin `sorryAx`. El comando EconCSLib `paper_contribution.py check ... --fast` también aprobó (**8,315 jobs**). Esta verificación *no certifica* CARA-normal, expectativa condicional ni comparación fuente–Spec exhaustiva.
 
-**Próximo paso después de compilar:** ampliar la auditoría desde el artículo hacia Proposiciones 1, 4 y 5, sobre todo la expectativa condicional y las hipótesis de simetría que el \`Spec\` de Proposición 4 abstrae.
+**Próximo paso después de compilar:** ampliar la auditoría desde el artículo hacia Proposiciones 1, 4 y 5, sobre todo la expectativa condicional y las hipótesis de simetría que el `Spec` de Proposición 4 abstrae.
