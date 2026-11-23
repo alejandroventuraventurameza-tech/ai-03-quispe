@@ -62,3 +62,8 @@ Se conserva la matriz original de nueve `Spec`. [`Prop4ExpectedExpansion.lean`](
 ## Proposición 5: esperanza y masa positiva (extensión externa)
 
 La matriz original de nueve `Spec` permanece intacta. [`Prop5RepositoryExpectation.lean`](../extensions/Prop5RepositoryExpectation.lean) agrega cuatro teoremas: suma de bandas igual a diferencia de conteos, monotonía puntual, monotonía de la esperanza y crecimiento estricto bajo masa positiva en una banda. **GitHub Actions [#45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429) PASS**, 8,320 jobs, 28 endpoints sin `sorryAx`, `check --fast` correcto. Los costes (c_r^g) siguen siendo entradas del modelo; la construcción económica completa de esos costes no ha sido formalizada. [Auditoría A.8](SOURCE_AUDIT_PROP5_20261123.md).
+
+
+## Proposición 1: expansión estricta como corolario condicionado (extensión externa)
+
+Se conserva inalterada la tabla de nueve `Spec` del módulo original. [`Prop1StrictFrontier.lean`](../extensions/Prop1StrictFrontier.lean) agrega cinco teoremas: expansión débil desde el menú de tres opciones, diferencia exacta del conteo, expansión estricta dada una lengua nueva viable solo por delegación, implicación banda→`B>0` y expansión estricta desde el foothold más la banda económica. **GitHub Actions [#45291226305](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45291226305) PASS:** 8,321 jobs, **33 teoremas sin `sorryAx` ni `unsafeAx`**, `check --fast` aprobado. Fuente contrastada en [§4.2 y apéndice A.3](SOURCE_AUDIT_PROP1_20261123.md). La estrictez requiere un testigo: no es conclusión incondicional de la Proposición 1 ni prueba de un efecto causal de adopción.
