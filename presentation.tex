@@ -1,7 +1,11 @@
 \documentclass[aspectratio=169,11pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish,es-nodecimaldot]{babel}
+\IfFileExists{spanish.ldf}{%
+  \usepackage[spanish,es-nodecimaldot]{babel}%
+}{%
+  \usepackage{babel}%
+}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{booktabs,tabularx}
 \usepackage{graphicx}
@@ -47,9 +51,9 @@
 \newcommand{\sourcefoot}[1]{\vfill{\scriptsize\color{black!60}Fuente: #1}}
 \newcommand{\handphoto}[2]{%
   \IfFileExists{#1}{%
-    \includegraphics[width=\linewidth,height=.43\textheight,keepaspectratio]{#1}%
+    \includegraphics[width=.96\textwidth,height=.70\textheight,keepaspectratio]{#1}%
   }{%
-    \fbox{\parbox[c][.36\textheight][c]{.90\linewidth}{\centering
+    \fbox{\parbox[c][.62\textheight][c]{.82\textwidth}{\centering
       \textbf{Fotografía pendiente}\\[0.5em]
       \texttt{#1}\\[0.8em]
       #2}}%
@@ -76,7 +80,7 @@
 \begin{frame}{1 \textperiodcentered{} La cita cambió el objeto de estudio}
   \begin{tabularx}{\textwidth}{@{}>{\bfseries}p{.20\textwidth}X@{}}
     \toprule
-    Antes de verificar & ``Coding Beyond Your Training: Claude Code and the Technological Frontier of Software Developers'' \\
+    Cita anterior & ``Coding Beyond Your Training: Claude Code and the Technological Frontier of Software Developers'' \\
     \midrule
     Registro v2 & Alexander Quispe y Kevin Xu, \emph{Agentic Delegation and the Language Frontier of Software Developers} \\
     \midrule
@@ -188,7 +192,7 @@
 \begin{frame}{5 \textperiodcentered{} Predicciones y evidencia de GitHub}
   \begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}p{.25\textwidth}@{}}
     \toprule
-    Resultado alrededor de la primera coautoría detectable con Claude Code & Estimación \\
+    Resultado alrededor de la primera coautoría detectable con \mbox{Claude Code} & Estimación \\
     \midrule
     Lenguajes activos & $+2.5$ sobre una media previa de $0.9$ \\
     Lenguajes usados por primera vez & $+1.2$ \\
@@ -239,7 +243,7 @@
 
 %================= COMPARACION ========================================
 \begin{frame}{7 \textperiodcentered{} La decisión de modelado cambia la predicción}
-  \begin{tabularx}{\textwidth}{@{}p{.22\textwidth}XX@{}}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.22\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
     \toprule
       & Aouad--Lykouris--Zhong & Quispe--Xu \\
     \midrule
@@ -271,59 +275,64 @@
 
 %================= PROP 3 / HAND 1 ====================================
 \begin{frame}{8 \textperiodcentered{} Proposición 3: del flujo al stock}
-  \begin{columns}[T,onlytextwidth]
-    \column{.53\textwidth}
-    Para un lenguaje inicialmente desconocido, el hazard constante $p^g_{ik}$
-    produce
-    \[
-      \Pr(\mathcal T^g_{ik}>s)=(1-p^g_{ik})^{s+1}.
-    \]
-    Por complemento y suma sobre $k\in\mathcal U_i$,
-    \[
-      \Delta C_i(s)=\sum_{k\in\mathcal U_i}
-      \left[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}\right].
-    \]
-    Si $0\le p^1_{ik}\le p^2_{ik}\le1$, cada sumando es no negativo.
-
-    \column{.43\textwidth}
-    \centering
-    \handphoto{hand/prop-3-page-1.jpg}{Supervivencia, complemento, suma y no negatividad.}
-  \end{columns}
+  Para un lenguaje inicialmente desconocido, el hazard constante $p^g_{ik}$
+  produce
+  \[
+    \Pr(\mathcal T^g_{ik}>s)=(1-p^g_{ik})^{s+1}.
+  \]
+  Por complemento y suma sobre $k\in\mathcal U_i$,
+  \[
+    \Delta C_i(s)=\sum_{k\in\mathcal U_i}
+    \left[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}\right].
+  \]
+  Si $0\le p^1_{ik}\le p^2_{ik}\le1$, cada sumando es no negativo.
 
   \sourcefoot{Proposición 3 y Apéndice teórico.}
 \end{frame}
 
-%================= ENDPOINT / HAND 2 ==================================
-\begin{frame}{9 \textperiodcentered{} El extremo $p^2=1$ rompe la estrictez}
-  \begin{columns}[T,onlytextwidth]
-    \column{.54\textwidth}
-    Con frontera cerrada, $p^1=0$:
-    \[
-      d(s)=1-(1-p^2)^{s+1}.
-    \]
-    \[
-      d(s+1)-d(s)=p^2(1-p^2)^{s+1},
-    \]
-    \[
-      \Delta^2 d(s)=-(p^2)^2(1-p^2)^{s+1}.
-    \]
-    Ambas desigualdades son estrictas cuando $0<p^2<1$.
+%================= HAND 1 =============================================
+\begin{frame}{9 \textperiodcentered{} Derivación manuscrita de la Proposición 3}
+  \centering
+  \handphoto{hand/prop-3-page-1.jpg}{Añade aquí la primera página de la derivación.}
 
-    En el extremo incluido por el texto,
-    \[
-      p^2=1 \quad\Longrightarrow\quad d(s)=1
-      \quad\text{para todo }s\ge0.
-    \]
+  \sourcefoot{Derivación manuscrita: supervivencia, complemento, suma y no negatividad.}
+\end{frame}
+
+%================= ENDPOINT ===========================================
+\begin{frame}{10 \textperiodcentered{} El extremo $p^2=1$ rompe la estrictez}
+  Con frontera cerrada, $p^1=0$:
+  \[
+    d(s)=1-(1-p^2)^{s+1}.
+  \]
+  \[
+    d(s+1)-d(s)=p^2(1-p^2)^{s+1},
+    \qquad
+    \Delta^2 d(s)=-(p^2)^2(1-p^2)^{s+1}.
+  \]
+  Ambas desigualdades son estrictas cuando $0<p^2<1$.
+
+  En el extremo incluido por el texto,
+  \[
+    p^2=1 \quad\Longrightarrow\quad d(s)=1
+    \quad\text{para todo }s\ge0.
+  \]
+  \begin{center}
     \alert{El efecto salta al inicio y luego permanece plano.}
+  \end{center}
 
-    \column{.42\textwidth}
-    \centering
-    \handphoto{hand/prop-3-page-2.jpg}{Primera diferencia, concavidad y prueba del extremo.}
-  \end{columns}
+  \sourcefoot{Proposición 3 y revisión del extremo incluido.}
+\end{frame}
+
+%================= HAND 2 =============================================
+\begin{frame}{11 \textperiodcentered{} Derivación manuscrita del caso extremo}
+  \centering
+  \handphoto{hand/prop-3-page-2.jpg}{Añade aquí la segunda página de la derivación.}
+
+  \sourcefoot{Derivación manuscrita: primera diferencia, concavidad y prueba del extremo.}
 \end{frame}
 
 %================= LEAN SPEC ==========================================
-\begin{frame}[fragile]{10 \textperiodcentered{} Lean: de la ecuación al \texttt{Spec}}
+\begin{frame}[fragile]{12 \textperiodcentered{} Lean: de la ecuación al \texttt{Spec}}
   \textbf{Enunciado matemático corregido}
   \[
     p^1=0,\quad 0<p^2<1
@@ -347,7 +356,7 @@ def cumulative_effect_strict_mono_closedFrontierSpec : Prop :=
 \end{frame}
 
 %================= LEAN PROOF =========================================
-\begin{frame}[fragile]{11 \textperiodcentered{} Lean: prueba, extremo y límite de la revisión}
+\begin{frame}[fragile]{13 \textperiodcentered{} Prueba formal y casos límite}
   \begin{columns}[T,onlytextwidth]
     \column{.58\textwidth}
 \begin{lstlisting}
@@ -374,13 +383,13 @@ theorem cumulative_effect_strict_mono_closedFrontier :
     \begin{itemize}
       \item Nueve endpoints sin \texttt{sorry}.
       \item \texttt{check --fast}: PASS en WSL.
-      \item Auditoría fuente--\texttt{Spec}: pendiente.
+      \item Revisión fuente--\texttt{Spec}: parcial; closeout automático pendiente.
     \end{itemize}
   \end{columns}
 \end{frame}
 
 %================= CIERRE =============================================
-\begin{frame}{12 \textperiodcentered{} Conclusiones}
+\begin{frame}{14 \textperiodcentered{} Conclusiones}
   \begin{enumerate}
     \item El agente expande la frontera cuando añade una opción delegada con
       $T^D<T^S$ para lenguajes desconocidos.

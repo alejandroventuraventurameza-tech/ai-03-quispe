@@ -29,3 +29,6 @@ paper/*.tar.gz
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Guion de exposición (local, no se sube)
+guion-presentacion.docx
