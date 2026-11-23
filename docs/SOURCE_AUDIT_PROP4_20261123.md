@@ -1,6 +1,6 @@
 # Auditoría fuente → Lean — Proposición 4 (esperanza condicional)
 
-**Corte:** 2026-11-23. **Fuente primaria:** [Quispe y Xu (2026), arXiv 2605.25438v2, A.5 (ecuaciones 22–23)](https://arxiv.org/html/2605.25438v2). **Código separado:** [`extensions/Prop4ExpectedExpansion.lean`](../extensions/Prop4ExpectedExpansion.lean). **Estado:** propuesta de extensión matemática; comprobar GitHub Actions antes de etiquetar como probado.
+**Corte:** 2026-11-23. **Fuente primaria:** [Quispe y Xu (2026), arXiv 2605.25438v2, A.5 (ecuaciones 22–23)](https://arxiv.org/html/2605.25438v2). **Código separado:** [`extensions/Prop4ExpectedExpansion.lean`](../extensions/Prop4ExpectedExpansion.lean). **Estado:** **DEMOSTRADO EN LEAN bajo los supuestos explícitos** — [GitHub Actions #45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690) **PASS**; la equivalencia económica del modelo estocástico completo no está certificada.
 
 ## 1. La proposición de los autores
 
@@ -47,6 +47,6 @@ Tres lemas complementarios distinguen:
 
 ## 4. Compuerta de entrega
 
-La nueva prueba solo puede figurar como **DEMOSTRADA EN LEAN** después de verificar que el workflow `lean-verify.yml` compila `QX26AgenticDelegation.Prop4ExpectedExpansion`, inspecciona sus cuatro teoremas mediante `#print axioms` y ejecuta `paper_contribution.py check QX26AgenticDelegation --fast` con resultado `success`.
+**Compuerta SUPERADA para el módulo exacto:** el workflow `lean-verify.yml` compiló `QX26AgenticDelegation.Prop4ExpectedExpansion` (**8,319 jobs**), inspeccionó sus cuatro teoremas y los 20 anteriores (total **24**, sin `sorryAx`) y ejecutó `paper_contribution.py check QX26AgenticDelegation --fast` exitosamente (**8,315 jobs**) en [Actions #45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690). Se conserva [artefacto de ejecución](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690/artifacts/14869933519). Esta validación aplica a las cuatro igualdades/desigualdades condicionales formuladas, **no a una ley condicional construida desde una probabilidad conjunta**.
 
 El módulo `lean/` generado por EconCSLib permanece sin modificar. Las mejoras del revisor están aisladas en `extensions/`.
