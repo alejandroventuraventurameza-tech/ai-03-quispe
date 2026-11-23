@@ -46,3 +46,9 @@ The original nine endpoints include an exact one-language first-difference ident
 **Verification:** [Actions #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712), 8,317 jobs, eleven endpoints free of sorryAx, `check --fast` PASS. The extension was injected only into a temporary pinned upstream checkout during CI; it was **not** added to or substituted for the original generated `lean/` artifacts. This does not close the remaining source-to-Spec audit for the entire paper.
 
 **Illustrative exact counterexample (arithmetic, not a separately Lean-certified theorem):** for a single language, let (p^1=1/5) and (p^2=2/5). Then (d(2)=37/125=185/625), while (d(3)=175/625), so (d(3)<d(2)) despite (p^2>p^1). Hazard ordering guarantees nonnegativity of the level difference, not its monotonicity at every horizon.
+
+## Puente económico de la Proposición 2 — verificado en GitHub Actions
+
+La matriz de **nueve** filas anterior corresponde al **módulo generado** y no cambia. Una extensión separada, [`extensions/Prop2ThresholdBridge.lean`](../extensions/Prop2ThresholdBridge.lean), añade **nueve teoremas nuevos**: tres identidades de beneficio y umbral, la igualdad de la ventaja de delegación, el caso foothold, el caso B positivo, el caso B no positivo, el indicador de banda activada desde los parámetros y el aumento débil del mejor beneficio por menú ampliado.
+
+**Prueba independiente:** [GitHub Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) **PASS**: 8,318 jobs, 20 endpoints inspeccionados sin `sorryAx`, `check --fast` correcto. La correspondencia primaria de las ecuaciones (16)–(20) y sus supuestos consta en [`SOURCE_AUDIT_PROP2_20261123.md`](SOURCE_AUDIT_PROP2_20261123.md). No se deriva la distribución de oportunidades ni la fórmula de CDF de la banda, ni se sustituye la carpeta EconCSLib original.
