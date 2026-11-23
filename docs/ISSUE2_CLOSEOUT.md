@@ -1,6 +1,6 @@
 # Issue #2 — audit trail and closeout ledger
 
-**Assessment date:** 2026-11-23. **Current latest Beamer build:** [Actions run #45173574934](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45173574934), successful; 13-page PDF committed on review branch. **Upstream assignment:** https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2. **Source:** arXiv:2605.25438v2. **Status:** review candidate, NOT final complete.
+**Assessment date:** 2026-11-23. **Current latest checked Beamer build:** [Actions run #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435), successful; 13-page PDF with actual handwritten images committed on review branch. **Upstream assignment:** https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2. **Source:** arXiv:2605.25438v2. **Status:** review candidate, NOT final complete.
 
 | Course requirement | Evidence | Status / boundary |
 | --- | --- | --- |
@@ -14,8 +14,8 @@
 | Exact generated EconCSLib paper folder | `lean/`, preserved generated files/audits/status | Present in working branch; original layout copy needs source provenance review |
 | `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` | `lean-check.txt` | Locally recorded PASS, not independently rerun in this repo |
 | Honest partial formalization | 9 named Lean theorem endpoints, source/Spec audit artifacts | Conditional/algebraic proofs, **not** complete source-equivalent paper formalization |
-| Handwritten derivation photo | [Seven-page manuscript reviewed](../hand/REVISION_MANUSCRITA_2026-11-23.md) | **RECEIVED AND REVIEWED** as `ai-03.pdf` in chat; JPEGs and original PDF are prepared but not yet committed to `hand/` |
-| 20-minute Beamer source and PDF | `presentation.tex`, `presentation.pdf`, GitHub Actions run #45173574934 | **COMPILED:** 13 pages; visual audit performed. The two photographic placeholders mean the deck is not yet a compliant final submission |
+| Handwritten derivation photo | [Seven-page manuscript reviewed](../hand/REVISION_MANUSCRITA_2026-11-23.md) | **COMPLETE:** original 7-page PDF and two derived JPEGs committed to `hand/`; photographs displayed in Beamer pages 9–10 |
+| 20-minute Beamer source and PDF | `presentation.tex`, `presentation.pdf`, GitHub Actions run #45173574934 | **COMPILED AND VISUALLY CHECKED:** 13 pages, real author photos visible on pages 9–10 |
 | One readable Lean slide (equation, Spec and proof fragment, interpretation) | Slide 10 (page 11 in the PDF), with detailed proof on slide 11 | **VERIFIED VISUALLY:** equation → exact Lean `Spec` → proof fragment → interpretation |
 | No paper screenshots or animations | `presentation.tex` | Source uses typeset LaTeX; visual inspection still needed |
 | All required materials merged into main | PR #1 historical and current quality branch | **PENDING**, keep quality PR draft until authenticated evidence and PDF arrive |
@@ -30,9 +30,9 @@
 
 ## Actual steps to complete
 
-1. **Author-only evidence:** add genuinely handwritten `hand/prop-3-page-1.jpg` and `hand/prop-3-page-2.jpg` (or another genuine photo with the derivation and verdict); verify that those exact files render in the Beamer PDF.
+1. **Author-only evidence — COMPLETE:** original manuscript preserved in `hand/Prop_3_manoscrito_original.pdf`, JPEGs integrated, and appearance verified on Beamer pages 9–10.
 2. **Agent provenance:** append real raw prompts and answers from the original agent; disclose actual model and reasoning effort. If the required configuration was not used, conduct a genuine documented run rather than retroactively claiming compliance.
-3. **Beamer build:** obtain `presentation.pdf` via a successful local `latexmk -pdf` or GitHub workflow, inspect each page, resolve overflow and ensure the code is legible and photos present.
+3. **Beamer build — COMPLETE:** `presentation.pdf` compiled with manuscript photos in [Actions #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435). Visual QA confirmed both images display correctly, though handwriting is small at full-slide scale.
 4. **Review:** check `presentation.pdf` against the mathematical paper and the exact lines in `lean/ProofInterface.lean`. Record source-to-`Spec` limitations instead of silently equating the two.
 5. **Git:** open a branch PR, review all changes and assets, and merge only when actual obligatory evidence is included. The submission timestamp remains historical and cannot be corrected.
 
