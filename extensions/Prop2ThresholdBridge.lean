@@ -36,14 +36,14 @@ structure DelegationPrimitives where
   copilotProductivity : ℝ
   copilotCost : ℝ
 
-def soloValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
+noncomputable def soloValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
   ω + p.skill * p.meanMatch -
     (p.riskAversion / 2) * (p.skill ^ 2 / p.precision) - p.entryCost
 
-def copilotValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
+noncomputable def copilotValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
   soloValue p ω + p.copilotProductivity * p.skill - p.copilotCost
 
-def delegationValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
+noncomputable def delegationValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
   ω + (1 - p.delegatedShare) * p.skill * p.meanMatch +
     p.delegatedShare * p.agentExecution - p.verificationCost -
     p.computeCost - p.entryCost -
@@ -51,14 +51,14 @@ def delegationValue (p : DelegationPrimitives) (ω : ℝ) : ℝ :=
       (((1 - p.delegatedShare) ^ 2 * p.skill ^ 2) / p.precision +
         p.residualVariance)
 
-def soloThreshold (p : DelegationPrimitives) : ℝ :=
+noncomputable def soloThreshold (p : DelegationPrimitives) : ℝ :=
   p.entryCost - p.skill * p.meanMatch +
     (p.riskAversion / 2) * (p.skill ^ 2 / p.precision)
 
-def copilotThreshold (p : DelegationPrimitives) : ℝ :=
+noncomputable def copilotThreshold (p : DelegationPrimitives) : ℝ :=
   soloThreshold p - (p.copilotProductivity * p.skill - p.copilotCost)
 
-def delegationThreshold (p : DelegationPrimitives) : ℝ :=
+noncomputable def delegationThreshold (p : DelegationPrimitives) : ℝ :=
   p.entryCost - (1 - p.delegatedShare) * p.skill * p.meanMatch -
     p.delegatedShare * p.agentExecution + p.verificationCost +
     p.computeCost + (p.riskAversion / 2) *
@@ -66,14 +66,14 @@ def delegationThreshold (p : DelegationPrimitives) : ℝ :=
         p.residualVariance)
 
 /-- The best available entry threshold before/after delegation. -/
-def preThreshold (p : DelegationPrimitives) : ℝ :=
+noncomputable def preThreshold (p : DelegationPrimitives) : ℝ :=
   min (soloThreshold p) (copilotThreshold p)
 
-def postThreshold (p : DelegationPrimitives) : ℝ :=
+noncomputable def postThreshold (p : DelegationPrimitives) : ℝ :=
   min (preThreshold p) (delegationThreshold p)
 
 /-- The explicit advantage from Appendix A.2, equation (20). -/
-def delegationAdvantage (p : DelegationPrimitives) : ℝ :=
+noncomputable def delegationAdvantage (p : DelegationPrimitives) : ℝ :=
   p.delegatedShare * (p.agentExecution - p.skill * p.meanMatch) -
     p.verificationCost - p.computeCost +
     (p.riskAversion / 2) *
