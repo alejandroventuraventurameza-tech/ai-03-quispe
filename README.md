@@ -1,7 +1,7 @@
 # Repository 3 — Quispe & Xu (2026)
 
 **Paper.** Quispe, A., and K. Xu (2026), *Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub*, [arXiv:2605.25438v2](https://arxiv.org/abs/2605.25438v2).  
-**Submission.** [Course issue #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2) · [Beamer source](presentation.tex) · [original prompt record](prompts.md) · [EconCSLib folder](lean/) · [compliance ledger](docs/ISSUE2_CLOSEOUT.md).
+**Submission.** [Course issue #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2) · [Beamer source](presentation.tex) · [selected raw chats and provenance limitations](prompts.md) · [EconCSLib folder](lean/) · [compliance ledger](docs/ISSUE2_CLOSEOUT.md).
 
 ## Question and economic problem
 
@@ -35,4 +35,4 @@ The paper follows 5,346 developers for 28 months and reports sharp event-time in
 
 The archived EconCSLib run reports **nine proved algebraic endpoints without `sorry` and a passing fast check** ([record](lean-check.txt)). These do **not** certify exact source-to-`Spec` equivalence or completion of the paper's probabilistic model; source-first semantic review and human sign-off remain open. The unmodified generated status/audit files deliberately retain those limitations.
 
-**Further detail:** [thresholds and activation](extra/02-model-thresholds-and-activation-band.md) · [Proposition 3 derivation](extra/03-proposition-3-dynamics.md) · [citation audit](extra/01-citation-audit.md) · [handwritten work requirements](hand/README.md) · [nine-endpoint Lean crosswalk](docs/LEAN_CROSSWALK_9.md).
+**Further detail:** [thresholds and activation](extra/02-model-thresholds-and-activation-band.md) · [Proposition 3 derivation](extra/03-proposition-3-dynamics.md) · [citation audit](extra/01-citation-audit.md) · [handwritten work requirements](hand/README.md) · [nine-endpoint Lean crosswalk](docs/LEAN_CROSSWALK_9.md) · [agent provenance audit](docs/AGENT_PROVENANCE_AND_RERUN.md).
