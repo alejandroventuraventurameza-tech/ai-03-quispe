@@ -323,28 +323,40 @@
   \end{columns}
 \end{frame}
 
-%================= LEAN SPEC ==========================================
-\begin{frame}[fragile]{10 \textperiodcentered{} Lean: de la ecuación al \texttt{Spec}}
-  \textbf{Enunciado matemático corregido}
+%================= LEAN SPEC + PRUEBA ================================
+\begin{frame}[fragile]{10 \textperiodcentered{} Proposición 3: de la ecuación a Lean}
+  \small
+  \textbf{1. Resultado matemático, con dominio corregido}
   \[
     p^1=0,\quad 0<p^2<1
     \quad\Longrightarrow\quad
-    d(s)<d(s+1).
+    d(s+1)-d(s)=p^2(1-p^2)^{s+1}>0.
   \]
-
-  \textbf{Traducción fuente en \texttt{PaperInterface.lean}}
+  \vspace{-0.6em}
+  \textbf{2. Enunciado Lean: \texttt{PaperInterface.lean}}
 \begin{lstlisting}
 def cumulative_effect_strict_mono_closedFrontierSpec : Prop :=
   ∀ (p2 : ℝ) (s : ℕ), 0 < p2 → p2 < 1 →
     (1 - (1 - p2) ^ (s + 1)) <
     (1 - (1 - p2) ^ (s + 2))
 \end{lstlisting}
-
-  \small
-  Aquí \(\mathbb R\) es el dominio del hazard, \(\mathbb N\) el horizonte
-  discreto y las dos hipótesis abiertas excluyen los extremos. Este
-  \texttt{Spec} es una \emph{afirmación}, no una prueba; los saltos de línea
-  del extracto se ajustaron para legibilidad sin cambiar su significado.
+  \vspace{-0.45em}
+  \begin{columns}[T,onlytextwidth]
+    \column{.58\textwidth}
+      \textbf{3. Fragmento de la prueba: \texttt{ProofInterface.lean}}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+  have hb : 0 < 1 - p2 := by linarith
+  have hpos : 0 < (1 - p2) ^ (s + 1) :=
+    pow_pos hb (s + 1)
+\end{lstlisting}
+    \column{.39\textwidth}
+      \textbf{4. Interpretación}
+      \begin{itemize}\scriptsize
+        \item $p^2<1$ asegura $1-p^2>0$.
+        \item \texttt{pow\_pos} prueba la potencia positiva; el argumento concluye con \texttt{nlinarith}.
+        \item Lean prueba este \emph{Spec} condicional; no toda la dinámica probabilística del paper.
+      \end{itemize}
+  \end{columns}
 \end{frame}
 
 %================= LEAN PROOF =========================================
