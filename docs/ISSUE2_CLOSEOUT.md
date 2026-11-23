@@ -14,7 +14,7 @@
 | Exact generated EconCSLib paper folder | `lean/`, preserved generated files/audits/status | Present in working branch; original layout copy needs source provenance review |
 | `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` | `lean-check.txt` | Locally recorded PASS, not independently rerun in this repo |
 | Honest partial formalization | 9 named Lean theorem endpoints, source/Spec audit artifacts | Conditional/algebraic proofs, **not** complete source-equivalent paper formalization |
-| Handwritten derivation photo | `hand/` | **MISSING**: only a guide exists; author must provide genuine images |
+| Handwritten derivation photo | [Seven-page manuscript reviewed](../hand/REVISION_MANUSCRITA_2026-11-23.md) | **RECEIVED AND REVIEWED** as `ai-03.pdf` in chat; JPEGs and original PDF are prepared but not yet committed to `hand/` |
 | 20-minute Beamer source and PDF | `presentation.tex`, `presentation.pdf`, GitHub Actions run #45173574934 | **COMPILED:** 13 pages; visual audit performed. The two photographic placeholders mean the deck is not yet a compliant final submission |
 | One readable Lean slide (equation, Spec and proof fragment, interpretation) | Slide 10 (page 11 in the PDF), with detailed proof on slide 11 | **VERIFIED VISUALLY:** equation → exact Lean `Spec` → proof fragment → interpretation |
 | No paper screenshots or animations | `presentation.tex` | Source uses typeset LaTeX; visual inspection still needed |
