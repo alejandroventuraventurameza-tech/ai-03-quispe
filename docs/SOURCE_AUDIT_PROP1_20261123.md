@@ -33,6 +33,6 @@ El argumento de estrictez usa una **suma finita de incrementos de indicadores no
 
 ## 3. Compuerta de compilación
 
-El workflow [`lean-verify.yml`](../.github/workflows/lean-verify.yml) compila el módulo `QX26AgenticDelegation.Prop1StrictFrontier`, inspecciona con `#print axioms` los **cinco teoremas** nuevos y los 28 anteriores, y ejecuta el comando `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast`. La ejecución solo puede declararse **DEMOSTRADA EN LEAN** cuando GitHub Actions informe `success` para el commit que contiene este archivo; de lo contrario, el estado es **PENDIENTE**.
+**VERIFICACIÓN LEAN: PASS.** [GitHub Actions #45291226305](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45291226305), sobre el commit `69655375c316f4a3017324f17f27d05d6f4b67b0`, compiló `QX26AgenticDelegation.Prop1StrictFrontier` (**8,321 jobs**), inspeccionó con `#print axioms` los **cinco teoremas** nuevos y los 28 anteriores (**33** declaraciones, sin `sorryAx` ni `unsafeAx`), y aprobó `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` (**8,315 jobs**). [Artifact real del runner](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45291226305/artifacts/14874442175). Este resultado certifica las afirmaciones condicionales exactas, no una distribución de oportunidades ni un efecto causal del uso del agente.
 
 El historial de fallos, si los hubiera, se conserva y no se sustituye por un juicio intuitivo sobre el razonamiento.
