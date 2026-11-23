@@ -13,6 +13,6 @@ Fecha: 2026-11-23. Objetivo: formalizar el puente entre las funciones de valor e
 
 - Commit de corrección: `051bc2ba83002ad17eafefd49050cc497e603a5b`.
 - [Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) ejecuta nuevamente las pruebas de Proposición 2, el archivo `Prop3NoCatchUp.lean`, la inspección de axiomas y el check rápido de EconCSLib.
-- **Estado al crear este registro:** ejecución iniciada, aún no concluida. Solo actualizar a **PASS** tras comprobar el job y sus logs.
+- **Estado definitivo: PASS**. El job `econcslib-lean` de [Actions #45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608) terminó con `success`: `Prop2ThresholdBridge.lean` compiló como parte de **8,318 jobs**, la inspección de **20 teoremas** no mostró `sorryAx` y `paper_contribution.py check ... --fast` terminó correctamente (**8,315 jobs**). El primer fallo se conserva como evidencia del proceso, no se borra.
 
 El flujo de ejecución es únicamente GitHub Actions. No se utilizó Codex ni API de modelos. El contenido de `lean/` se mantiene intacto.
