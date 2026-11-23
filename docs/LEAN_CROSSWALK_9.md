@@ -35,3 +35,14 @@ This is a **genuine source-side conditional correction** supported by a short pr
 5. **Author's independent handwritten audit (still open):** genuine photographs are required in `hand/` and in the deck; the existing `hand/README.md` is instructions only.
 
 **Conclusion:** report this as **nine recorded Lean algebraic proof endpoints with a corrected Proposition 3 endpoint and incomplete source-to-Lean equivalence review**, not as the complete formalization of all five source propositions.
+
+## Verified extension for the missing aggregate no-catch-up condition (2026-11-23)
+
+The original nine endpoints include an exact one-language first-difference identity, but not the aggregated necessary-and-sufficient condition. A separate non-generated module [extensions/Prop3NoCatchUp.lean](../extensions/Prop3NoCatchUp.lean) now proves:
+
+1. `auditedCumulativeGap_step`: the aggregate one-period increment equals the finite sum of the individual weighted hazard advantages.
+2. `auditedCumulativeGap_nocatchup_iff`: the aggregate gap increases weakly at a given horizon **if and only if** that sum is nonnegative.
+
+**Verification:** [Actions #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712), 8,317 jobs, eleven endpoints free of sorryAx, `check --fast` PASS. The extension was injected only into a temporary pinned upstream checkout during CI; it was **not** added to or substituted for the original generated `lean/` artifacts. This does not close the remaining source-to-Spec audit for the entire paper.
+
+**Illustrative exact counterexample (arithmetic, not a separately Lean-certified theorem):** for a single language, let (p^1=1/5) and (p^2=2/5). Then (d(2)=37/125=185/625), while (d(3)=175/625), so (d(3)<d(2)) despite (p^2>p^1). Hazard ordering guarantees nonnegativity of the level difference, not its monotonicity at every horizon.
