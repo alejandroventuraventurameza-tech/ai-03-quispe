@@ -55,33 +55,39 @@ todo s, o sea plano (el lenguaje entra con certeza en el mes 0). La hipótesis
   directamente en `lean/` (25 archivos; se excluyen el PDF fuente y el volcado
   de texto). La comparación SHA-256 contra
   `.work/EconCSLib/papers/QX26AgenticDelegation/` coincide en todos los archivos
-  publicables. El contenido original fue incluido en el commit `b10f831`; el
-  cambio de ubicación está pendiente de un nuevo commit.
-- ⬜ **Punto 3 — Derivación a mano de la Prop 3 (EN CURSO).** El usuario la
-  escribe él mismo, foto por foto. Guía completa en `hand/README.md`
-  (página 1: supervivencia → acumulado → Ec.(10) → no-negatividad; página 2:
-  primera diferencia → crecimiento/concavidad → endpoint p²=1). Salida esperada:
-  `hand/prop-3-page-1.jpg` y `hand/prop-3-page-2.jpg`. Al 2026-09-04 se le enseñó
-  la mitad de la página 1 (pasos 1–3: dominio y "s+1 factores", supervivencia,
-  complemento); faltan pasos 4–6 (suma sobre lenguajes, cambio de signo,
-  no-negatividad) y toda la página 2.
-- 🟨 **Punto 4 — Presentación (EN CURSO).** `presentation.tex` contiene una
-  portada y 12 diapositivas de contenido para 20 minutos. Incluye la auditoría
+  publicables. El contenido original fue incluido en `b10f831` y la ubicación
+  final exigida por el issue quedó registrada en `c91237c`.
+- ✅ **Punto 3 — Derivación a mano de la Prop 3.** El usuario completó y aprobó
+  las dos páginas manuscritas. Están guardadas como
+  `hand/prop-3-page-1.jpg` y `hand/prop-3-page-2.jpg`; cubren supervivencia,
+  acumulado, Ec. (10), no-negatividad, primera diferencia, crecimiento,
+  concavidad y el endpoint $p^2=1$.
+- ✅ **Punto 4 — Presentación.** `presentation.tex` contiene una
+  portada y 14 diapositivas de contenido para 20 minutos. Incluye la auditoría
   de la cita, el modelo, las tres trampas, la comparación con Aouad--Lykouris--
-  Zhong, dos espacios automáticos para las fotos y dos diapositivas Lean. Falta
-  compilar `presentation.pdf` en Overleaf y hacer revisión visual.
-- ⬜ **Diferido por el usuario:** cierre completo de auditoría de EconCSLib (los
-  `audit/*.json` conservan estado pendiente), abrir el PR a EconCSLib, y la
-  redacción en prosa del paper ("la escritura").
+  Zhong, una lámina exclusiva para cada foto manuscrita y dos diapositivas Lean.
+  `presentation.pdf` contiene las 15 páginas, incorpora ambas fotografías y pasó
+  la revisión visual completa sin recortes ni superposiciones.
+- ✅ **Auditoría semántica independiente.** `lean/docs/AGENT_SOURCE_AUDIT.md`
+  revisa las nueve filas contra la fuente y concluye **formalización parcial**:
+  las identidades centrales de la Prop. 3 coinciden, la condición estricta fue
+  corregida, y las Props. 1, 2, 4 y 5 conservan abstracciones u omisiones
+  documentadas. El cierre automático estricto no pudo emitir credencial porque
+  el `HEAD` oficial de EcoCSLib falla su propio gate de registro del motor; los
+  `audit/*.json` y el visto bueno humano conservan por eso estado pendiente.
+- ⬜ **Diferido por el usuario:** abrir el PR a EcoCSLib y la redacción en
+  prosa del paper ("la escritura").
 
 ### Precisión sobre el alcance Lean
 
-Los nueve endpoints están probados, pero el cierre semántico fuente--Lean no se
-ha realizado. Los `Spec` formalizan núcleos algebraicos seleccionados; no todos
-exponen cada cláusula probabilística, de monotonicidad o de estrictez de las
-cinco proposiciones impresas. La descripción pública correcta es: “nueve
-resultados algebraicos Lean probados y `check --fast` superado; auditoría
-fuente--`Spec` pendiente”. El registro reproducible está en `lean-check.txt`.
+Los nueve endpoints están probados y la revisión semántica independiente ya se
+realizó. El veredicto es **parcial**: los `Spec` formalizan núcleos algebraicos
+seleccionados, pero no exponen cada cláusula probabilística, de monotonicidad o
+de estrictez de las cinco proposiciones impresas. La descripción pública
+correcta es: “nueve resultados algebraicos Lean probados, `check --fast`
+superado y auditoría fuente--`Spec` con veredicto parcial”. El registro
+reproducible está en `lean-check.txt` y el dictamen en
+`lean/docs/AGENT_SOURCE_AUDIT.md`.
 
 ### Estado externo de la entrega
 
@@ -91,9 +97,12 @@ fuente--`Spec` pendiente”. El registro reproducible está en `lean-check.txt`.
   22:57 del 3 de septiembre, después del plazo publicado de las 22:00. El
   timestamp no puede corregirse retroactivamente.
 - El issue exige GPT-5.6 Sol con esfuerzo `xhigh` para la corrida de EconCSLib.
-  La intervención posterior de Claude y la configuración usada no aparecen aún
-  en `prompts.md`; para cumplimiento estricto falta documentar o reproducir la
-  revisión con el modelo requerido.
+  `prompts.md` ya conserva el arranque recuperable de Codex, el prompt obligatorio
+  del issue y la derivación manuscrita guiada. `context-transcript.md` contiene
+  la sesión posterior de Claude en formato verbatim (26 bloques USER y 26
+  ASSISTANT, con las salidas de terminal pegadas). El archivo declara
+  `Model/configuration: unavailable`, por lo que no acredita el uso de
+  GPT-5.6 Sol con esfuerzo `xhigh`; esa limitación sigue abierta.
 
 ## 4. Estructura del repo / archivos clave
 
@@ -107,9 +116,14 @@ fuente--`Spec` pendiente”. El registro reproducible está en `lean-check.txt`.
 - `lean/` — carpeta completa generada por EconCSLib, colocada al nivel exigido
   por el issue.
 - `lean-check.txt` — comando, entorno, resultado y límite del chequeo rápido.
+- `lean/docs/AGENT_SOURCE_AUDIT.md` — revisión semántica fuente--`Spec`,
+  veredictos por fila y bloqueo exacto del cierre automático.
 - `presentation.tex` — deck Beamer listo para compilar en Overleaf; carga las
   fotos desde `hand/` cuando existan.
 - `prompts.md` — bitácora de la conversación.
+- `context-transcript.md` — transcript raw de la sesión de Claude, con mensajes
+  visibles, comandos y salidas de terminal; omite razonamiento interno y JSON de
+  herramientas.
 - `.work/EconCSLib/` — clon de trabajo de EconCSLib. GITIGNORED. Contiene
   `scratch_QX26/QX26AgenticDelegation.lean` (versión standalone verificada) y
   `scratch_QX26/statement-spec.json` (spec de 9 metas).
@@ -136,22 +150,14 @@ fuente--`Spec` pendiente”. El registro reproducible está en `lean-check.txt`.
 
 ## 6. Qué sigue (para quien releve)
 
-1. **Compilar y revisar el deck:** subir `presentation.tex` y la carpeta `hand/`
-   a Overleaf, compilar, descargar el PDF y corregir cualquier overflow.
-2. **Terminar el Punto 3:** enseñar/acompañar la derivación a
-   mano de la Prop 3. Reanudar en la página 1, pasos 4–6:
-   - Paso 4: sumar sobre k∈U_i y restar generaciones; mostrar la cancelación de
-     los dos "1" y el cambio de signo → Ec.(10).
-   - Paso 5–6: no-negatividad vía 0≤1−p²≤1−p¹ y monotonía de la potencia.
-   - Página 2: primera diferencia (factoreo x^{s+1}(x−1)), crecimiento/concavidad
-     estrictos con 0<p²<1, y el endpoint p²=1 (plano). Recuadro final corregido.
-   El usuario quiere ESCRIBIRLA ÉL; el rol del asistente es enseñar y revisar, no
-   tipografiarla.
-3. **Completar `prompts.md`:** añadir el intercambio raw de Claude/Codex que
-   produjo y depuró la formalización. No sustituirlo por `context.md`.
-4. **Cerrar la entrega:** añadir las fotos, `presentation.pdf` y los prompts en
-   una rama nueva; abrir y fusionar un PR a `main`.
-5. Opcional/diferido: cierre de auditoría de EconCSLib + PR; redacción del paper.
+1. **Resolver la configuración exigida:** el transcript raw existe, pero no
+   acredita el modelo. Para cumplimiento estricto, reproducir la revisión con
+   GPT-5.6 Sol y esfuerzo `xhigh`, o conservar explícitamente esta limitación.
+2. **Cerrar la entrega:** publicar la rama `presentation-and-hand`, abrir el PR
+   y fusionarlo a `main`.
+3. Opcional/diferido: corregir los alcances parciales identificados, reintentar
+   el closeout cuando EcoCSLib repare su gate del motor, abrir el PR upstream y
+   redactar el paper.
 
 ## 7. Notas de handoff
 

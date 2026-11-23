@@ -92,8 +92,14 @@ Proposition 3 and the flat path at the omitted endpoint $p^2=1$.
 
 The required paper-scoped development check passed in WSL. The command,
 environment, and scope limitation are recorded in [`lean-check.txt`](lean-check.txt).
-This is a successful focused Lean build, not a completed source-to-`Spec` audit:
-the copied EconCSLib status and audit files honestly retain their pending state.
+An independent source-first review in
+[`lean/docs/AGENT_SOURCE_AUDIT.md`](lean/docs/AGENT_SOURCE_AUDIT.md) classifies
+the module as **partially formalized**: the central Proposition 3 algebra is
+checked (with the corrected endpoint condition), while Propositions 1, 2, 4,
+and 5 retain documented semantic abstractions or omissions. The strict
+EcoCSLib closeout credential remains unavailable because the official
+repository HEAD fails its own formalization-engine revision gate; the copied
+machine audit/status sidecars therefore honestly remain pending.
 
 ## Sources
 
