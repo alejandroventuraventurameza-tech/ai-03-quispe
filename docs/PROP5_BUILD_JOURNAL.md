@@ -11,6 +11,6 @@ Este registro conserva **errores reales y correcciones** de la formalización de
 ## Corrección y segunda ejecución
 
 - Commit [`74e5f66`](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/74e5f66e918b384b1160113cb9e498bd5c1aa7d6): se introduce la conversión explícita `change c2 r ≤ Ω r ω ∧ Ω r ω < c1 r at hEvent`, antes de simplificar el indicador.
-- [GitHub Actions #45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429), verificación de la corrección. **Estado inicial: en ejecución; NO marcar como PASS antes de consultar los logs.**
+- [GitHub Actions #45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429) — **PASS**, tras la corrección. El módulo completo `Prop5RepositoryExpectation` compila con **8,320 jobs**, inspección satisfactoria de **28 axiomas de teoremas** (sin `sorryAx` o `unsafeAx`), y el paper-scoped fast check también pasa (8,315 jobs). [Artefacto](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429/artifacts/14873163272). El primer fallo y su diagnóstico no fueron eliminados.
 
 El procedimiento utiliza exclusivamente Lean y EconCSLib/AppliedModelingLib desde GitHub Actions. No se utiliza Codex ni una API para compilar.
