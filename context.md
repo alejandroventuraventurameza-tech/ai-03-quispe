@@ -163,3 +163,14 @@ fuente--`Spec` pendiente”. El registro reproducible está en `lean-check.txt`.
   `cumulative_effect_strict_mono_closedFrontier`,
   `cumulative_effect_strict_concave_closedFrontier`, `cumulative_effect_endpoint_flat`,
   `specialist_heterogeneity`, `repository_expansion`.
+
+---
+
+## 8. Addendum comprobado — 2026-11-23
+
+Este bloque complementa el estado histórico del 4 de septiembre; no lo reescribe retrospectivamente.
+
+- El PDF manuscrito original de siete páginas y dos fotografías extraídas ya están presentes en `hand/`. `presentation.pdf` fue compilado con ellas en GitHub Actions [#45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435), y la revisión visual constató ambas fotos. [Informe manuscrito](hand/REVISION_MANUSCRITA_2026-11-23.md).
+- La autoría del módulo de formalización se rastreó hasta el [commit b10f831](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/b10f831ab68159882f69c9c0fe93b824a3869fe9): el commit contiene `Co-Authored-By: Claude Opus 4.8` y un enlace a una sesión de Claude. **No** se encontró respaldo de `gpt-5.6-sol`/`xhigh` ni un transcript raw completo. [Informe de proveniencia](docs/AGENT_PROVENANCE_AND_RERUN.md).
+- Auditoría parcial primaria de la [Proposición 3](docs/SOURCE_AUDIT_PROP3_20261123.md): confirmada en el HTML de arXiv v2 la condición insuficiente para estrictez en `p2=1`, con correspondencia directa a las especificaciones Lean corregidas. El resto de la auditoría fuente–`Spec` sigue pendiente.
+- El [PR #2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2) sigue **draft**, sin fusionar a `main`, a causa de la procedencia y los límites pendientes. No afirmar cumplimiento definitivo.
