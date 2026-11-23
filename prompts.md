@@ -41,18 +41,18 @@ Continuamos con la Proposición 3 como bloque independiente. Contrastaremos la f
 
 The entries above are **verbatim excerpts preserved from the original project record**, not a complete trace of every agent interaction. Only three prompt/answer pairs were retained. Consequently this file **does not yet satisfy** the assignment's request for the raw prompts and relevant responses underlying the full EconCSLib run.
 
-**What is independently present:** the generated Lean source and audit/status artifacts, the local fast-check record in \`lean-check.txt\`, and Git commit history.
+**What is independently present:** the generated Lean source and audit/status artifacts, the local fast-check record in `lean-check.txt`, and Git commit history.
 
-**What is not attested:** a raw transcript documenting the paper-formalization request with \`gpt-5.6-sol\` at reasoning effort \`xhigh\`, and the complete raw agent answers or corrections across iterations. The current files cannot establish that this model/configuration was used. Do not infer it from a successful build or from the paper folder's existence. Any additional raw logs must be appended from genuine source transcripts, with their date, agent, model and configuration if known; do **not** retroactively fabricate prompts or reconstruct supposed verbatim responses.
+**What is not attested:** a raw transcript documenting the paper-formalization request with `gpt-5.6-sol` at reasoning effort `xhigh`, and the complete raw agent answers or corrections across iterations. The current files cannot establish that this model/configuration was used. Do not infer it from a successful build or from the paper folder's existence. Any additional raw logs must be appended from genuine source transcripts, with their date, agent, model and configuration if known; do **not** retroactively fabricate prompts or reconstruct supposed verbatim responses.
 
 The lecturer's instructed starting prompt was:
 
-\`\`\`text
+```text
 Please formalize https://arxiv.org/abs/2605.25438v2 using the
 paper-formalization skill and workflow in this repository.
 Use QX26AgenticDelegation as the paper folder.
-\`\`\`
+```
 
 **Important:** this is quoted from the [course issue](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2) as the required configuration/task, **not** presented as a prompt proven to have been submitted by the author.
 
-The first-citation-verification exercise has a documented discrepancy in \`extra/01-citation-audit.md\`; a model answer from *before* the actual arXiv verification is **not** preserved. That sequence should not be invented afterwards.
+The first-citation-verification exercise has a documented discrepancy in `extra/01-citation-audit.md`; a model answer from *before* the actual arXiv verification is **not** preserved. That sequence should not be invented afterwards.
