@@ -1,102 +1,38 @@
-# Repository 3 — Quispe and Xu 2026
+# Repository 3 — Quispe & Xu (2026)
 
-Quispe, Alexander, and Kevin Xu. 2026. “Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub.” [arXiv:2605.25438v2](https://arxiv.org/abs/2605.25438v2).
+**Paper.** Quispe, A., and K. Xu (2026), *Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub*, [arXiv:2605.25438v2](https://arxiv.org/abs/2605.25438v2).  
+**Submission.** [Course issue #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2) · [Beamer source](presentation.tex) · [original prompt record](prompts.md) · [EconCSLib folder](lean/) · [compliance ledger](docs/ISSUE2_CLOSEOUT.md).
 
-## What question the paper answers
+## Question and economic problem
 
-Does access to an AI coding agent let developers ship work in programming languages they had not used before, and do GitHub records show that expansion around adoption of Claude Code?
+Can delegated AI execution make a developer *produce* in programming languages previously outside their production frontier? For each developer \(i\), language \(k\), and month \(t\), the developer chooses the production mode with the highest certainty-equivalent surplus. Before delegation the menu is \(\mathcal M_1=\{S,C\}\) (solo and conversational); afterwards \(\mathcal M_2=\{S,C,D\}\). The language is active if the best available surplus is nonnegative:
+\[
+Z^g_{ik,t}=\mathbf 1\!\left[\max_{m\in\mathcal M_g}V^m_{ik,t}\geq0\right].
+\]
+Conversational assistance is valuable when language-specific skill already exists; the delegated mode also uses general ability to specify and verify work.
 
-## The answer and its boundary
+## Main results — conditions matter
 
-The model says yes when delegation lowers the entry threshold for an unfamiliar language. It creates an activation band of projects that are not worthwhile under solo or conversational production but become worthwhile when an agent performs part of the language-specific execution. In the data, developers’ language portfolios expand sharply around their first detectable use of Claude Code.
+**Weak frontier expansion (Proposition 1).** When \(\mathcal M_1\subseteq\mathcal M_2\), developers can ignore delegation. For the same opportunity realization, \(Z^2_{ik,t}\geq Z^1_{ik,t}\) and therefore \(N^2_{it}\geq N^1_{it}\). This is a *production* result, not proof of acquired language skill.
 
-The empirical result is an event-time association, not a definitive causal effect. Adoption is voluntary and may occur precisely because a developer has decided to begin a project in an unfamiliar language.
-
-## The developer’s problem
-
-For every developer-language-month opportunity, the developer chooses the best available production mode. Before agentic adoption the menu is
-
-$$
-\mathcal M_1=\{S,C\},
-$$
-
-where $S$ is solo production and $C$ is conversational or copilot assistance. Agentic adoption expands the menu to
-
-$$
-\mathcal M_2=\{S,C,D\},
-$$
-
-where $D$ is delegated production. The language is active under generation $g$ when the best available certainty-equivalent surplus is nonnegative:
-
-$$
-Z^g_{ik,t}=\mathbf 1\!\left[\max_{m\in\mathcal M_g}V^m_{ik,t}\ge 0\right].
-$$
-
-Conversational assistance adds value proportional to existing language-specific skill. Delegation instead substitutes agent execution for part of that skill, while requiring the developer’s general ability to specify and verify the work.
-
-## Main result with its conditions
-
-Let $T^S$ be the solo activation threshold and $T^D$ the delegation threshold for an unfamiliar language. Assumption 1 requires conversational assistance not to lower the unfamiliar-language threshold, so $T^1=T^S$. Define the delegation advantage as
-
-$$
-B=T^S-T^D.
-$$
-
-Using the model’s primitives, this difference is
-
-$$
-B=\lambda[az(A)-s\mu]-\kappa(a,s)-r_D
-+\frac{\rho}{2}\left[
-\frac{(2\lambda-\lambda^2)s^2}{\pi}-\sigma_D^2(a,s,A)
-\right].
-$$
-
-If $B>0$, then $T^D<T^S$ and Proposition 2 gives
-
-$$
+**Activation band (Proposition 2).** For an **initially unfamiliar language**, the paper's *foothold* assumption prevents conversational assistance from lowering the solo threshold: \(T^1=T^S\) (in particular, \(\gamma s-r_C\leq0\)). Let \(B=T^S-T^D\), where its sign depends on delegation productivity, verification cost, residual risk, and compute cost. **If \(B>0\)**, then \(T^D<T^S\), and
+\[
 Z^2_{ik,t}-Z^1_{ik,t}
-=\mathbf 1\!\left[T^D_{ik,t}\le \omega_{ik,t}<T^S_{ik,t}\right].
-$$
+=\mathbf1[T^D_{ik,t}\leq\omega_{ik,t}<T^S_{ik,t}].
+\]
+For a continuous conditional opportunity CDF \(F\), this band's probability is \(F(T^S)-F(T^D)\). Without the foothold and threshold conditions, the exact band formula need not hold.
 
-Thus delegation activates exactly the middle band of opportunities that were too weak for solo or conversational production but are strong enough under delegation. With a continuous conditional opportunity distribution $F$, the activation probability is
-
-$$
-F(T^S_{ik,t})-F(T^D_{ik,t}).
-$$
-
-Menu expansion also implies the weak path-by-path result $N^2_{it}\ge N^1_{it}$ because the developer can always ignore the delegation option. This is an expansion of the **production frontier**, not proof that the developer learned the unfamiliar language.
-
-A line-by-line derivation and the first endpoint audit are in [the model tutorial](extra/02-model-thresholds-and-activation-band.md).
-
-### Dynamic implication
-
-Let $p^g_{ik}$ be the constant per-period first-use hazard for an initially unfamiliar language under generation $g$. For an integer horizon $s\ge0$, if $0\le p^1_{ik}\le p^2_{ik}\le1$ for every unfamiliar language, Proposition 3 gives
-
-$$
+**Dynamic accumulation (Proposition 3).** With constant first-use hazards and \(0\leq p^1_{ik}\leq p^2_{ik}\leq1\), for integer \(s\geq0\):
+\[
 \Delta C_i(s)=\sum_{k\in\mathcal U_i}
-\left[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}\right]\ge0.
-$$
+[(1-p^1_{ik})^{s+1}-(1-p^2_{ik})^{s+1}]\geq0.
+\]
+Weak hazard ordering alone **does not** guarantee that the gap grows at every horizon. In the closed-frontier benchmark \(p^1=0\), strict increase and *strict discrete concavity* require \(0<p^2<1\). At \(p^2=1\) the effect equals one immediately and is flat: an endpoint correction identified in our derivation and encoded in Lean.
 
-In the closed-frontier benchmark $p^1_{ik}=0$, the effect is strictly increasing and strictly concave when $0<p^2_{ik}<1$. The endpoint $p^2_{ik}=1$ requires a correction to the paper’s strict claim: the language enters immediately and the cumulative effect is flat thereafter. The [Proposition 3 tutorial](extra/03-proposition-3-dynamics.md) gives the proof and endpoint audit.
+## Evidence, independent check, and formalization boundary
 
-## Evidence in one paragraph
+The paper follows 5,346 developers for 28 months and reports sharp event-time increases in language breadth around detectable Claude Code adoption. **Selection into adoption remains a causal-identification limitation.** Our mathematical critique checks the \(p^2=1\) endpoint; the threshold geometry is not exclusive to AI agents, since another productivity improvement could also lower an entry threshold.
 
-The paper studies 5,346 developers over a 28-month panel and reconstructs approximately 3.2 million commits touching 57 million files. Around first detectable Claude Code use, active languages rise by 2.5 from a pre-adoption mean of 0.9, newly used languages rise by 1.2, and language entropy rises by 0.38. The estimates survive several mechanical-exposure and activity checks, but they cannot eliminate selection into the timing of adoption.
+The archived EconCSLib run reports **nine proved algebraic endpoints without \`sorry\` and a passing fast check** ([record](lean-check.txt)). These do **not** certify exact source-to-\`Spec\` equivalence or completion of the paper's probabilistic model; source-first semantic review and human sign-off remain open. The unmodified generated status/audit files deliberately retain those limitations.
 
-## Lean formalization
-
-The repository includes the complete paper folder produced by the local
-EconCSLib run in [`lean/`](lean/). Its nine proof endpoints compile without
-`sorry`, including separate proofs of the corrected interior result for
-Proposition 3 and the flat path at the omitted endpoint $p^2=1$.
-
-The required paper-scoped development check passed in WSL. The command,
-environment, and scope limitation are recorded in [`lean-check.txt`](lean-check.txt).
-This is a successful focused Lean build, not a completed source-to-`Spec` audit:
-the copied EconCSLib status and audit files honestly retain their pending state.
-
-## Sources
-
-- [Paper, version 2](https://arxiv.org/abs/2605.25438v2)
-- [Course issue and submission requirements](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2)
-- [Worked repository template](https://github.com/alexanderquispe/ai-01-aouad)
+**Further detail:** [thresholds and activation](extra/02-model-thresholds-and-activation-band.md) · [Proposition 3 derivation](extra/03-proposition-3-dynamics.md) · [citation audit](extra/01-citation-audit.md) · [handwritten work requirements](hand/README.md).
