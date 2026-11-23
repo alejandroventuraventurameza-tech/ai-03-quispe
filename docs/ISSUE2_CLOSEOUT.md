@@ -1,6 +1,6 @@
 # Issue #2 — audit trail and closeout ledger
 
-**Assessment date:** 2026-11-23. **Upstream assignment:** https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2. **Source:** arXiv:2605.25438v2. **Status:** review candidate, NOT final complete.
+**Assessment date:** 2026-11-23. **Current latest Beamer build:** [Actions run #45173574934](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45173574934), successful; 13-page PDF committed on review branch. **Upstream assignment:** https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2. **Source:** arXiv:2605.25438v2. **Status:** review candidate, NOT final complete.
 
 | Course requirement | Evidence | Status / boundary |
 | --- | --- | --- |
@@ -15,8 +15,8 @@
 | `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` | `lean-check.txt` | Locally recorded PASS, not independently rerun in this repo |
 | Honest partial formalization | 9 named Lean theorem endpoints, source/Spec audit artifacts | Conditional/algebraic proofs, **not** complete source-equivalent paper formalization |
 | Handwritten derivation photo | `hand/` | **MISSING**: only a guide exists; author must provide genuine images |
-| 20-minute Beamer source and PDF | `presentation.tex`, `.github/workflows/beamer.yml` | Source exists; compiled PDF/check requires successful workflow or local run |
-| One readable Lean slide (equation, Spec and proof fragment, interpretation) | Slides 10–11 | Improved; review readability after PDF compile |
+| 20-minute Beamer source and PDF | `presentation.tex`, `presentation.pdf`, GitHub Actions run #45173574934 | **COMPILED:** 13 pages; visual audit performed. The two photographic placeholders mean the deck is not yet a compliant final submission |
+| One readable Lean slide (equation, Spec and proof fragment, interpretation) | Slide 10 (page 11 in the PDF), with detailed proof on slide 11 | **VERIFIED VISUALLY:** equation → exact Lean `Spec` → proof fragment → interpretation |
 | No paper screenshots or animations | `presentation.tex` | Source uses typeset LaTeX; visual inspection still needed |
 | All required materials merged into main | PR #1 historical and current quality branch | **PENDING**, keep quality PR draft until authenticated evidence and PDF arrive |
 
@@ -37,3 +37,7 @@
 5. **Git:** open a branch PR, review all changes and assets, and merge only when actual obligatory evidence is included. The submission timestamp remains historical and cannot be corrected.
 
 **Prohibition:** do not manufacture author handwriting, unobserved prompt/answer pairs, a nonexecuted Lean check, an imaginary CI result, or a claim of full formalization. Publishing a provisional PDF with photographic placeholders does not satisfy the handwritten-evidence criterion.
+
+## Nine-endpoint correspondence
+
+For a row-by-row scientific scope audit, see [the Lean crosswalk](LEAN_CROSSWALK_9.md). The PDF build is independently verified by Actions; the source-to-`Spec` audit is not.
