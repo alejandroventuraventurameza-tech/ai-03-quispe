@@ -2,7 +2,7 @@
 
 **Recepción en esta conversación:** 2026-11-23. **Archivo recibido:** `ai-03.pdf`, PDF de 7 páginas, con anotaciones y demostraciones manuscritas. **SHA-256 del PDF original:** `ad27585154d41a63e85b46342a62fd722f60705d5ade9dfc14935dfcb4c233a6`.
 
-**Estado de la transferencia a GitHub:** el autor ya entregó el PDF en la conversación y sus páginas fueron revisadas, pero **los archivos binarios aún no están comprometidos en este repositorio**. No confundir *evidencia recibida y validada* con *evidencia integrada en la rama*. El ZIP de entrega preparado contiene los tres archivos originales/derivados para subir al directorio `hand/`.
+**Estado de la transferencia a GitHub:** **COMPLETADA**. El PDF original y las dos imágenes extraídas están incluidos en la rama de revisión. El PDF original se publicó sin modificar el contenido del archivo entregado. La compilación [GitHub Actions #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435) terminó correctamente; ambas imágenes aparecen en las páginas 9 y 10 de `presentation.pdf`.
 
 ## Auditoría de las siete páginas
 
@@ -24,4 +24,4 @@
 - `hand/prop-3-page-1.jpg` — derivado visual de la **página 3** (no negatividad), usado por la diapositiva 8; SHA-256: `dcbd1d0344e76fd3ccb8438ef609593caa7cc8cbc01983b20129529211a89cb0`.
 - `hand/prop-3-page-2.jpg` — derivado visual de la **página 6** (segunda diferencia y contraejemplo), usado por la diapositiva 9; SHA-256: `4128f5dc2a471e16c30d65b56ffbc24a34abfb4a57ed72c34bf891265b4ad999`.
 
-**Siguiente paso material:** incorporar los tres binarios anteriores (sin modificar el PDF original) en esta rama, verificar que el nuevo `presentation.pdf` muestra las imágenes y volver a revisar las 13 páginas de Beamer. El PR #2 permanece en borrador hasta realizarlo y autenticar los logs reales del agente exigido por el curso.
+**Comprobación:** integridad documental verificada, imágenes visibles en las páginas 9 y 10 del PDF de 13 páginas y compilación exitosa. **Pendiente:** autenticidad de los logs del agente con configuración requerida y auditoría de alcance fuente–Lean. El PR #2 permanece en borrador por estos asuntos.
