@@ -41,7 +41,8 @@
   backgroundcolor=\color{qxgray},
   breaklines=true,
   xleftmargin=0.4em,
-  xrightmargin=0.4em
+  xrightmargin=0.4em,
+  literate={∀}{{$\forall$}}1 {ℝ}{{$\mathbb R$}}1 {ℕ}{{$\mathbb N$}}1 {→}{{$\to$}}1
 }
 
 \newcommand{\sourcefoot}[1]{\vfill{\scriptsize\color{black!60}Fuente: #1}}
@@ -334,16 +335,16 @@
   \textbf{Traducción fuente en \texttt{PaperInterface.lean}}
 \begin{lstlisting}
 def cumulative_effect_strict_mono_closedFrontierSpec : Prop :=
-  forall (p2 : Real) (s : Nat),
-    0 < p2 -> p2 < 1 ->
+  ∀ (p2 : ℝ) (s : ℕ), 0 < p2 → p2 < 1 →
     (1 - (1 - p2) ^ (s + 1)) <
     (1 - (1 - p2) ^ (s + 2))
 \end{lstlisting}
 
   \small
-  \texttt{Real} representa el hazard, \texttt{Nat} el horizonte discreto y las
-  dos hipótesis abiertas excluyen los extremos donde la desigualdad deja de ser
-  estricta. El \texttt{Spec} expone la afirmación que debe revisar una persona.
+  Aquí \(\mathbb R\) es el dominio del hazard, \(\mathbb N\) el horizonte
+  discreto y las dos hipótesis abiertas excluyen los extremos. Este
+  \texttt{Spec} es una \emph{afirmación}, no una prueba; los saltos de línea
+  del extracto se ajustaron para legibilidad sin cambiar su significado.
 \end{frame}
 
 %================= LEAN PROOF =========================================
@@ -376,10 +377,10 @@ theorem cumulative_effect_strict_mono_closedFrontier :
     \end{itemize}
   \end{columns}
   \smallskip
-  {\scriptsize \textbf{Alcance:} el tipo \texttt{...Spec} prueba esta desigualdad condicional,
-  no el mecanismo probabilístico completo. Se reportan nueve endpoints algebraicos
-  sin \texttt{sorry} y un \texttt{check --fast} local exitoso; la auditoría semántica
-  fuente--\texttt{Spec} sigue pendiente.}
+  {\scriptsize \textbf{Alcance:} el teorema \texttt{...closedFrontier},
+  cuyo tipo es \texttt{...Spec}, demuestra una desigualdad condicional, no
+  el mecanismo probabilístico completo. Nueve endpoints algebraicos se
+  reportan sin \texttt{sorry}; la revisión semántica fuente--\texttt{Spec} continúa pendiente.}
 \end{frame}
 
 %================= CIERRE =============================================
