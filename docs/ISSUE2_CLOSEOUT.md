@@ -9,8 +9,8 @@
 | Post repo URL to course issue | Issue comment #5535435447, 2026-09-03 22:57 Lima | Posted after cutoff; cannot backdate |
 | One-page README with developer problem, main result and all conditions | `README.md` | Condensed; mathematical assumptions remain visible |
 | Citation fact-check (title/authors/date/sample) | `extra/01-citation-audit.md` and slide 1 | Citation issue documented; original *pre-verification* prompt/response not preserved |
-| Prompt-and-answer raw transcript | `prompts.md` | **INCOMPLETE**: three preserved exchanges; original agent run transcript unavailable |
-| Required GPT-5.6 Sol / xhigh EconCSLib agent run | Assignment requires this configuration | **NOT EVIDENCED** in committed raw logs; do not assert it was used |
+| Prompt-and-answer raw transcript | `prompts.md`, [agent provenance](AGENT_PROVENANCE_AND_RERUN.md) | **INCOMPLETE:** three early exchanges plus two genuinely preserved later review exchanges; original coding-agent transcript unavailable |
+| Required GPT-5.6 Sol / xhigh EconCSLib agent run | [Original Lean commit b10f831](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/b10f831ab68159882f69c9c0fe93b824a3869fe9), [provenance report](AGENT_PROVENANCE_AND_RERUN.md) | **MISMATCH IN RECORDED EVIDENCE:** original commit credits Claude Opus 4.8; no GPT-5.6 Sol / `xhigh` run evidenced; do not assert compliance |
 | Exact generated EconCSLib paper folder | `lean/`, preserved generated files/audits/status | Present in working branch; original layout copy needs source provenance review |
 | `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` | `lean-check.txt` | Locally recorded PASS, not independently rerun in this repo |
 | Honest partial formalization | 9 named Lean theorem endpoints, source/Spec audit artifacts | Conditional/algebraic proofs, **not** complete source-equivalent paper formalization |
@@ -31,7 +31,7 @@
 ## Actual steps to complete
 
 1. **Author-only evidence — COMPLETE:** original manuscript preserved in `hand/Prop_3_manoscrito_original.pdf`, JPEGs integrated, and appearance verified on Beamer pages 9–10.
-2. **Agent provenance:** append real raw prompts and answers from the original agent; disclose actual model and reasoning effort. If the required configuration was not used, conduct a genuine documented run rather than retroactively claiming compliance.
+2. **Agent provenance — BLOCKER:** original formalization commit credits Claude Opus 4.8; real raw coding-agent transcript remains unavailable and course-mandated `gpt-5.6-sol` / `xhigh` is not evidenced. If the required configuration was not used, conduct a **genuine** documented run and preserve its output. See [the provenance-and-rerun audit](AGENT_PROVENANCE_AND_RERUN.md).
 3. **Beamer build — COMPLETE:** `presentation.pdf` compiled with manuscript photos in [Actions #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435). Visual QA confirmed both images display correctly, though handwriting is small at full-slide scale.
 4. **Review:** check `presentation.pdf` against the mathematical paper and the exact lines in `lean/ProofInterface.lean`. Record source-to-`Spec` limitations instead of silently equating the two.
 5. **Git:** open a branch PR, review all changes and assets, and merge only when actual obligatory evidence is included. The submission timestamp remains historical and cannot be corrected.
