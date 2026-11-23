@@ -7,8 +7,8 @@ Source: Quispe-Xu (2026), arXiv:2605.25438v2, Appendix A.5, equations
 (22)-(23), under Assumption 3 (comparable unfamiliar-language candidates).
 
 Fix the developer's ability a and initially unfamiliar-language set U.
-The input conditionalLaw a is interpreted as the probability law of
-opportunity shocks conditional on those characteristics. This module
+The input conditionalLaw a U is interpreted as the probability law of
+opportunity shocks conditional on both characteristics. This module
 DOES NOT construct a regular conditional distribution from a joint
 probability space: it assumes the conditional law is supplied.
 
@@ -37,20 +37,20 @@ independently from the economic primitives and distributions. -/
 theorem prop4_conditional_expected_expansion
     {ι Ω : Type*} [MeasurableSpace Ω]
     (U : Finset ι)
-    (conditionalLaw : ℝ → Measure Ω)
+    (conditionalLaw : ℝ → Finset ι → Measure Ω)
     (a : ℝ)
     (Z1 Z2 : ι → Ω → ℝ)
     (p : ℝ → ℝ)
-    (_hProbability : IsProbabilityMeasure (conditionalLaw a))
+    (_hProbability : IsProbabilityMeasure (conditionalLaw a U))
     (hIntegrable : ∀ k ∈ U,
-      Integrable (fun ω => Z2 k ω - Z1 k ω) (conditionalLaw a))
+      Integrable (fun ω => Z2 k ω - Z1 k ω) (conditionalLaw a U))
     (hComparable : ∀ k ∈ U,
-      (∫ ω, Z2 k ω - Z1 k ω ∂ (conditionalLaw a)) = p a) :
-    (∫ ω, (∑ k ∈ U, (Z2 k ω - Z1 k ω)) ∂ (conditionalLaw a)) =
+      (∫ ω, Z2 k ω - Z1 k ω ∂ (conditionalLaw a U)) = p a) :
+    (∫ ω, (∑ k ∈ U, (Z2 k ω - Z1 k ω)) ∂ (conditionalLaw a U)) =
       (U.card : ℝ) * p a := by
   calc
-    (∫ ω, (∑ k ∈ U, (Z2 k ω - Z1 k ω)) ∂ (conditionalLaw a))
-        = ∑ k ∈ U, (∫ ω, Z2 k ω - Z1 k ω ∂ (conditionalLaw a)) := by
+    (∫ ω, (∑ k ∈ U, (Z2 k ω - Z1 k ω)) ∂ (conditionalLaw a U))
+        = ∑ k ∈ U, (∫ ω, Z2 k ω - Z1 k ω ∂ (conditionalLaw a U)) := by
           rw [integral_finset_sum]
           intro k hk
           exact hIntegrable k hk
