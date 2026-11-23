@@ -57,3 +57,8 @@ La matriz de **nueve** filas anterior corresponde al **módulo generado** y no c
 ## Proposición 4: puente de esperanza condicional (extensión externa)
 
 Se conserva la matriz original de nueve `Spec`. [`Prop4ExpectedExpansion.lean`](../extensions/Prop4ExpectedExpansion.lean) incorpora cuatro teoremas sobre esperanza condicional mediante `conditionalLaw a U` **suministrada** y sobre las condiciones débiles/estrictas de especialización y habilidad. [Actions #45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690) **PASS** con **8,319 jobs**, **24 teoremas sin `sorryAx`** y `check --fast` aprobado. No se construye la ley condicional ni se deduce de las primitivas la probabilidad de activar una lengua. Véase [auditoría de A.5](SOURCE_AUDIT_PROP4_20261123.md).
+
+
+## Proposición 5: esperanza y masa positiva (extensión externa)
+
+La matriz original de nueve `Spec` permanece intacta. [`Prop5RepositoryExpectation.lean`](../extensions/Prop5RepositoryExpectation.lean) agrega cuatro teoremas: suma de bandas igual a diferencia de conteos, monotonía puntual, monotonía de la esperanza y crecimiento estricto bajo masa positiva en una banda. **GitHub Actions [#45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429) PASS**, 8,320 jobs, 28 endpoints sin `sorryAx`, `check --fast` correcto. Los costes (c_r^g) siguen siendo entradas del modelo; la construcción económica completa de esos costes no ha sido formalizada. [Auditoría A.8](SOURCE_AUDIT_PROP5_20261123.md).
