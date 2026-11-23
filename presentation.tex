@@ -59,7 +59,7 @@
 \title{Quispe \& Xu (2026)}
 \subtitle{\emph{Agentic Delegation and the Language Frontier of Software Developers}}
 \author{Alejandro Ventura Ventura Meza}
-\date{Repository 3 \textperiodcentered{} 4 de septiembre de 2026}
+\date{Repository 3 \textperiodcentered{} versión revisada, noviembre de 2026}
 
 \begin{document}
 
@@ -347,9 +347,17 @@ def cumulative_effect_strict_mono_closedFrontierSpec : Prop :=
 \end{frame}
 
 %================= LEAN PROOF =========================================
-\begin{frame}[fragile]{11 \textperiodcentered{} Lean: prueba, extremo y límite de la revisión}
+\begin{frame}[fragile]{11 \textperiodcentered{} Lean: prueba del resultado corregido}
+  \small
+  \textbf{Afirmación matemática que Lean verifica:}
+  \[
+    0<p^2<1,\quad d(s)=1-(1-p^2)^{s+1}
+    \quad\Longrightarrow\quad d(s+1)-d(s)>0.
+  \]
+  \vspace{-0.5em}
   \begin{columns}[T,onlytextwidth]
-    \column{.58\textwidth}
+    \column{.59\textwidth}
+    \textbf{Extracto literal de \texttt{ProofInterface.lean}}
 \begin{lstlisting}
 theorem cumulative_effect_strict_mono_closedFrontier :
     cumulative_effect_strict_mono_closedFrontierSpec := by
@@ -357,26 +365,21 @@ theorem cumulative_effect_strict_mono_closedFrontier :
   have hb : 0 < 1 - p2 := by linarith
   have hpos : 0 < (1 - p2) ^ (s + 1) :=
     pow_pos hb (s + 1)
-  rw [pow_succ]
-  nlinarith [mul_pos hpos h0]
 \end{lstlisting}
-
-    \column{.38\textwidth}
-    \small
-    \textbf{Qué verifica Lean}
-    \begin{itemize}
-      \item $p^2<1$ hace positiva la base $1-p^2$.
-      \item La potencia conserva positividad.
-      \item Otro teorema prueba que $p^2=1$ produce una trayectoria plana.
-    \end{itemize}
-
-    \textbf{Resultado registrado}
-    \begin{itemize}
-      \item Nueve endpoints sin \texttt{sorry}.
-      \item \texttt{check --fast}: PASS en WSL.
-      \item Auditoría fuente--\texttt{Spec}: pendiente.
+    \column{.39\textwidth}
+    \textbf{Interpretación del código}
+    \begin{itemize}\scriptsize
+      \item \texttt{intro} introduce el hazard, horizonte y las dos hipótesis estrictas.
+      \item \texttt{linarith} usa $p^2<1$ para probar $1-p^2>0$.
+      \item \texttt{pow\_pos} conserva la positividad al elevar al horizonte.
+      \item La prueba completa factoriza la diferencia y la cierra con \texttt{nlinarith}.
     \end{itemize}
   \end{columns}
+  \smallskip
+  {\scriptsize \textbf{Alcance:} el tipo \texttt{...Spec} prueba esta desigualdad condicional,
+  no el mecanismo probabilístico completo. Se reportan nueve endpoints algebraicos
+  sin \texttt{sorry} y un \texttt{check --fast} local exitoso; la auditoría semántica
+  fuente--\texttt{Spec} sigue pendiente.}
 \end{frame}
 
 %================= CIERRE =============================================
