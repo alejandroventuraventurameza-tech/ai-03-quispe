@@ -50,3 +50,9 @@ For a row-by-row scientific scope audit, see [the Lean crosswalk](LEAN_CROSSWALK
 - All seven handwritten pages and both slide photographs are versioned. The Beamer PDF with these images was independently compiled by GitHub Actions [run #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435).
 
 **Merge gate:** the course-required agent/configuration provenance and raw formalization transcript are still not fulfilled. Do not mark this assignment fully compliant or merge PR #2 on their strength.
+
+## Independently reproduced code in GitHub Actions (2026-11-23)
+
+- [Baseline verified run #45234775082](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45234775082): 8,316-job `ProofInterface` build PASS; nine axioms inspections show only propext, Classical.choice and Quot.sound; EconCSLib `check --fast` PASS.
+- [Stronger follow-up run #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712): **8,317-job build PASS** including the separately committed [aggregate no-catch-up extension](../extensions/Prop3NoCatchUp.lean), 11 endpoints inspected without sorryAx, and fast check PASS. This is genuine GitHub Actions evidence, not a local user-reported check.
+- [Direct GPT-6 API run attempt #45235012269](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235012269) **BLOCKED WITHOUT MODEL CALL**: missing secret `OPENAI_API_KEY`. For accurate, secret-safe setup and the distinction from course-mandated GPT-5.6 Sol, see [execution evidence](GITHUB_ACTIONS_GPT6_EXECUTION.md).
