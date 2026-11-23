@@ -67,4 +67,9 @@ For a row-by-row scientific scope audit, see [the Lean crosswalk](LEAN_CROSSWALK
 
 ### Estado de verificación matemática actual
 
-**20 endpoints algebraicos compilados por Actions** (nueve originales, dos no-catch-up y nueve del puente de Proposición 2) bajo la biblioteca fijada. `ProofInterface`, `Prop3NoCatchUp`, `Prop2ThresholdBridge`, inspección de axiomas y `check --fast` aprobaron en [#45245835608](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45245835608). **PENDIENTE:** cierre completo fuente→`Spec`, esperanzas condicionales (Proposición 4), estrictez probabilística (Proposición 5) y procedencia histórica del agente.
+**24 endpoints matemáticos compilados por GitHub Actions** (nueve originales, dos no-catch-up, nueve de umbrales económicos y cuatro de esperanzas bajo una ley condicional suministrada). `ProofInterface`, `Prop3NoCatchUp`, `Prop2ThresholdBridge`, `Prop4ExpectedExpansion`, inspección de axiomas sin `sorryAx` y `check --fast` aprobaron en [#45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690), con **8,319 jobs**. **PENDIENTE:** construir la ley condicional desde un espacio conjunto y vincular los signos probabilísticos a las primitivas, la estrictez de la Proposición 5 bajo masa positiva, cierre completo fuente→`Spec` y procedencia histórica del agente.
+
+
+### Extensión de Proposición 4 — auditada y compilada
+
+[Informe fuente-first de A.5](SOURCE_AUDIT_PROP4_20261123.md). [Código](../extensions/Prop4ExpectedExpansion.lean). [Actions #45283067690](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45283067690) **PASS**: cuatro teoremas nuevos, probabilidad condicional suministrada según `(a,U)`, integrabilidad, simetría de incrementos y resultados débiles/estrictos de número de candidatos. Independencia entre lenguajes **no** requerida; no se ha construido la desintegración condicional desde el modelo conjunto. No declarar formalización integral del artículo.
