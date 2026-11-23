@@ -59,6 +59,6 @@ La prueba de estrictez no introduce una supuesta independencia estadística: con
 
 ## 4. Estado de verificación
 
-**PENDIENTE de cierre técnico hasta consultar el resultado de GitHub Actions** que compila `Prop5RepositoryExpectation.lean`, comprueba sus cuatro teoremas con `#print axioms` y ejecuta `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast`. Los números y el estado definitivo del build se documentarán solo después de verificar el job.
+**DEMOSTRADO EN LEAN (bajo las hipótesis de medida, integrabilidad y costes)**: [GitHub Actions #45288831429](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429) terminó con `success`. Compiló `Prop5RepositoryExpectation.lean` en **8,320 jobs**, inspeccionó los **28 endpoints** (nueve originales y diecinueve de extensiones), sin `sorryAx` ni `unsafeAx`, y aprobó `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` (**8,315 jobs**). [Artefacto de trazabilidad](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45288831429/artifacts/14873163272). El [registro de errores y corrección](PROP5_BUILD_JOURNAL.md) conserva la ejecución inicial fallida. Este PASS prueba la condición de masa positiva dentro del **modelo de indicadores definido**, no que los costes de cada repositorio se deriven automáticamente de todas las primitivas del artículo.
 
 La carpeta `lean/` generada por EconCSLib no ha sido alterada. El proceso de compilación usa GitHub Actions, sin Codex ni llamadas de modelos a una API.
