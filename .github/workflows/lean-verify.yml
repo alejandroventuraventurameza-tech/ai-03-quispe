@@ -46,7 +46,7 @@ jobs:
           test -f lean/ProofInterface.lean
           mkdir -p "upstream/papers/$PAPER" ci-evidence
           cp -a lean/. "upstream/papers/$PAPER/"
-          cp extensions/Prop3NoCatchUp.lean "upstream/papers/$PAPER/Prop3NoCatchUp.lean"
+          cp extensions/*.lean "upstream/papers/$PAPER/"
           printf 'import QX26AgenticDelegation.ProofInterface\n' > "upstream/papers/$PAPER.lean"
           (cd upstream && python3 scripts/paper_target_registration.py register "$PAPER")
           printf 'weekly_sha=%s\nupstream_sha=%s\nlean_toolchain=%s\n' \
@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.Prop3NoCatchUp"
+          build-args: "QX26AgenticDelegation.Prop2ThresholdBridge"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.Prop3NoCatchUp
+          import QX26AgenticDelegation.Prop2ThresholdBridge
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -90,10 +90,19 @@ jobs:
           #print axioms QX26AgenticDelegation.repository_expansion
           #print axioms QX26AgenticDelegation.auditedCumulativeGap_step
           #print axioms QX26AgenticDelegation.auditedCumulativeGap_nocatchup_iff
+          #print axioms QX26AgenticDelegation.soloValue_eq_opportunity_sub_threshold
+          #print axioms QX26AgenticDelegation.copilotValue_eq_opportunity_sub_threshold
+          #print axioms QX26AgenticDelegation.delegationValue_eq_opportunity_sub_threshold
+          #print axioms QX26AgenticDelegation.delegationAdvantage_eq_threshold_difference
+          #print axioms QX26AgenticDelegation.preThreshold_eq_solo_of_foothold
+          #print axioms QX26AgenticDelegation.postThreshold_eq_delegation_of_advantage
+          #print axioms QX26AgenticDelegation.postThreshold_eq_pre_of_nonpositive_advantage
+          #print axioms QX26AgenticDelegation.activation_band_from_economic_primitives
+          #print axioms QX26AgenticDelegation.menu_surplus_weak_expansion
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
-            echo "::error::Unexpected sorryAx or unsafe axiom in nine endpoints"
+            echo "::error::Unexpected sorryAx or unsafe axiom in reviewed endpoints"
             exit 1
           fi
 
