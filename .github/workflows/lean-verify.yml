@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.Prop4ExpectedExpansion"
+          build-args: "QX26AgenticDelegation.Prop5RepositoryExpectation"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.Prop4ExpectedExpansion
+          import QX26AgenticDelegation.Prop5RepositoryExpectation
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -103,6 +103,10 @@ jobs:
           #print axioms QX26AgenticDelegation.prop4_more_candidates_weak
           #print axioms QX26AgenticDelegation.prop4_more_candidates_strict
           #print axioms QX26AgenticDelegation.prop4_more_ability_weak
+          #print axioms QX26AgenticDelegation.prop5_count_gap_eq_band_sum
+          #print axioms QX26AgenticDelegation.prop5_count_weak
+          #print axioms QX26AgenticDelegation.prop5_expected_count_weak
+          #print axioms QX26AgenticDelegation.prop5_expected_count_strict_of_positive_band_mass
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
