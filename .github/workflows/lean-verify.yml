@@ -1,0 +1,107 @@
+name: Reproduce Lean and EconCSLib (no Codex)
+
+on:
+  push:
+    branches:
+      - work/issue2-quality-closeout-20261123
+    paths:
+      - lean/**
+      - scripts/ci_gpt6_review.py
+      - .github/workflows/lean-verify.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  econcslib-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PAPER: QX26AgenticDelegation
+      UPSTREAM_COMMIT: 194edcc95df74806a39b961d10dedddc6e730cce
+      LEAN_NUM_THREADS: "2"
+    steps:
+      - name: Check out submitted weekly repository
+        uses: actions/checkout@v4
+
+      - name: Download pinned EconCSLib successor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --filter=blob:none --branch main https://github.com/nikhgarg/AppliedModelingLib.git upstream
+          git -C upstream checkout --detach "$UPSTREAM_COMMIT"
+          echo "upstream=$(git -C upstream rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          test "$(cat upstream/lean-toolchain)" = "leanprover/lean4:v4.30.0-rc2"
+
+      - name: Reconstruct original paper folder without modifying repository files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f lean/PaperInterface.lean
+          test -f lean/ProofInterface.lean
+          mkdir -p "upstream/papers/$PAPER" ci-evidence
+          cp -a lean/. "upstream/papers/$PAPER/"
+          printf 'import QX26AgenticDelegation.ProofInterface\n' > "upstream/papers/$PAPER.lean"
+          (cd upstream && python3 scripts/paper_target_registration.py register "$PAPER")
+          printf 'weekly_sha=%s\nupstream_sha=%s\nlean_toolchain=%s\n' \
+            "$(git rev-parse HEAD)" \
+            "$(git -C upstream rev-parse HEAD)" \
+            "$(cat upstream/lean-toolchain)" > ci-evidence/versions.txt
+          find "upstream/papers/$PAPER" -maxdepth 3 -type f -print | LC_ALL=C sort > ci-evidence/paper-file-inventory.txt
+          sha256sum lean/*.lean > ci-evidence/weekly-lean-sha256.txt
+          echo "Prepared $PAPER under the pinned upstream checkout." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Install Lean and compile all proof endpoints
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          auto-config: "false"
+          build: "true"
+          build-args: "QX26AgenticDelegation.ProofInterface"
+          test: "false"
+          lint: "false"
+          mk_all-check: "false"
+          use-mathlib-cache: "true"
+          use-github-cache: "false"
+          lake-package-directory: "upstream"
+
+      - name: Record Lean version and inspect trusted axioms
+        shell: bash
+        working-directory: upstream
+        run: |
+          set -euo pipefail
+          mkdir -p ../ci-evidence
+          lake env lean --version | tee ../ci-evidence/lean-version.txt
+          cat > ../ci-evidence/axioms-check.lean <<'LEAN'
+          import QX26AgenticDelegation.ProofInterface
+          #print axioms QX26AgenticDelegation.frontier_expansion
+          #print axioms QX26AgenticDelegation.activation_band
+          #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
+          #print axioms QX26AgenticDelegation.cumulative_gap_first_difference
+          #print axioms QX26AgenticDelegation.cumulative_effect_strict_mono_closedFrontier
+          #print axioms QX26AgenticDelegation.cumulative_effect_strict_concave_closedFrontier
+          #print axioms QX26AgenticDelegation.cumulative_effect_endpoint_flat
+          #print axioms QX26AgenticDelegation.specialist_heterogeneity
+          #print axioms QX26AgenticDelegation.repository_expansion
+          LEAN
+          lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
+          if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
+            echo "::error::Unexpected sorryAx or unsafe axiom in nine endpoints"
+            exit 1
+          fi
+
+      - name: Run the required EconCSLib paper-scoped fast check
+        shell: bash
+        working-directory: upstream
+        run: |
+          set -euo pipefail
+          python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast 2>&1 | tee ../ci-evidence/paper-fast-check.txt
+          echo "Lean ProofInterface and paper_contribution check --fast both PASS." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload logs even if checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo3-lean-reproduction
+          path: ci-evidence/
+          if-no-files-found: warn
