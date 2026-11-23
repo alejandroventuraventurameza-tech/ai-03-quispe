@@ -22,7 +22,7 @@ La ejecución copia temporalmente el contenido íntegro de `lean/` al paper-fold
 - [`extensions/Prop3NoCatchUp.lean`](../extensions/Prop3NoCatchUp.lean) es un archivo **separado** de la carpeta EconCSLib generada.
 - La nueva meta prueba que el incremento de la brecha acumulada es exactamente la suma de las ventajas de hazards ponderadas por supervivencia; asimismo, demuestra la equivalencia entre crecimiento débil de la brecha y no negatividad de esa suma.
 - La formalización no afirma que ordenar hazards `p2≥p1` baste para garantizar el incremento en todos los horizontes.
-- Un segundo [workflow](../.github/workflows/lean-verify.yml) compila esa extensión como derivación temporal de la carpeta importada y emite un reporte de axiomas. **Su estado debe verificarse en GitHub Actions antes de reportarlo como teorema demostrado.**
+- [GitHub Actions #45235387712](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712) **PASS**: 8,317 jobs incluyendo la extensión, inspección de los once endpoints sin `sorryAx` y `paper_contribution.py check ... --fast` exitoso. Los nueve endpoints originales permanecen intactos; el origen del código nuevo es una revisión posterior con GPT-6 en esta conversación, no una sesión de agente recuperada.
 
 ## 3. Ejecución del modelo dentro de Actions — BLOQUEADA
 
