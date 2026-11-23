@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.Prop2ThresholdBridge"
+          build-args: "QX26AgenticDelegation.Prop4ExpectedExpansion"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.Prop2ThresholdBridge
+          import QX26AgenticDelegation.Prop4ExpectedExpansion
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -99,6 +99,10 @@ jobs:
           #print axioms QX26AgenticDelegation.postThreshold_eq_pre_of_nonpositive_advantage
           #print axioms QX26AgenticDelegation.activation_band_from_economic_primitives
           #print axioms QX26AgenticDelegation.menu_surplus_weak_expansion
+          #print axioms QX26AgenticDelegation.prop4_conditional_expected_expansion
+          #print axioms QX26AgenticDelegation.prop4_more_candidates_weak
+          #print axioms QX26AgenticDelegation.prop4_more_candidates_strict
+          #print axioms QX26AgenticDelegation.prop4_more_ability_weak
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
