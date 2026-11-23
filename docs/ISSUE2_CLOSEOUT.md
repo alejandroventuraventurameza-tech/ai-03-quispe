@@ -41,3 +41,12 @@
 ## Nine-endpoint correspondence
 
 For a row-by-row scientific scope audit, see [the Lean crosswalk](LEAN_CROSSWALK_9.md). The PDF build is independently verified by Actions; the source-to-`Spec` audit is not.
+
+## New independent evidence review (2026-11-23)
+
+- [Source-first spot audit of Proposition 3](SOURCE_AUDIT_PROP3_20261123.md): verified the arXiv v2 equation (10), appendix first-difference identity (26), no-catch-up condition (27), and the invalid strictness at `p²=1`. Compared the actual Lean Specs and endpoints; **not** a full EconCSLib source audit.
+- [Agent provenance](AGENT_PROVENANCE_AND_RERUN.md): original Lean commit explicitly credits Claude Opus 4.8 and links to a session. Required GPT-5.6 Sol / `xhigh` is **not evidenced**; original Claude transcript inaccessible here.
+- [Selected raw later conversations](../prompts.md) were added without presenting them as the original coding-agent transcript.
+- All seven handwritten pages and both slide photographs are versioned. The Beamer PDF with these images was independently compiled by GitHub Actions [run #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435).
+
+**Merge gate:** the course-required agent/configuration provenance and raw formalization transcript are still not fulfilled. Do not mark this assignment fully compliant or merge PR #2 on their strength.
