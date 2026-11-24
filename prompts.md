@@ -141,3 +141,7 @@ The session reference could not be read via available tools. No transcript is in
 ## Historial de Repository 3 — índice de recuperación (24 de noviembre de 2026)
 
 Se cotejaron los intercambios aquí preservados con el historial GitHub y la referencia de sesión original. La [cronología documentada y clasificación de evidencias](docs/HISTORIAL_RECUPERADO_REPOSITORY3_20261124.md) registra por separado los **tres pares iniciales y cuatro pares posteriores** conservados literalmente, los commits, los builds verificados y el identificador de la sesión histórica de Claude. **No se recuperó la conversación íntegra de Claude Code** y el índice no constituye una reconstrucción literal de mensajes ausentes.
+
+## Fuente nueva aportada por el autor: extracto de conversación histórica (24/11/2026)
+
+Se conserva el archivo original de texto recibido, sin modificar su contenido conversacional, en [docs/evidence/fragmento_conversacion_aportado_20261124.txt](docs/evidence/fragmento_conversacion_aportado_20261124.txt). Contiene un **fragmento de 147 líneas**, no la transcripción íntegra de la sesión. En su interior se afirma que se creó un archivo local `context-transcript.md` con **1,107 líneas**. Todavía no se ha recuperado ese archivo íntegro; véase el [registro de recuperación](docs/HISTORIAL_RECUPERADO_REPOSITORY3_20261124.md). La fuente aportada explícitamente indica `Model/configuration: unavailable`: no acredita por sí sola modelo, esfuerzo de razonamiento ni el transcript técnico del agente original.
