@@ -131,8 +131,8 @@ theorem bayesA7_shifted_noise_eq_gaussian_product
     exact Measure.pi_map_pi
       (μ := fun k : Fin n => gaussianReal 0 (Real.toNNReal (variance k)))
       (f := fun _ : Fin n => (fun z : ℝ => θ + z))
-      (fun _ => (by fun_prop : AEMeasurable (fun z : ℝ => θ + z)
-        (gaussianReal 0 (Real.toNNReal (variance _)))))
+      (fun k => (by fun_prop : AEMeasurable (fun z : ℝ => θ + z)
+        (gaussianReal 0 (Real.toNNReal (variance k)))))
   rw [hprod]
   congr 1
   funext k
