@@ -119,4 +119,40 @@ theorem bayesA7_explicit_gaussian_updated_precision_pos
     Finset.univ variance priorPrecision hPrior
     (fun k _ => hVar k)
 
+
+/-- Under the economically relevant positive-precision domain, the
+explicit Markov kernel has exactly the already verified pointwise
+normalized Bayesian density. This connects the measure-level kernel
+to its Lebesgue-density representation, WITHOUT identifying that
+candidate with the conditional posterior of the joint model. -/
+theorem bayesA7_explicit_gaussian_kernel_eq_normalized_density
+    (n : ℕ) (priorPrecision priorMean : ℝ)
+    (variance : Fin n → ℝ) (x : Fin n → ℝ)
+    (hPrior : 0 < priorPrecision)
+    (hVar : ∀ k : Fin n, 0 < variance k) :
+    bayesA7ExplicitGaussianKernel n priorPrecision priorMean variance x =
+      volume.withDensity (fun θ : ℝ =>
+        ENNReal.ofReal
+          (bayesA7NormalizedKernelDensity Finset.univ
+            priorPrecision priorMean variance x θ)) := by
+  rw [bayesA7_explicit_gaussian_kernel_apply]
+  exact (bayesA7_normalized_density_measure_eq_gaussian_candidate
+    Finset.univ priorPrecision priorMean variance x hPrior
+    (fun k _ => hVar k)).symm
+
+/-- The expectation under the explicit candidate kernel is its
+precision-weighted mean, as a true Lebesgue integral of theta.
+This is a property of the CANDIDATE kernel, not yet of the regular
+conditional posterior of the observed sampling model. -/
+theorem bayesA7_explicit_gaussian_kernel_mean
+    (n : ℕ) (priorPrecision priorMean : ℝ)
+    (variance : Fin n → ℝ) (x : Fin n → ℝ) :
+    (∫ θ : ℝ, θ ∂
+      (bayesA7ExplicitGaussianKernel n priorPrecision priorMean variance x)) =
+      bayesA7PosteriorMean Finset.univ
+        priorPrecision priorMean variance x := by
+  rw [bayesA7_explicit_gaussian_kernel_apply]
+  exact bayesA7_gaussian_candidate_mean
+    Finset.univ priorPrecision priorMean variance x
+
 end QX26AgenticDelegation
