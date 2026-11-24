@@ -42,7 +42,7 @@ The extension, distinct from the seven previously verified algebraic results in 
 5. `bayesA7_gaussian_candidate_probability`: `gaussianReal m ((1/P).toNNReal)` is an actual normalized probability measure in Mathlib.
 6. `bayesA7_gaussian_candidate_mean`: its actual integral mean is \(m\), using Mathlib's Gaussian theorem.
 
-**Status:** DO NOT count as kernel-checked before the specific [GitHub Actions run #45332885440](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45332885440) reports `success` with the exact new file compiled, all six new `#print axioms` inspected and paper `check --fast` passing.
+**Status — VERIFIED IN LEAN:** [GitHub Actions #45333297951](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333297951) **PASS** at commit `7da8bb7d23d7baf8663c5b92a6fee86009000363`: **8,323 compile jobs**, **46 theorem endpoints** inspected without `sorryAx` or `unsafeAx`, paper-scoped `check --fast` passed (**8,315 jobs**), and the new Gaussian bridge emitted **no compiler warnings**. [Execution artifact](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333297951/artifacts/14893230416). The earlier [#45332885440](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45332885440) also passed but produced a harmless unreachable-tactic lint warning, eliminated before the clean rerun.
 
 ## 3. Precise stopping point
 
