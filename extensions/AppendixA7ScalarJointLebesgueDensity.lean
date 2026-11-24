@@ -60,9 +60,13 @@ theorem bayesA7_scalar_joint_eq_joint_gaussian_density
   have hg : Measurable (fun z : ℝ × ℝ =>
       gaussianPDF z.1 (Real.toNNReal variance) z.2) :=
     bayesA7_scalar_likelihood_density_measurable variance
+  have hf' : Measurable (fun z : ℝ × ℝ =>
+      gaussianPDF priorMean
+        (Real.toNNReal (1 / priorPrecision)) z.1) := by
+    fun_prop
   rw [← withDensity_mul
     ((volume : Measure ℝ).prod (volume : Measure ℝ))
-    (hf.comp measurable_fst) hg]
+    hf' hg]
   rfl
 
 end QX26AgenticDelegation
