@@ -61,4 +61,40 @@ theorem bayesA7_draw_law_split_noise_prior
         (bayesA7NoiseLaw n variance).prod
           (bayesA7PriorMeasure priorMean priorPrecision))
 
+
+/-- The coordinate split with the economically natural order:
+first the latent productivity prior, then the independent errors.
+It follows from the noise-first split via the measurable swap of
+the product measure; no independence axiom is added. -/
+theorem bayesA7_draw_law_split_prior_noise
+    (n : ℕ) (priorMean priorPrecision : ℝ)
+    (variance : Fin n → ℝ) :
+    Measure.map
+      (fun ω : Option (Fin n) → ℝ =>
+        (ω none, fun k : Fin n => ω (some k)))
+      (bayesA7JointDrawLaw n priorMean priorPrecision variance) =
+      (bayesA7PriorMeasure priorMean priorPrecision).prod
+        (bayesA7NoiseLaw n variance) := by
+  let e := MeasurableEquiv.piOptionEquivProd
+    (fun _ : Option (Fin n) => ℝ)
+  calc
+    Measure.map
+        (fun ω : Option (Fin n) → ℝ =>
+          (ω none, fun k : Fin n => ω (some k)))
+        (bayesA7JointDrawLaw n priorMean priorPrecision variance) =
+      Measure.map (Prod.swap : ((Fin n → ℝ) × ℝ) → (ℝ × (Fin n → ℝ)))
+        (Measure.map e
+          (bayesA7JointDrawLaw n priorMean priorPrecision variance)) := by
+        rw [Measure.map_map measurable_swap e.measurable]
+        congr 1
+        funext ω
+        rfl
+    _ = Measure.map Prod.swap
+          ((bayesA7NoiseLaw n variance).prod
+            (bayesA7PriorMeasure priorMean priorPrecision)) := by
+        rw [bayesA7_draw_law_split_noise_prior]
+    _ = (bayesA7PriorMeasure priorMean priorPrecision).prod
+          (bayesA7NoiseLaw n variance) := by
+        exact Measure.prod_swap
+
 end QX26AgenticDelegation
