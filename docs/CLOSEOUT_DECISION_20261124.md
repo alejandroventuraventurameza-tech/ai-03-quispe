@@ -17,17 +17,21 @@
 | Manuscrito verdadero | [PDF original e imágenes](../hand/REVISION_MANUSCRITA_2026-11-23.md) | Incorporado (7 páginas), con imágenes en presentación |
 | Prompts y respuestas relevantes | [prompts.md](../prompts.md) | Parcial: no sustituye transcript de la corrida original |
 | Carpeta generada EconCSLib intacta | [lean](../lean/), [proveniencia](AGENT_PROVENANCE_AND_RERUN.md) | Conservada; informes semánticos generados siguen abiertos |
-| Formalización Lean | [Actions #45337734090](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45337734090), [alcance bayesiano](APPENDIX_A7_POSTERIOR_DISINTEGRATION_20261124.md) | PASS: 8,327 jobs, 70 endpoints inspeccionados, sin sorryAx/unsafeAx; paper check --fast PASS |
+| Formalización Lean | [Actions #45433888348](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45433888348), [puente de ley conjunta](../extensions/AppendixA7ObservedJointBridge.lean) | PASS: 8,329 jobs, 76 endpoints auditados, sin sorryAx/unsafeAx; check --fast PASS (8,315 jobs) |
 | Agente `gpt-5.6-sol` / `xhigh` | [Auditoría](AGENT_PROVENANCE_AND_RERUN.md) | **NO ACREDITADO**; commit original atribuido a Claude Opus 4.8 |
 | Correspondencia fuente–Specs v11 | [Cotejo de nueve filas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | **NO CERRADA**; 9 teoremas Lean correctos no son 9 equivalencias integrales |
 
 ## Frontera matemática pendiente (no confundir con fallo de compilación)
 
-La rama ya construye una distribución gaussiana candidata con densidad normalizada para cada dato fijo, un kernel condicional de señales `Q_θ` con independientes condicionales, la ley conjunta `M(dθ,dx)=μ(dθ)Q_θ(dx)` y un posterior regular `P_x`, con desintegración exacta y unicidad casi segura. **Aún falta**:
+La rama construye la gaussiana candidata de densidad normalizada, el kernel condicional de señales `Q_θ`, la ley conjunta `M(dθ,dx)=μ(dθ)Q_θ(dx)` y el posterior regular `P_x` con desintegración y unicidad casi segura.
 
-1. Demostrar que la ley `M` coincide con el pushforward de la construcción anterior de prior y errores indexados por `Option (Fin n)` (si se mantiene esa equivalencia como afirmación del trabajo).
-2. Demostrar que la candidata `G_x = Normal(m(x),1/τ)`, con `τ=π+Σ_k 1/v_k` y `m(x)=(πμ₀+Σ_k x_k/v_k)/τ`, satisface `(Q ∘ₘ μ) ⊗ₘ G = (μ ⊗ₘ Q).map Prod.swap`. **Solo después** se aplica la unicidad casi segura ya probada para deducir `G_x = P_x` casi seguramente.
-3. Cerrar, fuente por fuente, el inventario EconCSLib v11 original. Las filas de Specs 1,2,3,4,8,9 aún son parciales; 5 y 6 requieren corregir hipótesis de estrictez y 7 es un contraejemplo propio.
+**BRECHA DE LEY CONJUNTA: CERRADA EN LEAN.** `bayesA7_draw_law_split_noise_prior` y `bayesA7_draw_law_split_prior_noise` separan la medida original indexada por `Option (Fin n)`. `bayesA7_prior_noise_observed_eq_compProd` y `bayesA7_joint_draw_observed_eq_compProd` prueban que el transporte a señales observadas coincide exactamente con `μ ⊗ₘ Q`. `bayesA7_original_draw_posterior_disintegration` acredita la identidad de desintegración para el experimento original. Ver [módulo Lean](../extensions/AppendixA7ObservedJointBridge.lean) y [CI #45433888348](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45433888348): **SUCCESS**, 8,329 jobs, **76 resultados auditados** sin `sorryAx` ni `unsafeAx`, `check --fast` PASS.
+
+**Continúan pendientes:**
+
+1. Demostrar que la candidata `G_x = Normal(m(x),1/τ)`, con `τ=π+Σ_k 1/v_k` y `m(x)=(πμ₀+Σ_k x_k/v_k)/τ`, satisface `(Q ∘ₘ μ) ⊗ₘ G = (μ ⊗ₘ Q).map Prod.swap`. Solo entonces la unicidad casi segura permite concluir `G_x = P_x` para casi todo `x`.
+2. Cerrar, fuente por fuente, el inventario EconCSLib v11 original. Los Specs 1,2,3,4,8,9 siguen parciales; 5 y 6 corrigen hipótesis de estricteza; 7 es un contraejemplo adicional.
+3. Acreditar configuración y sesión histórica del agente. El commit original atribuye intervención a Claude y no acredita `gpt-5.6-sol`/`xhigh`.
 
 **Importante:** que la normal candidata esté normalizada para todo `x` no implica por sí mismo que sea posterior del modelo conjunto. El paso que falta es una igualdad de medidas sobre el producto, no simplemente completar cuadrados.
 
@@ -46,4 +50,4 @@ El trailer del commit histórico [b10f831](https://github.com/alejandroventurave
 
 ## Nueva compuerta CI diagnóstica (24 noviembre de 2026)
 
-Se incorporó [gaussian-bayes-diagnostic.yml](../.github/workflows/gaussian-bayes-diagnostic.yml), commit [0490851](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/0490851d13806b6261e2f23a0212a72e16b8da85). Ejecuta en GitHub Actions el script numérico [check_gaussian_bayes_identity.py](../scripts/check_gaussian_bayes_identity.py) y conserva un log como artefacto. **A la fecha de esta anotación todavía no se ha observado el resultado del nuevo workflow**: la existencia del archivo YAML o del commit no implica que CI haya pasado. En cualquier caso, un resultado verde acredita únicamente el diagnóstico numérico de factorización, no la equivalencia de kernels Lean ni la ejecución con el agente especificado por el profesor.
+Se incorporó [gaussian-bayes-diagnostic.yml](../.github/workflows/gaussian-bayes-diagnostic.yml), commit [0490851](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/0490851d13806b6261e2f23a0212a72e16b8da85). Ejecuta en GitHub Actions el script numérico [check_gaussian_bayes_identity.py](../scripts/check_gaussian_bayes_identity.py) y conserva un log como artefacto. **Ejecuciones verificadas posteriormente:** [Actions #45430272827](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45430272827) y [Actions #45433888488](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45433888488), ambas **SUCCESS**, para el diagnóstico numérico de 1,003 casos. En cualquier caso, un resultado verde acredita únicamente el diagnóstico numérico de factorización, no la equivalencia de kernels Lean ni la ejecución con el agente especificado por el profesor.
