@@ -51,3 +51,12 @@ Se había propuesto un workflow separado para invocar GPT-6 por API. La ejecuci�
 | [Actions #45446009562](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45446009562) | [Identidad integral de evidencia gaussiana](../extensions/AppendixA7PredictiveEvidenceIntegral.lean) para cualquier colección finita de señales | **PASS:** 8,333 compilaciones, 88 declaraciones auditadas, `check --fast` PASS (8,315 tareas) |
 
 Los módulos corresponden a **extensiones separadas**, no a modificaciones de la carpeta original `lean/`. El pipeline verifica tipos y axiomas declarados; no garantiza aún equivalencia semántica fuente–Spec ni reemplaza los registros auténticos del modelo agente.
+
+## Ampliación de densidad conjunta escalar — 94 declaraciones (24 noviembre 2026)
+
+| Ejecución | Objeto | Resultado |
+| --- | --- | --- |
+| [#45455461266](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45455461266) | Kernel escalar de señal obtenido del modelo `Fin 1`, representación `Kernel.withDensity` y ley conjunta respecto de prior × Lebesgue | **PASS:** 8,334 tareas, 92 declaraciones auditadas |
+| [#45457640213](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45457640213) | Prior gaussiano como densidad y ley conjunta en Lebesgue² con densidad producto `pdf_prior · pdf_signal` | **PASS:** 8,335 tareas, 94 declaraciones auditadas y EconCSLib `check --fast` PASS (8,315 tareas) |
+
+El módulo de la segunda fila tuvo dos intentos previos fallidos por referencias de nombres de Mathlib y forma de la función de densidad; se corrigió sin alterar la conclusión matemática ni introducir axiomas. **Estas pruebas no completan la identificación de la posterior para todo `n>0`**.
