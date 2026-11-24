@@ -112,6 +112,11 @@ jobs:
           print(f"archive_entries={result['entries']}")
           print(f"tex_files_hashed={len(result['tex_files'])}")
           print(f"a7_candidate_paths={result['a7_candidates']}")
+          for item in result['tex_files']:
+              if item['archive_path'].endswith(('03_theory.tex', '10_appendix.tex')):
+                  print(f"source_tex_path={item['archive_path']} sha256={item['sha256']} bytes={item['bytes']}")
+          if not result["a7_candidates"]:
+              raise SystemExit('No A.7 source heading located in TeX; cannot claim matching source')
           if not result["tex_files"]:
               raise SystemExit("No TeX members found; do not describe this as verified source TeX")
           PY
