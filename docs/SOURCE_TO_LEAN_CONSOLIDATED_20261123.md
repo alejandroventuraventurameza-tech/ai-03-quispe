@@ -36,3 +36,9 @@ La [matriz semántica específica de las nueve firmas](SEMANTIC_AUDIT_NINE_SPECS
 ## Anclajes de fuente de autores confirmados en Actions
 
 La ejecución [#45333392245](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245) verificó el contenido del tar v2 (46 entradas, 26 archivos TeX) y generó un recibo de 9 filas que enlaza etiquetas y declaraciones textuales sin afirmar corrección semántica. Localizó los `\label` originales de P1, P2, P3 en `sections/03_theory.tex` (líneas 156, 166, 283) y P4, P5 en `sections/10_appendix.tex` (líneas 139, 252). Hashes completos en [manifiesto de la fuente](PRIMARY_SOURCE_PIN_20261124.md). El `Spec` elaborado y la correspondencia exhaustiva de hipótesis **siguen pendientes**.
+
+## Avance posterior: núcleo gaussiano y anclaje exacto del autor (2026-11-24)
+
+La [extensión gaussiana A.7](../extensions/AppendixA7GaussianKernelBridge.lean) demuestra la completación cuadrática, la factorización del exponente y la normalización/valor esperado de una **medida gaussiana candidata construida con los parámetros** de la fuente; [GitHub Actions #45333297951](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333297951) **PASS** (**8,323 jobs, 46 teoremas, sin `sorryAx`/ `unsafeAx`, fast check PASS**). Todavía no se ha demostrado que la candidata sea una desintegración condicional del prior más las señales; véase [límites exactos](APPENDIX_A7_GAUSSIAN_KERNEL_20261124.md).
+
+La fuente arXiv v2 está ahora [fijada por hashes de bytes](PRIMARY_SOURCE_PIN_20261124.md). El [recibo de nueve anclajes textuales](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245) verifica etiquetas originales de las cinco proposiciones y distingue contraejemplos del auditor. **No** sustituye la comparación independiente de todos los átomos fuente contra los `Spec` elaborados y por ello **NO** concede el estado `formalized` en EconCSLib.
