@@ -29,3 +29,19 @@ La lectura de tar confirmó **46 entradas, 26 archivos .tex/.ltx** y coincidenci
 Se puede volver a ejecutar [`.github/workflows/source-pin.yml`](../.github/workflows/source-pin.yml) mediante GitHub Actions. Repetir la descarga del HTML puede cambiar su hash por regeneración del portal; eso indica diferencias de bytes de la representación HTML, **no** necesariamente una nueva versión científica del artículo. El hash del tar v2 permite fijar el archivo fuente exacto para cotejo posterior.
 
 Este control es compatible con la auditoría independiente [de las nueve especificaciones Lean](SEMANTIC_AUDIT_NINE_SPECS_20261124.md), pero no la transforma en aprobación formal por parte del motor.
+
+## Anclajes de proposiciones en el TeX exacto — validados por Actions
+
+La [corrida #45333392245](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245) ejecutó [`scripts/source_span_audit.py`](../scripts/source_span_audit.py) sobre el mismo archivo tar v2 y las declaraciones textuales de `lean/PaperInterface.lean`. Registró **9 filas** y las siguientes etiquetas fuente efectivamente encontradas:
+
+| Propósito | TeX y posición del `\label` | Observación |
+|---|---|---|
+| Frontera, P1 | `sections/03_theory.tex:156` (`prop:frontier`) | Enunciado principal débil |
+| Banda de activación, P2 | `sections/03_theory.tex:166` (`prop:band`) | La probabilidad exige un puente adicional de CDF |
+| Dinámica, P3 | `sections/03_theory.tex:283` (`prop:dynamic`) | Las dos filas de estrictez comparten la etiqueta, pero corrigen el dominio |
+| Heterogeneidad, P4 | `sections/10_appendix.tex:139` (`prop:specialist`) | El `Spec` original no incluye una esperanza condicional |
+| Repositorios, P5 | `sections/10_appendix.tex:252` (`prop:repos`) | El `Spec` original solo incluye indicadores puntuales |
+
+La identidad auxiliar de la primera diferencia (A.6) y el contraejemplo de frontera en P3 no tienen un identificador fuente único; la herramienta los registra respectivamente como `paper_equation_no_unique_label` y `reviewer_counterexample_not_source_theorem`. **No se inventan etiquetas.** El recibo tiene hashes de líneas de las declaraciones textuales de los nueve `Spec` y de los TeX relevantes. [Artefacto descargable](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245/artifacts/14892364260).
+
+**Límite:** enlazar bytes, nombres y líneas no equivale a verificar que las premisas y conclusiones de los `Spec` elaborados reflejen todas las afirmaciones económicas y probabilísticas originales; el recibo se rotula `NOT_semantic_v11_receipt`.
