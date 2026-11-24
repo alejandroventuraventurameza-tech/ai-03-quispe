@@ -66,7 +66,7 @@ theorem bayesA7_complete_square
     ∑ k ∈ L, (signal k)^2 / variance k
   have hPM : P * M = N := by
     dsimp [P, M, N, bayesA7PosteriorMean]
-    field_simp [ne_of_gt hPost] <;> ring
+    field_simp [ne_of_gt hPost]
   calc
     priorPrecision * (θ - priorMean)^2 +
         ∑ k ∈ L, (signal k - θ)^2 / variance k =
