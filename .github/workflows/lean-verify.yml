@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7GaussianKernelBridge"
+          build-args: "QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7GaussianKernelBridge
+          import QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -125,6 +125,11 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_exponential_kernel_factorization
           #print axioms QX26AgenticDelegation.bayesA7_gaussian_candidate_probability
           #print axioms QX26AgenticDelegation.bayesA7_gaussian_candidate_mean
+          #print axioms QX26AgenticDelegation.bayesA7_evidence_kernel_factor_pos
+          #print axioms QX26AgenticDelegation.bayesA7_normalized_kernel_eq_gaussian_shape
+          #print axioms QX26AgenticDelegation.bayesA7_normalized_density_eq_gaussian_pdf
+          #print axioms QX26AgenticDelegation.bayesA7_normalized_density_integral_one
+          #print axioms QX26AgenticDelegation.bayesA7_normalized_density_measure_eq_gaussian_candidate
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
