@@ -38,6 +38,21 @@ noncomputable def bayesA7DrawCoordLaw
   | none => gaussianReal priorMean (Real.toNNReal (1 / priorPrecision))
   | some k => gaussianReal 0 (Real.toNNReal (variance k))
 
+/-- Each coordinate law is a probability measure. Registering this
+instance explicitly is essential to allow Mathlib to infer the
+whole family-level product-probability and independence instances. -/
+instance bayesA7_draw_coordinate_probability
+    (n : ℕ) (priorMean priorPrecision : ℝ)
+    (variance : Fin n → ℝ) (j : Option (Fin n)) :
+    IsProbabilityMeasure (bayesA7DrawCoordLaw n priorMean priorPrecision variance j) := by
+  cases j with
+  | none =>
+      unfold bayesA7DrawCoordLaw
+      infer_instance
+  | some k =>
+      unfold bayesA7DrawCoordLaw
+      infer_instance
+
 /-- Product probability space supporting one prior draw and n
 independent centered Gaussian noise draws. -/
 noncomputable def bayesA7JointDrawLaw
@@ -103,7 +118,8 @@ theorem bayesA7_prior_independent_of_noise
       bayesA7JointDrawLaw n priorMean priorPrecision variance]
     (fun ω : Option (Fin n) → ℝ => ω (some k)) := by
   exact (bayesA7_joint_coordinates_independent
-    n priorMean priorPrecision variance).indepFun (by decide)
+    n priorMean priorPrecision variance).indepFun
+      (by simp : (none : Option (Fin n)) ≠ some k)
 
 /-- The observed signal X_k = theta + epsilon_k is itself Gaussian.
 The shared latent draw is retained: no (incorrect) unconditional
