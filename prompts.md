@@ -135,3 +135,9 @@ The session reference could not be read via available tools. No transcript is in
 **Provenance annotation, not a reconstructed agent transcript:** This statement relates to the *later ChatGPT-assisted review, audits, and Lean extension work* in Repository 3, not to the historical run that generated the original EconCSLib `lean/` module. The assistant for these later discussions identifies as **GPT-6**. The **XHIGH** reasoning-effort designation is the author's own report; a technical configuration export is not currently available for independent verification. Calling GPT-6 a 'superior model' is an author evaluation, not evidence that the teacher approved a different model or that the precise `gpt-5.6-sol` requirement was met.
 
 **Independent outcomes of the later work:** [GitHub Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519) confirms Lean/EconCSLib checks for 81 audited declarations. GitHub Actions do not attest the LLM model used to draft the code. Historical commit [b10f831](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/b10f831ab68159882f69c9c0fe93b824a3869fe9) retains its Claude Opus 4.8 credit. See [agent provenance](docs/AGENT_PROVENANCE_AND_RERUN.md).
+
+---
+
+## Historial de Repository 3 — índice de recuperación (24 de noviembre de 2026)
+
+Se cotejaron los intercambios aquí preservados con el historial GitHub y la referencia de sesión original. La [cronología documentada y clasificación de evidencias](docs/HISTORIAL_RECUPERADO_REPOSITORY3_20261124.md) registra por separado los **tres pares iniciales y cuatro pares posteriores** conservados literalmente, los commits, los builds verificados y el identificador de la sesión histórica de Claude. **No se recuperó la conversación íntegra de Claude Code** y el índice no constituye una reconstrucción literal de mensajes ausentes.
