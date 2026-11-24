@@ -169,6 +169,7 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_prior_noise_to_observed_pair_measurable
           #print axioms QX26AgenticDelegation.bayesA7_prior_noise_observed_eq_compProd
           #print axioms QX26AgenticDelegation.bayesA7_joint_draw_observed_eq_compProd
+          #print axioms QX26AgenticDelegation.bayesA7_original_draw_posterior_disintegration
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
