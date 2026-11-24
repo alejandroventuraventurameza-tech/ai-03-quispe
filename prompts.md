@@ -123,3 +123,15 @@ The session reference could not be read via available tools. No transcript is in
 > Tienes razón. Para trabajar como en IE project no necesitamos una API de OpenAI: yo preparo y reviso el código Lean aquí, y GitHub Actions lo compila. Ya comprobamos que ese procedimiento funciona. Voy a retirar el workflow de GPT-6 por API y dejar únicamente la verificación reproducible de Lean.
 
 **Action:** the optional Responses API workflow and its script were withdrawn from the review branch; [the Lean-only verification method](docs/LEAN_GITHUB_ACTIONS.md) remains, with the successful [11-endpoint GitHub Actions run](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235387712). The historical failed API attempt is retained as historical evidence, not a pending instruction to configure a key.
+
+---
+
+## Author disclosure of model used for later revisions — 2026-11-24
+
+**User (verbatim, present conversation):**
+
+> Lo de ejecución de gpt 5.6 sol xhigh aclararemos que lo hicimos con un modelo superior gpt 6 en pensamiento xhigh
+
+**Provenance annotation, not a reconstructed agent transcript:** This statement relates to the *later ChatGPT-assisted review, audits, and Lean extension work* in Repository 3, not to the historical run that generated the original EconCSLib `lean/` module. The assistant for these later discussions identifies as **GPT-6**. The **XHIGH** reasoning-effort designation is the author's own report; a technical configuration export is not currently available for independent verification. Calling GPT-6 a 'superior model' is an author evaluation, not evidence that the teacher approved a different model or that the precise `gpt-5.6-sol` requirement was met.
+
+**Independent outcomes of the later work:** [GitHub Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519) confirms Lean/EconCSLib checks for 81 audited declarations. GitHub Actions do not attest the LLM model used to draft the code. Historical commit [b10f831](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/b10f831ab68159882f69c9c0fe93b824a3869fe9) retains its Claude Opus 4.8 credit. See [agent provenance](docs/AGENT_PROVENANCE_AND_RERUN.md).
