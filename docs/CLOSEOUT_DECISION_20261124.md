@@ -43,3 +43,7 @@ El trailer del commit histórico [b10f831](https://github.com/alejandroventurave
 - Al disponer de la nueva corrida auténtica: revisar diff del `lean/` nuevo, contrastar Specs, compilar Beamer, ejecutar CI Lean, actualizar esta matriz con URLs de evidencias y recién entonces evaluar la fusión.
 
 **Conclusión:** entregables visibles y verificación formal parcial sólida, pero **cierre académico integral aún bloqueado** por configuración/proveniencia del agente y auditoría semántica fuente–Lean.
+
+## Nueva compuerta CI diagnóstica (24 noviembre de 2026)
+
+Se incorporó [gaussian-bayes-diagnostic.yml](../.github/workflows/gaussian-bayes-diagnostic.yml), commit [0490851](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/0490851d13806b6261e2f23a0212a72e16b8da85). Ejecuta en GitHub Actions el script numérico [check_gaussian_bayes_identity.py](../scripts/check_gaussian_bayes_identity.py) y conserva un log como artefacto. **A la fecha de esta anotación todavía no se ha observado el resultado del nuevo workflow**: la existencia del archivo YAML o del commit no implica que CI haya pasado. En cualquier caso, un resultado verde acredita únicamente el diagnóstico numérico de factorización, no la equivalencia de kernels Lean ni la ejecución con el agente especificado por el profesor.
