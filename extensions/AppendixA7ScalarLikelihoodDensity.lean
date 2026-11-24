@@ -94,9 +94,8 @@ theorem bayesA7_scalar_joint_eq_withDensity
     bayesA7_scalar_likelihood_density_measurable variance
   have hK := bayesA7_scalar_signal_eq_withDensity variance hVar
   let κ := Kernel.const ℝ (volume : Measure ℝ)
-  let f : ℝ → ℝ → ℝ≥0∞ :=
-    fun θ x => gaussianPDF θ (Real.toNNReal variance) x
-  have hS : IsSFiniteKernel (Kernel.withDensity κ f) := by
+  let f := fun (θ x : ℝ) => gaussianPDF θ (Real.toNNReal variance) x
+  haveI : IsSFiniteKernel (Kernel.withDensity κ f) := by
     have h : Kernel.withDensity κ f = bayesA7ScalarSignalKernel variance :=
       hK.symm
     rw [h]
