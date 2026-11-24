@@ -105,6 +105,5 @@ theorem bayesA7_joint_density_eq_evidence_mul_candidate
     exact inv_ne_zero (ne_of_gt hRoot)
   change C * K = (C * E / H) * (H * (K / E))
   field_simp [hE, hH]
-  ring
 
 end QX26AgenticDelegation
