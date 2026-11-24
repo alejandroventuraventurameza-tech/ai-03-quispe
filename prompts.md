@@ -4,6 +4,13 @@ Project: Quispe and Xu 2026
 
 This file preserves relevant prompts and answers as they occurred. It will be extended after each analytical block; uncertain or superseded statements are kept rather than silently rewritten.
 
+
+## Actualización de procedencia — transcripción original aportada (24/11/2026)
+
+El autor adjuntó el archivo [`context-transcript.md`](context-transcript.md), incorporado íntegro a este repositorio. Se comprobó que la copia preserva sus **1,107 líneas y 72,085 bytes** (SHA-256: `d789770c52990e7ac7dbb55704dd8fdbdf1cd09555430405de7bbd356e4e9039`). Contiene **26 pares de mensajes USER/ASSISTANT**, incluidos comandos y resultados de terminal copiados por el autor. El texto conserva **20 referencias `[tool action: ...]`** a operaciones del asistente, sin registros completos de llamadas a herramientas. El encabezado declara `Model/configuration: unavailable`.
+
+**Alcance:** esto recupera una transcripción histórica de **Claude Cowork proporcionada por el autor**, que incluye el proceso de formalización y copia a EconCSLib, **no** un export nativo autenticado del agente de Claude Code, su historial íntegro de herramientas ni una prueba de configuración GPT-5.6/XHIGH. Las notas de este archivo que decían que `context-transcript.md` no estaba disponible fueron escritas *antes* de recibirlo; quedaron superadas por esta actualización. La [auditoría de procedencia](docs/AGENT_PROVENANCE_AND_RERUN.md) distingue esas fuentes.
+
 ## User
 
 Estas seguro que el paper no es ¿**uispe, A., & Xu, K. (2026).** *Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub.* ?
@@ -144,4 +151,4 @@ Se cotejaron los intercambios aquí preservados con el historial GitHub y la ref
 
 ## Fuente nueva aportada por el autor: extracto de conversación histórica (24/11/2026)
 
-Se conserva el archivo original de texto recibido, sin modificar su contenido conversacional, en [docs/evidence/fragmento_conversacion_aportado_20261124.txt](docs/evidence/fragmento_conversacion_aportado_20261124.txt). Contiene un **fragmento de 147 líneas**, no la transcripción íntegra de la sesión. En su interior se afirma que se creó un archivo local `context-transcript.md` con **1,107 líneas**. Todavía no se ha recuperado ese archivo íntegro; véase el [registro de recuperación](docs/HISTORIAL_RECUPERADO_REPOSITORY3_20261124.md). La fuente aportada explícitamente indica `Model/configuration: unavailable`: no acredita por sí sola modelo, esfuerzo de razonamiento ni el transcript técnico del agente original.
+Se conserva el archivo original de texto recibido, sin modificar su contenido conversacional, en [docs/evidence/fragmento_conversacion_aportado_20261124.txt](docs/evidence/fragmento_conversacion_aportado_20261124.txt). Contiene un **fragmento de 147 líneas**, no la transcripción íntegra de la sesión. En su interior se afirma que se creó un archivo local `context-transcript.md` con **1,107 líneas**. **Actualización:** el archivo íntegro fue posteriormente recibido del autor y archivado como [context-transcript.md](context-transcript.md); véase el [registro de recuperación](docs/HISTORIAL_RECUPERADO_REPOSITORY3_20261124.md). La fuente aportada explícitamente indica `Model/configuration: unavailable`: no acredita por sí sola modelo, esfuerzo de razonamiento ni el transcript técnico del agente original.
