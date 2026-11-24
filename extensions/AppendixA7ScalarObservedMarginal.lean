@@ -31,7 +31,7 @@ theorem bayesA7_tonelli_snd_of_product_density
     {α β : Type*} [MeasurableSpace α] [MeasurableSpace β]
     (μ : Measure α) (ν : Measure β)
     [SFinite μ] [SFinite ν]
-    (f : α × β → ℝ≥0∞) (hf : Measurable f) :
+    (f : α × β → ENNReal) (hf : Measurable f) :
     ((μ.prod ν).withDensity f).snd =
       ν.withDensity (fun y => ∫⁻ x, f (x, y) ∂μ) := by
   ext s hs
