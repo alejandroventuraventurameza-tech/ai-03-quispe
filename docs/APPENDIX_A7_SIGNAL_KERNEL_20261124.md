@@ -32,7 +32,7 @@ La segunda igualdad usa el teorema matemático de transporte de medidas producto
 | `bayesA7_signals_independent_given_theta` | Independencia de observaciones bajo cada ley \(Q_\theta\) |
 | `bayesA7_conditional_signal_marginal` | Marginal de cada señal bajo \(Q_\theta\) es \(N(\theta,v_k)\) |
 
-Los nueve endpoints son adicionales a los **57 verificados**. **NO declarar 66 demostrados** hasta que [GitHub Actions #45336887383](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45336887383) termine en `success`, con `#print axioms` sin `sorryAx` ni `unsafeAx` y chequeo `paper_contribution.py ... check --fast` aprobado.
+Los nueve endpoints son adicionales a los **57 verificados**. La primera corrida [GitHub Actions #45336887383](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45336887383) **FALLÓ** con el diagnóstico de Lean `No goals to be solved` en la prueba de transporte del kernel: `congr 1` ya resolvía la igualdad y las tácticas `funext`/`rfl` eran redundantes. Se corrigió en el [commit `f09e148`](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/f09e148781aa62353529683efa172f1bdf2d9280). La nueva [corrida #45337236049](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45337236049) debe concluir con `success`, nueve `#print axioms` nuevos sin `sorryAx`/`unsafeAx` y `check --fast` aprobado **antes de declarar 66 demostrados**.
 
 ## 3. Límite probabilístico aún pendiente
 
