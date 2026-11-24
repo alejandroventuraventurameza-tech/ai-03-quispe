@@ -28,3 +28,7 @@
 - **Proveniencia del agente:** el commit original señala participación de Claude Opus 4.8; no ha aparecido la transcripción original ni el registro del modelo solicitado por el profesor. La compilación con Actions y el uso de GPT-6 en esta conversación no transforman ese historial.
 
 **Dictamen actual:** resultados algebraicos cotejados y compilados bajo hipótesis identificables; falta cobertura económica/estocástica integral y auditoría semántica formal. **NO declarar el paper integralmente formalizado ni fusionar el PR de revisión por un check verde.**
+
+## 2026-11-24: auditoría row-by-row y aprendizaje bayesiano
+
+La [matriz semántica específica de las nueve firmas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) separa teoremas algebraicos exactos, supuestos faltantes, reparaciones de dominio y el contraejemplo añadido. El resumen presente sigue siendo **provisional**: no se han reemplazado los recibos semánticos generados por EconCSLib ni se ha validado un TeX source byte-pinned. Se inició una [extensión A.7](../extensions/AppendixA7BayesianLearning.lean) sobre las ecuaciones 28–29, con [auditoría de sus límites probabilísticos](APPENDIX_A7_BAYESIAN_20261124.md). No elevarla a validada hasta inspeccionar la nueva corrida de Actions.
