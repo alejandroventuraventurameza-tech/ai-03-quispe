@@ -88,3 +88,7 @@
 - [Artículo v2, apéndice de teoría A](https://arxiv.org/html/2605.25438v2#A1)
 - [Especificaciones originales](../lean/PaperInterface.lean) y [sus nueve pruebas](../lean/ProofInterface.lean)
 - [GitHub Actions #45331830830 — 40 teoremas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45331830830)
+
+## Anclajes originales auditados en archivos TeX (Actions, 2026-11-24)
+
+El cotejo ahora cuenta con un [manifiesto fuente byte-pinned](PRIMARY_SOURCE_PIN_20261124.md) y un [recibo automatizado de nueve filas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245/artifacts/14892364260). GitHub Actions recuperó el tar v2 (**SHA-256 `1b3e7968697bcb306f7c96fbdb60e93d8c49eb805afb15ce00271084da24a296`**), identificó 26 archivos TeX y comprobó los siguientes `\label` **reales**: P1 línea 156, P2 línea 166, P3 línea 283 en `sections/03_theory.tex`; P4 línea 139 y P5 línea 252 en `sections/10_appendix.tex`. La identidad auxiliar de P3 y el contraejemplo no se presentan como teoremas con etiquetas originales. **La herramienta no certifica equivalencia semántica; esta matriz conserva los veredictos de alcance parcial y dominio corregido indicados anteriormente.**
