@@ -2,6 +2,22 @@
 
 **Revisión:** 2026-11-23. **Repositorio semanal:** [ai-03-quispe](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe). **Consigna:** [AI-Econ-Modeling #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2). Este documento es un **registro externo a la carpeta generada por EconCSLib**: no sustituye sus archivos de auditoría, ni es un transcript recuperado del agente.
 
+## Declaración del autor sobre la revisión posterior con GPT-6 (24 de noviembre de 2026)
+
+**Texto declarado por el autor en la conversación actual (literal):**
+
+> Lo de ejecución de gpt 5.6 sol xhigh aclararemos que lo hicimos con un modelo superior gpt 6 en pensamiento xhigh
+
+**Presentación fiel para la entrega:** «Las revisiones, auditorías, ampliaciones de pruebas y comprobaciones posteriores de Repository 3 se realizaron con asistencia de **ChatGPT, modelo GPT-6**. El autor declara haber utilizado una configuración de razonamiento **XHIGH**. La etiqueta XHIGH se consigna como **declaración del autor**, no como metadato de ejecución exportado y verificado. La valoración “modelo superior” expresa la apreciación del autor, no una equivalencia académica autorizada ni un benchmark de rendimiento».
+
+**Distinción cronológica obligatoria:** la evidencia del commit histórico `b10f831` atribuye una intervención en el módulo inicial a **Claude Opus 4.8**. El trabajo posterior de este proyecto en GPT-6 **no convierte retrospectivamente ese commit en una corrida GPT-6** ni prueba la ejecución original bajo `gpt-5.6-sol`/`xhigh`.
+
+**Consigna:** el Issue #2 exige una configuración específica (`gpt-5.6-sol`/`xhigh`). El uso declarado de GPT-6/XHIGH es una **alternativa que debe ser evaluada o aceptada por el profesor**, no un cumplimiento equivalente que podamos auto-certificar. Los logs de GitHub Actions verifican Lean y EconCSLib, pero no autentican el modelo ni el esfuerzo de razonamiento del agente generador.
+
+**Evidencia y límites:** conversación presente + commits y acciones posteriores en [PR #2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2) y [compilación de 81 resultados](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519). No se dispone aquí de un export técnico original que certifique el ajuste XHIGH ni de un transcript completo de la generación inicial. No se fabricará dicha evidencia.
+
+---
+
 ## Hechos observables y sus fuentes
 
 | Componente | Evidencia verificable | Interpretación autorizada |
