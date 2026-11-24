@@ -173,6 +173,8 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_posterior_mean_on_signals_measurable
           #print axioms QX26AgenticDelegation.bayesA7_explicit_gaussian_kernel_apply
           #print axioms QX26AgenticDelegation.bayesA7_explicit_gaussian_updated_precision_pos
+          #print axioms QX26AgenticDelegation.bayesA7_explicit_gaussian_kernel_eq_normalized_density
+          #print axioms QX26AgenticDelegation.bayesA7_explicit_gaussian_kernel_mean
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
