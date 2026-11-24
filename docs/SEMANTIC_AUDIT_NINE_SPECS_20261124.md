@@ -76,8 +76,8 @@
 
 - **9/9 declaraciones originales compilan con prueba Lean y sin `sorryAx`.** Sus pruebas son válidas dentro de los tipos escritos.
 - **No son 9/9 equivalencias semánticas completas.** Las filas 1, 2, 3, 4, 8 y 9 requieren al menos un puente respecto a la fuente; las filas 5 y 6 corrigen el dominio del artículo; la fila 7 es un contraejemplo adicional, no un teorema fuente.
-- Los **46 teoremas** inspeccionados en [Actions #45333297951](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333297951) comprenden esos nueve y **37 extensiones separadas**, incluidos trece resultados de aprendizaje bayesiano A.7: siete identidades algebraicas anteriores y seis nuevos en la factorización gaussiana/medida candidata. Cada extensión ha conservado explícitas sus hipótesis. La ejecución de Lean demuestra que el kernel las acepta, **no** que las hipótesis fueron satisfechas por los datos empíricos del paper.
-- **A.7, aprendizaje bayesiano:** el inventario fuente de ecuaciones (28)–(29) está ausente de los nueve `Spec` originales. Las [siete pruebas algebraicas A.7](../extensions/AppendixA7BayesianLearning.lean) sobre precisión, media y coeficientes del kernel ya compilaron; **la derivación completa de conjugación Normal–Normal como igualdad de distribuciones** sigue siendo una obligación distinta.
+- Los **51 teoremas** inspeccionados en [Actions #45334600598](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45334600598) comprenden esos nueve y **42 extensiones separadas**, incluidos dieciocho resultados de aprendizaje bayesiano A.7: siete identidades algebraicas, seis de factorización/medida candidata y cinco de densidad normalizada e igualdad de las medidas construidas. Cada extensión ha conservado explícitas sus hipótesis. La ejecución de Lean demuestra que el kernel las acepta, **no** que las hipótesis fueron satisfechas por los datos empíricos del paper.
+- **A.7, aprendizaje bayesiano:** el inventario fuente de ecuaciones (28)–(29) está ausente de los nueve `Spec` originales. Las [siete pruebas algebraicas A.7](../extensions/AppendixA7BayesianLearning.lean), la [factorización gaussiana](../extensions/AppendixA7GaussianKernelBridge.lean) y la [igualdad de densidades normalizadas para señales fijas](../extensions/AppendixA7NormalizedPosteriorDensity.lean) ya compilaron; **la construcción conjunta y una ley posterior regular condicional** siguen siendo obligaciones distintas.
 
 **Compuerta formal todavía NO SUPERADA:** el generado [`lean/status.json`](../lean/status.json) sigue diciendo `not started`, [`lean/audit/source_proof_fidelity.json`](../lean/audit/source_proof_fidelity.json) sigue en `not_started`, y [`lean/audit/paper_statement_map.json`](../lean/audit/paper_statement_map.json) sigue indicando `source_curated: false`. No se han alterado esos registros manualmente ni se ha firmado una conformidad semántica final. Un cotejo humano con HTML v2 y código comprometido **no sustituye** un inventario source-byte-pinned ni el recibo de correspondencia v11 exigido por EconCSLib.
 
@@ -87,7 +87,7 @@
 - [Artículo v2, sección 4.3, proposición 3](https://arxiv.org/html/2605.25438v2#S4.SS3)
 - [Artículo v2, apéndice de teoría A](https://arxiv.org/html/2605.25438v2#A1)
 - [Especificaciones originales](../lean/PaperInterface.lean) y [sus nueve pruebas](../lean/ProofInterface.lean)
-- [GitHub Actions #45333297951 — 46 teoremas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333297951)
+- [GitHub Actions #45334600598 — 51 teoremas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45334600598)
 
 ## Anclajes originales auditados en archivos TeX (Actions, 2026-11-24)
 
