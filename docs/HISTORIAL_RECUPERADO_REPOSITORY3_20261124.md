@@ -54,3 +54,16 @@ Si el autor recupera el transcript, se debe conservar como archivo original, ind
 El autor comunicó que la aceptación del uso de GPT-6/XHIGH se encuentra resuelta y que ya realizó la exposición oral; esas dos actividades no son pendientes operativos en este repositorio. Esto no convierte el historial original de Claude en un registro disponible.
 
 El repositorio está **integrado técnicamente**. La cobertura semántica completa de los nueve \`Spec\` sigue reconocida como parcial en el [dictamen](CLOSEOUT_DECISION_20261124.md), que no debe reescribirse retrospectivamente. El único vacío de archivo que este registro no puede completar es el **transcript íntegro de la sesión original**, distinto del conjunto de evidencias ya recuperadas.
+
+
+## Nueva evidencia aportada por el autor — fragmento de sesión, 24/11/2026
+
+Se recibió un archivo de texto proporcionado por el autor, archivado **sin convertirlo en una transcripción inexistente** en [fragmento_conversacion_aportado_20261124.txt](evidence/fragmento_conversacion_aportado_20261124.txt). El archivo original subido se llama \`Texto pegado.txt\` (14,773 bytes, 147 líneas de texto; SHA-256 del archivo subido: \`feb62d27f3822968c6af65ffb33c43db240227f5765299331149b8585c128c21\`). La copia de GitHub reproduce el texto legible recibido.
+
+**Hallazgo central:** en ese fragmento, un asistente afirma que **ya había creado** un archivo local \`context-transcript.md\` de **1,107 líneas**, con mensajes del usuario y respuestas visibles literales, marcado \`Model/configuration: unavailable\`. Esa afirmación constituye una **pista para localizar el archivo**, pero la copia íntegra de 1,107 líneas **no fue adjuntada aquí** ni consta en el directorio raíz o \`docs/\` de \`main\` al realizar la revisión. Por tanto, el fragmento de 147 líneas no acredita la integridad ni autenticidad de aquel otro archivo.
+
+**Contenido adicional del fragmento:** describe el clon inicial de EconCSLib en \`.work/EconCSLib\`, un commit anclado \`cf500b74\`, el obstáculo inicial de \`fcntl\`/WSL, la fijación de arXiv v2, un trabajo posterior de guion \`guion-presentacion.docx\` mantenido fuera de Git, y una explicación de la corrección del extremo \`p²=1\` de la Proposición 3. Estas son **afirmaciones históricas dentro de una conversación aportada**, distintas de compilaciones comprobadas en GitHub Actions.
+
+**Diferencia entre fuentes:** el \`context-transcript.md\` de 1,107 líneas y la sesión identificada como \`session_01QdtHpjEFzRP4ti3dyfWcfG\` son referencias que podrían pertenecer a etapas distintas. No se debe suponer que el primer archivo sea una exportación directa de la segunda sesión ni que verifique un modelo o configuración de agente. El fragmento dice expresamente \`Model/configuration: unavailable\`.
+
+**Única recuperación aún útil:** localizar el \`context-transcript.md\` real en la computadora usada para el trabajo (el extracto menciona la carpeta \`C:\Users\ASUS\Downloads\ai-03-quispe\` para otro archivo dentro del mismo repositorio). Si se obtiene, cotejar su contenido completo con el fragmento, sus metadatos y su fuente antes de etiquetarlo como historial íntegro. No modificar \`lean/\` ni rehacer Lean por este documento.
