@@ -6,6 +6,7 @@ on:
       - work/issue2-quality-closeout-20261123
     paths:
       - .github/workflows/source-pin.yml
+      - scripts/source_span_audit.py
   workflow_dispatch:
 
 permissions:
@@ -120,6 +121,16 @@ jobs:
           if not result["tex_files"]:
               raise SystemExit("No TeX members found; do not describe this as verified source TeX")
           PY
+
+      - name: Record nine source-TeX and Lean-Spec candidate anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/source_span_audit.py \
+            /tmp/arxiv-v2-source.tar \
+            lean/PaperInterface.lean \
+            ci-evidence/source/source-lean-anchor-receipt.json
+          echo "This label/line receipt is NOT EconCSLib v11 semantic validation." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload hashes and retrieval provenance, not source redistribution
         if: always()
