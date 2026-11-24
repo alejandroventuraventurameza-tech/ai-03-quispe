@@ -44,3 +44,10 @@ El workflow emplea `leanprover/lean4:v4.30.0-rc2` y la revisión `nikhgarg/Appli
 Se había propuesto un workflow separado para invocar GPT-6 por API. La ejecución histórica [#45235012269](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45235012269) no llamó a ningún modelo porque faltaba un secreto. **Esa vía era innecesaria para el objetivo actual y se retiró del PR.** El registro histórico permanece en Actions, pero no es una tarea pendiente ni se requiere configurar ninguna clave.
 
 **Procedimiento vigente:** ChatGPT GPT-6 para análisis y redacción, GitHub Actions para ejecutar y verificar Lean. No se requieren claves de OpenAI API.
+
+## Actualización — pruebas reproducidas el 24 de noviembre de 2026
+
+| [Actions #45445246319](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45445246319) | [Caso sin señales](../extensions/AppendixA7ZeroSignalPosterior.lean): prior, posterior explícito y posterior desintegrado coinciden casi seguramente cuando no hay observaciones | **PASS:** 8,332 compilaciones, 86 declaraciones auditadas, `check --fast` PASS |
+| [Actions #45446009562](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45446009562) | [Identidad integral de evidencia gaussiana](../extensions/AppendixA7PredictiveEvidenceIntegral.lean) para cualquier colección finita de señales | **PASS:** 8,333 compilaciones, 88 declaraciones auditadas, `check --fast` PASS (8,315 tareas) |
+
+Los módulos corresponden a **extensiones separadas**, no a modificaciones de la carpeta original `lean/`. El pipeline verifica tipos y axiomas declarados; no garantiza aún equivalencia semántica fuente–Spec ni reemplaza los registros auténticos del modelo agente.
