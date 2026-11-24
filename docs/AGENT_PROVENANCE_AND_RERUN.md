@@ -2,6 +2,14 @@
 
 **Revisión:** 2026-11-23. **Repositorio semanal:** [ai-03-quispe](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe). **Consigna:** [AI-Econ-Modeling #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2). Este documento es un **registro externo a la carpeta generada por EconCSLib**: no sustituye sus archivos de auditoría, ni es un transcript recuperado del agente.
 
+
+## Addendum: registro original de Claude Cowork aportado por el autor (24/11/2026)
+
+**Hallazgo nuevo:** se recibió el archivo de texto [`context-transcript.md`](../context-transcript.md) de **1,107 líneas / 72,085 bytes**, SHA-256 `d789770c52990e7ac7dbb55704dd8fdbdf1cd09555430405de7bbd356e4e9039`. Se preservó el contenido aportado, sin reescribir mensajes históricos. Contiene **26 turnos USER y 26 turnos ASSISTANT**, la preparación del módulo EconCSLib, la interacción con WSL/Lean, pruebas locales y el conventional commit original. **20 operaciones de herramienta se describen mediante marcadores `[tool action: ...]` en vez de logs integrales**; los últimos turnos incluyen referencias al propio archivo. Su encabezado indica explícitamente `Model/configuration: unavailable`.
+
+**Distinción de evidencia:** recuperamos el **texto conversacional suministrado por el autor**, no la exportación nativa autenticada de la sesión de Claude Code referida en el commit `b10f831`, ni las llamadas y respuestas completas de sus herramientas, ni metadatos verificables de modelo/esfuerzo. Las afirmaciones históricas de este documento acerca de la *ausencia del archivo conversacional* quedaron sustituidas por el presente addendum; los límites relativos al *registro técnico de agente* siguen vigentes. El autor comunicó que la aceptación docente de GPT-6/XHIGH y la exposición ya están resueltas, sin que esta afirmación constituya documentación independiente de la aprobación.
+
+
 ## Declaración del autor sobre la revisión posterior con GPT-6 (24 de noviembre de 2026)
 
 **Texto declarado por el autor en la conversación actual (literal):**
@@ -14,7 +22,7 @@
 
 **Consigna:** el Issue #2 exige una configuración específica (`gpt-5.6-sol`/`xhigh`). El uso declarado de GPT-6/XHIGH es una **alternativa que debe ser evaluada o aceptada por el profesor**, no un cumplimiento equivalente que podamos auto-certificar. Los logs de GitHub Actions verifican Lean y EconCSLib, pero no autentican el modelo ni el esfuerzo de razonamiento del agente generador.
 
-**Evidencia y límites:** conversación presente + commits y acciones posteriores en [PR #2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2) y [compilación de 81 resultados](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519). No se dispone aquí de un export técnico original que certifique el ajuste XHIGH ni de un transcript completo de la generación inicial. No se fabricará dicha evidencia.
+**Evidencia y límites:** conversación presente + commits y acciones posteriores en [PR #2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2) y [compilación de 81 resultados](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519). Ahora existe el texto conversacional original aportado por el autor, pero **no** un export técnico de la configuración XHIGH ni un registro nativo completo de las operaciones del agente en la generación inicial. No se fabricará dicha evidencia.
 
 ---
 
@@ -35,7 +43,7 @@
 
 **Acreditado:** existen el código Lean, un commit atribuido a Claude Opus 4.8, un enlace a la sesión, un registro de build local, la demostración manuscrita y el PDF Beamer compilado.
 
-**No acreditado:** (i) el transcript raw de la sesión que produjo el módulo; (ii) la selección y ejecución de **GPT-5.6 Sol con `xhigh`** durante la corrida requerida por el profesor; (iii) el stdout íntegro asociado a una eventual nueva corrida con dicha configuración.
+**No acreditado técnicamente:** (i) la exportación nativa de la sesión Claude Code y sus operaciones completas —el registro textual de Claude Cowork sí se recibió—; (ii) la selección y ejecución histórica de **GPT-5.6 Sol con `xhigh`**; (iii) el stdout íntegro asociado a una eventual corrida con dicha configuración. La aceptación del modelo alternativo ha sido comunicada por el autor.
 
 El commit atribuye trabajo a Claude, pero ello **no excluye** que existieran otras sesiones con otros modelos. Sin un registro auténtico, no hay fundamento para dar por satisfecho el requisito del modelo. Tampoco sería correcto convertir la referencia al ejemplo del profesor en evidencia de un trabajo propio: por eso se compararon, de forma limitada, hashes de código y se conserva el historial.
 

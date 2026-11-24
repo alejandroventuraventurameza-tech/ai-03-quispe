@@ -2,6 +2,10 @@
 
 **Objeto:** Quispe y Xu (2026), *Agentic Delegation and the Language Frontier of Software Developers*, arXiv:2605.25438v2. **Repositorio:** [ai-03-quispe](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe). **PR:** [#2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2). **Consigna:** [Issue del curso #2](https://github.com/alexanderquispe/AI-Econ-Modeling/issues/2).
 
+## Nueva evidencia documental incorporada — 24 noviembre 2026
+
+El autor aportó la [transcripción `context-transcript.md`](../context-transcript.md) (**1,107 líneas, 72,085 bytes, 26 pares de turnos**), cuyo contenido se incorporó íntegro al repositorio y se cotejó por tamaño/estructura contra el archivo adjuntado. SHA-256: `d789770c52990e7ac7dbb55704dd8fdbdf1cd09555430405de7bbd356e4e9039`. Contiene mensajes visibles y salidas de terminal, pero **20 acciones del asistente se consignan como descripciones `[tool action: ...]`**, no como logs de herramientas. Indica `Model/configuration: unavailable`. La generación histórica continúa atribuida en Git a Claude; el registro conversacional no acredita por sí solo una corrida con `gpt-5.6-sol`/`xhigh` ni una exportación nativa del agente. El autor informa que el asunto docente del modelo está resuelto y ya efectuó la exposición. La correspondencia semántica v11 sigue parcialmente auditada, sin necesidad de más desarrollo para conservar esta entrega como formalización parcial.
+
 ## Decisión
 
 **No certificar cumplimiento académico integral.** La evidencia de compilación formal es real, pero **no** certifica la procedencia/modelo del agente requerido por el curso ni la equivalencia semántica completa entre artículo y formalización. La integración técnica del PR #2 en `main`, si se efectúa, significa consolidar un trabajo **parcial y trazable**, no declarar satisfechas dichas obligaciones.
@@ -12,7 +16,7 @@
 
 **Evidencia reproducida en CI:** [run #45486549728](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45486549728) concluyó **SUCCESS** con 8,337 tareas y 99 declaraciones Lean inspeccionadas sin `sorryAx`/`unsafeAx`; [compilación Beamer #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435) acreditó PDF de 13 páginas e imágenes de la derivación manuscrita. Estos recibos prueban sus verificaciones propias, no la equivalencia semántica integral ni la identidad del modelo generador.
 
-**Deudas explícitas que permanecen tras la integración:** (1) transcript completo y ejecución exigida `gpt-5.6-sol`/`xhigh`, o aceptación docente de la sustitución declarada GPT-6/XHIGH; (2) cotejo semántico EconCSLib v11 completo entre fuente y nueve Specs; (3) identificación de la posterior gaussiana regular en el caso de señales positivas (ampliación no indispensable para presentar formalización parcial). La publicación del repositorio en el issue ocurrió después del plazo original, lo que tampoco cambia con la fusión.
+**Deudas explícitas que permanecen tras la integración:** (1) registro **nativo de herramientas** de la corrida histórica aún no archivado (la transcripción textual de Claude Cowork sí fue recuperada); el autor comunica resuelta la aceptación docente de GPT-6/XHIGH; (2) cotejo semántico EconCSLib v11 completo entre fuente y nueve Specs; (3) identificación de la posterior gaussiana regular en el caso de señales positivas (ampliación no indispensable para presentar formalización parcial). La publicación del repositorio en el issue ocurrió después del plazo original, lo que tampoco cambia con la fusión.
 
 **Regla interpretativa:** `main` puede contener el entregable técnico **con límites**. Ninguna etiqueta, documento o fusión debe decir “cumplimiento integral”, “100%” ni “auditoría v11 superada”. La carpeta generada `lean/` y sus artefactos de estado se dejan intactos.
 
@@ -25,10 +29,10 @@
 | Problema económico y condiciones | [README](../README.md), [auditoría de nueve Specs](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | Documentado; no equivale a prueba semántica total |
 | Presentación fuente + PDF y diapositiva Lean | [PR #2](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/pull/2), [Actions #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435) | Compilado, 13 páginas |
 | Manuscrito verdadero | [PDF original e imágenes](../hand/REVISION_MANUSCRITA_2026-11-23.md) | Incorporado (7 páginas), con imágenes en presentación |
-| Prompts y respuestas relevantes | [prompts.md](../prompts.md) | Parcial: no sustituye transcript de la corrida original |
+| Prompts y respuestas relevantes | [prompts.md](../prompts.md), [transcripción aportada](../context-transcript.md) | **Archivo conversacional recuperado: 1,107 líneas**; contiene marcadores resumidos de herramientas y no metadatos autenticados de agente |
 | Carpeta generada EconCSLib intacta | [lean](../lean/), [proveniencia](AGENT_PROVENANCE_AND_RERUN.md) | Conservada; informes semánticos generados siguen abiertos |
 | Formalización Lean | [Actions #45486549728](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45486549728), [factorización exacta para una señal](../extensions/AppendixA7ScalarJointFactorization.lean) y [marginal observada por Tonelli](../extensions/AppendixA7ScalarObservedMarginal.lean) | **PASS: 8,337 jobs y 99 declaraciones auditadas**, sin `sorryAx` ni `unsafeAx`; `check --fast` PASS (8,315 jobs) |
-| Modelo de revisión y requisito original | [Declaración GPT-6/XHIGH y trazabilidad](AGENT_PROVENANCE_AND_RERUN.md) | **GPT-6 en revisión posterior; XHIGH declarado por el autor, sin log exportable.** Generación original atribuida a Claude; sustitución de modelo requiere aceptación del profesor |
+| Modelo de revisión y requisito original | [Declaración GPT-6/XHIGH y trazabilidad](AGENT_PROVENANCE_AND_RERUN.md) | **GPT-6 en revisión posterior; XHIGH declarado por el autor, sin log exportable.** Generación original atribuida a Claude; el autor comunica aceptación docente resuelta, sin acta adjunta |
 | Correspondencia fuente–Specs v11 | [Cotejo de nueve filas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | **NO CERRADA**; 9 teoremas Lean correctos no son 9 equivalencias integrales |
 
 ## Modelo de asistencia declarado por el autor (actualización: 24 noviembre 2026)
