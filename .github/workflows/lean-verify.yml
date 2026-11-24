@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7BayesianLearning"
+          build-args: "QX26AgenticDelegation.AppendixA7GaussianKernelBridge"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7BayesianLearning
+          import QX26AgenticDelegation.AppendixA7GaussianKernelBridge
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -119,6 +119,12 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_posterior_mean_eq_source
           #print axioms QX26AgenticDelegation.bayesA7_normal_kernel_quadratic
           #print axioms QX26AgenticDelegation.bayesA7_weighted_mean_below_prior_of_signal_below
+          #print axioms QX26AgenticDelegation.bayesA7_posterior_precision_pos
+          #print axioms QX26AgenticDelegation.bayesA7_reciprocal_precision_pos
+          #print axioms QX26AgenticDelegation.bayesA7_complete_square
+          #print axioms QX26AgenticDelegation.bayesA7_exponential_kernel_factorization
+          #print axioms QX26AgenticDelegation.bayesA7_gaussian_candidate_probability
+          #print axioms QX26AgenticDelegation.bayesA7_gaussian_candidate_mean
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
