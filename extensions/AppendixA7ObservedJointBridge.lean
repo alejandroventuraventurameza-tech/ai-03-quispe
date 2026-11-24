@@ -99,4 +99,25 @@ theorem bayesA7_joint_draw_observed_eq_compProd
           (bayesA7SignalKernel n variance) := by
         exact bayesA7_prior_noise_observed_eq_compProd n priorMean priorPrecision variance
 
+
+/-- The posterior kernel previously constructed by general disintegration
+is a regular conditional distribution for the actual original
+Option-indexed prior/noise sampling experiment, not just for an
+abstractly named prior-signal joint law.  This is a statement of
+equality of probability measures on the swapped joint product.
+
+It does NOT establish the explicit Gaussian posterior parameter
+formula from Appendix A.7; that identification remains open. -/
+theorem bayesA7_original_draw_posterior_disintegration
+    (n : ℕ) (priorMean priorPrecision : ℝ)
+    (variance : Fin n → ℝ) :
+    ((bayesA7SignalKernel n variance) ∘ₘ
+      bayesA7PriorMeasure priorMean priorPrecision) ⊗ₘ
+        (bayesA7PosteriorKernel n priorMean priorPrecision variance) =
+      ((bayesA7JointDrawLaw n priorMean priorPrecision variance).map
+        (fun ω : Option (Fin n) → ℝ =>
+          (ω none, fun k : Fin n => ω none + ω (some k)))).map Prod.swap := by
+  rw [bayesA7_joint_draw_observed_eq_compProd]
+  exact bayesA7_posterior_disintegration n priorMean priorPrecision variance
+
 end QX26AgenticDelegation
