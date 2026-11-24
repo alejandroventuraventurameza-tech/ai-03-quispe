@@ -87,8 +87,6 @@ theorem bayesA7_draw_law_split_prior_noise
           (bayesA7JointDrawLaw n priorMean priorPrecision variance)) := by
         rw [Measure.map_map measurable_swap e.measurable]
         congr 1
-        funext ω
-        rfl
     _ = Measure.map Prod.swap
           ((bayesA7NoiseLaw n variance).prod
             (bayesA7PriorMeasure priorMean priorPrecision)) := by
