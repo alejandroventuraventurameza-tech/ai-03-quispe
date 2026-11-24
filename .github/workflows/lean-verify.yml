@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.Prop1StrictFrontier"
+          build-args: "QX26AgenticDelegation.AppendixA7BayesianLearning"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.Prop1StrictFrontier
+          import QX26AgenticDelegation.AppendixA7BayesianLearning
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -112,6 +112,13 @@ jobs:
           #print axioms QX26AgenticDelegation.prop1_count_strict_of_new_mode_witness
           #print axioms QX26AgenticDelegation.prop1_band_implies_positive_delegation_advantage
           #print axioms QX26AgenticDelegation.prop1_count_strict_of_delegation_band
+          #print axioms QX26AgenticDelegation.bayesA7_signal_precision_nonneg
+          #print axioms QX26AgenticDelegation.bayesA7_signal_precision_pos_of_witness
+          #print axioms QX26AgenticDelegation.bayesA7_posterior_precision_ge
+          #print axioms QX26AgenticDelegation.bayesA7_posterior_precision_gt
+          #print axioms QX26AgenticDelegation.bayesA7_posterior_mean_eq_source
+          #print axioms QX26AgenticDelegation.bayesA7_normal_kernel_quadratic
+          #print axioms QX26AgenticDelegation.bayesA7_weighted_mean_below_prior_of_signal_below
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
