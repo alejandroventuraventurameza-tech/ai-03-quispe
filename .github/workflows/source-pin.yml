@@ -64,6 +64,58 @@ jobs:
               | tee -a ci-evidence/source/arxiv-v2-html-manifest.txt
           fi
 
+      - name: Inspect source archive and hash individual TeX files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import tarfile
+          from pathlib import Path
+
+          archive = Path("/tmp/arxiv-v2-source.tar")
+          result = {
+              "archive_url": "https://arxiv.org/src/2605.25438v2",
+              "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
+              "source_artifact_type": None,
+              "entries": 0,
+              "tex_files": [],
+              "a7_candidates": [],
+          }
+          with tarfile.open(archive, mode="r:*") as tf:
+              result["source_artifact_type"] = "tar-readable"
+              members = sorted((m for m in tf.getmembers() if m.isfile()), key=lambda m: m.name)
+              result["entries"] = len(members)
+              for m in members:
+                  if not m.name.lower().endswith((".tex", ".ltx")):
+                      continue
+                  stream = tf.extractfile(m)
+                  if stream is None:
+                      continue
+                  data = stream.read()
+                  item = {
+                      "archive_path": m.name,
+                      "bytes": len(data),
+                      "sha256": hashlib.sha256(data).hexdigest(),
+                  }
+                  result["tex_files"].append(item)
+                  snippet = data.decode("utf-8", errors="replace").lower()
+                  if any(term in snippet for term in (
+                      "learning after agentic interaction",
+                      "bayesian learning",
+                      "posterior kernel",
+                  )):
+                      result["a7_candidates"].append(m.name)
+          out = Path("ci-evidence/source/arxiv-v2-tex-inventory.json")
+          out.write_text(json.dumps(result, indent=2, ensure_ascii=True) + "\n")
+          print(f"archive_entries={result['entries']}")
+          print(f"tex_files_hashed={len(result['tex_files'])}")
+          print(f"a7_candidate_paths={result['a7_candidates']}")
+          if not result["tex_files"]:
+              raise SystemExit("No TeX members found; do not describe this as verified source TeX")
+          PY
+
       - name: Upload hashes and retrieval provenance, not source redistribution
         if: always()
         uses: actions/upload-artifact@v4
