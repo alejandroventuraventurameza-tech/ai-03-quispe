@@ -1,6 +1,6 @@
 # Apéndice A.7 — posterior regular condicional por desintegración
 
-**Fecha:** 2026-11-24. **Fuente de economía:** Quispe y Xu, arXiv:2605.25438v2, Apéndice A.7, ecuaciones 28–29; [fijación del TeX original](PRIMARY_SOURCE_PIN_20261124.md). **Biblioteca formal:** Mathlib, `Mathlib.Probability.Kernel.Posterior` de la revisión identificada por el `lake-manifest.json` del upstream fijado. **Extensión:** [`AppendixA7PosteriorDisintegration.lean`](../extensions/AppendixA7PosteriorDisintegration.lean). **Estado:** pendiente de comprobación final por GitHub Actions; no sumar cuatro nuevos teoremas hasta obtener `success`.
+**Fecha:** 2026-11-24. **Fuente de economía:** Quispe y Xu, arXiv:2605.25438v2, Apéndice A.7, ecuaciones 28–29; [fijación del TeX original](PRIMARY_SOURCE_PIN_20261124.md). **Biblioteca formal:** Mathlib, `Mathlib.Probability.Kernel.Posterior` de la revisión identificada por el `lake-manifest.json` del upstream fijado. **Extensión:** [`AppendixA7PosteriorDisintegration.lean`](../extensions/AppendixA7PosteriorDisintegration.lean). **Estado — DEMOSTRADO EN LEAN:** [GitHub Actions #45337734090](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45337734090) **PASS**, en el commit `27ce83545f0f4447b363c291f7cf271dbd98ccc3`: **8,327 tareas compiladas**, **70 teoremas** inspeccionados sin `sorryAx` ni `unsafeAx`, `paper_contribution.py check ... --fast` **PASS** (**8,315 tareas**), sin advertencias del módulo nuevo. [Artefacto de evidencias](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45337734090/artifacts/14894586957).
 
 ## 1. Qué se construye
 
@@ -49,6 +49,6 @@ P_x\stackrel{?}{=}N\!\left(
 
 ## 4. Reglas de cierre
 
-Para marcar estos cuatro endpoints como **DEMOSTRADO EN LEAN** se requiere su compilación exacta por GitHub Actions, `#print axioms` de los **70 endpoints acumulados** sin `sorryAx` o `unsafeAx`, y `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` aprobado. Un error de compilador mantiene el estado **PENDIENTE** y debe registrarse con su ejecución fallida original.
+**COMPUERTA DE LEAN SUPERADA:** [#45337734090](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45337734090) compiló los cuatro endpoints nuevos y los 66 anteriores, inspeccionó **70** declaraciones de teoremas sin `sorryAx` o `unsafeAx` y aprobó `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast`. Se conserva la obligación semántica **PENDIENTE** de demostrar la identidad con la Normal de media ponderada y la correspondencia con el espacio original de productividad más errores.
 
 La carpeta generada `lean/`, las nueve especificaciones fuente-facing originales y los dictámenes v11 de EconCSLib no se editan. Ninguna prueba aquí reemplaza el transcript auténtico del agente histórico. Se compila **exclusivamente en GitHub Actions**, sin Codex ni API de modelos.
