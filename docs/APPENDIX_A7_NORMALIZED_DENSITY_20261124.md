@@ -1,6 +1,6 @@
 # Apéndice A.7 — densidad bayesiana normalizada para señales observadas
 
-**Fecha:** 2026-11-24. **Fuente:** Quispe y Xu (2026), arXiv:2605.25438v2, apéndice A.7, ecuaciones (28)–(29). **TeX original fijado:** [`PRIMARY_SOURCE_PIN_20261124.md`](PRIMARY_SOURCE_PIN_20261124.md), SHA-256 `sections/10_appendix.tex` = `9b6ec306138f1105c42d2d19737cf93e4233c7c77a10dced0aba640dc8f1472c`. **Extensión separada:** [`AppendixA7NormalizedPosteriorDensity.lean`](../extensions/AppendixA7NormalizedPosteriorDensity.lean). **Verificación:** en compilación; NO se declara PASS hasta revisar el workflow exacto y sus axiomas.
+**Fecha:** 2026-11-24. **Fuente:** Quispe y Xu (2026), arXiv:2605.25438v2, apéndice A.7, ecuaciones (28)–(29). **TeX original fijado:** [`PRIMARY_SOURCE_PIN_20261124.md`](PRIMARY_SOURCE_PIN_20261124.md), SHA-256 `sections/10_appendix.tex` = `9b6ec306138f1105c42d2d19737cf93e4233c7c77a10dced0aba640dc8f1472c`. **Extensión separada:** [`AppendixA7NormalizedPosteriorDensity.lean`](../extensions/AppendixA7NormalizedPosteriorDensity.lean). **Verificación — DEMOSTRADO EN LEAN:** [GitHub Actions #45334600598](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45334600598) **PASS** en el commit `91e73d56b8777223fedc6c5acb029614bbf4daf0`: **8,324 tareas compiladas**, **51 teoremas inspeccionados** sin `sorryAx` ni `unsafeAx`, cero advertencias en el módulo nuevo, y `paper_contribution.py check ... --fast` **PASS** (**8,315 tareas**). [Artefacto con registros de compilación y axiomas](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45334600598/artifacts/14893796724).
 
 ## 1. Núcleo, media, precisión y normalización
 
@@ -35,9 +35,9 @@ No se introducen axiomas nuevos para «suponer» que integra 1: se usa el result
 
 ## 3. Compuerta de calidad
 
-- [ ] Compilar `QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity` en GitHub Actions.
-- [ ] Inspeccionar `#print axioms` de **cinco** resultados nuevos y los **46** previos (51 resultados en total), sin `sorryAx` ni `unsafeAx`.
-- [ ] Superar `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast`.
-- [ ] Preservar `lean/` idéntica a la generación original y documentar la evidencia de commits, SHA y logs.
+- [x] Compilar `QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity` en [GitHub Actions #45334600598](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45334600598), **PASS**.
+- [x] Inspeccionar `#print axioms` de **cinco** resultados nuevos y los **46** previos (51 resultados en total), sin `sorryAx` ni `unsafeAx`.
+- [x] Superar `python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast` en la misma corrida.
+- [x] Preservar `lean/` sin ediciones en esta ronda y documentar el commit compilado y el artefacto del runner.
 
 Se ejecuta **únicamente con GitHub Actions**, sin Codex ni llamadas a API de modelos.
