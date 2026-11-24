@@ -77,7 +77,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7JointDrawSplit"
+          build-args: "QX26AgenticDelegation.AppendixA7ObservedJointBridge"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -93,7 +93,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7JointDrawSplit
+          import QX26AgenticDelegation.AppendixA7ObservedJointBridge
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -166,6 +166,9 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_posterior_unique_ae
           #print axioms QX26AgenticDelegation.bayesA7_draw_law_split_noise_prior
           #print axioms QX26AgenticDelegation.bayesA7_draw_law_split_prior_noise
+          #print axioms QX26AgenticDelegation.bayesA7_prior_noise_to_observed_pair_measurable
+          #print axioms QX26AgenticDelegation.bayesA7_prior_noise_observed_eq_compProd
+          #print axioms QX26AgenticDelegation.bayesA7_joint_draw_observed_eq_compProd
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
