@@ -165,6 +165,7 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_posterior_recovers_prior
           #print axioms QX26AgenticDelegation.bayesA7_posterior_unique_ae
           #print axioms QX26AgenticDelegation.bayesA7_draw_law_split_noise_prior
+          #print axioms QX26AgenticDelegation.bayesA7_draw_law_split_prior_noise
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
