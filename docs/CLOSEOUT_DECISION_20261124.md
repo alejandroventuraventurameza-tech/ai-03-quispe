@@ -18,8 +18,14 @@
 | Prompts y respuestas relevantes | [prompts.md](../prompts.md) | Parcial: no sustituye transcript de la corrida original |
 | Carpeta generada EconCSLib intacta | [lean](../lean/), [proveniencia](AGENT_PROVENANCE_AND_RERUN.md) | Conservada; informes semánticos generados siguen abiertos |
 | Formalización Lean | [Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519), [kernel gaussiano explícito](../extensions/AppendixA7ExplicitGaussianKernel.lean) | **PASS: 8,330 jobs y 81 endpoints auditados**, sin `sorryAx` ni `unsafeAx`; `check --fast` PASS (8,315 jobs) |
-| Agente `gpt-5.6-sol` / `xhigh` | [Auditoría](AGENT_PROVENANCE_AND_RERUN.md) | **NO ACREDITADO**; commit original atribuido a Claude Opus 4.8 |
+| Modelo de revisión y requisito original | [Declaración GPT-6/XHIGH y trazabilidad](AGENT_PROVENANCE_AND_RERUN.md) | **GPT-6 en revisión posterior; XHIGH declarado por el autor, sin log exportable.** Generación original atribuida a Claude; sustitución de modelo requiere aceptación del profesor |
 | Correspondencia fuente–Specs v11 | [Cotejo de nueve filas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | **NO CERRADA**; 9 teoremas Lean correctos no son 9 equivalencias integrales |
+
+## Modelo de asistencia declarado por el autor (actualización: 24 noviembre 2026)
+
+Las revisiones y ampliaciones posteriores se realizaron en ChatGPT con **GPT-6**. El autor indica el modo de razonamiento **XHIGH**, pero esta etiqueta se registra como declaración del autor y no como metadato exportado y verificado de la sesión. El autor considera a GPT-6 un modelo superior al solicitado; esto no constituye una prueba de equivalencia ni aceptación académica de la sustitución.
+
+**Distinción:** es correcto decir «ampliaciones posteriores asistidas por GPT-6, XHIGH según el autor; verificación independiente en GitHub Actions». No es correcto decir «la generación histórica de la carpeta EconCSLib se hizo con GPT-6» porque el commit anterior contiene atribución a Claude Opus 4.8. Véase [documentación de proveniencia](AGENT_PROVENANCE_AND_RERUN.md).
 
 ## Frontera matemática pendiente (no confundir con fallo de compilación)
 
@@ -31,7 +37,7 @@ La rama construye la gaussiana candidata de densidad normalizada, el kernel cond
 
 1. Demostrar que la candidata `G_x = Normal(m(x),1/τ)`, con `τ=π+Σ_k 1/v_k` y `m(x)=(πμ₀+Σ_k x_k/v_k)/τ`, satisface `(Q ∘ₘ μ) ⊗ₘ G = (μ ⊗ₘ Q).map Prod.swap`. Solo entonces la unicidad casi segura permite concluir `G_x = P_x` para casi todo `x`.
 2. Cerrar, fuente por fuente, el inventario EconCSLib v11 original. Los Specs 1,2,3,4,8,9 siguen parciales; 5 y 6 corrigen hipótesis de estricteza; 7 es un contraejemplo adicional.
-3. Acreditar configuración y sesión histórica del agente. El commit original atribuye intervención a Claude y no acredita `gpt-5.6-sol`/`xhigh`.
+3. Presentar la revisión posterior como realizada con **GPT-6** (razonamiento **XHIGH declarado por el autor**) y **solicitar la aceptación del profesor** para sustituir el requisito explícito de `gpt-5.6-sol`/`xhigh`. El commit original atribuido a Claude Opus 4.8 conserva su proveniencia.
 
 **Importante:** que la normal candidata esté normalizada para todo `x` no implica por sí mismo que sea posterior del modelo conjunto. El paso que falta es una igualdad de medidas sobre el producto, no simplemente completar cuadrados.
 
