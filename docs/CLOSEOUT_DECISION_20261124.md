@@ -17,7 +17,7 @@
 | Manuscrito verdadero | [PDF original e imágenes](../hand/REVISION_MANUSCRITA_2026-11-23.md) | Incorporado (7 páginas), con imágenes en presentación |
 | Prompts y respuestas relevantes | [prompts.md](../prompts.md) | Parcial: no sustituye transcript de la corrida original |
 | Carpeta generada EconCSLib intacta | [lean](../lean/), [proveniencia](AGENT_PROVENANCE_AND_RERUN.md) | Conservada; informes semánticos generados siguen abiertos |
-| Formalización Lean | [Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519), [kernel gaussiano explícito](../extensions/AppendixA7ExplicitGaussianKernel.lean) | **PASS: 8,330 jobs y 81 endpoints auditados**, sin `sorryAx` ni `unsafeAx`; `check --fast` PASS (8,315 jobs) |
+| Formalización Lean | [Actions #45443996146](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45443996146), [factorización puntual de densidades](../extensions/AppendixA7JointDensityFactorization.lean) | **PASS: 8,331 jobs y 82 declaraciones auditadas**, sin `sorryAx` ni `unsafeAx`; `check --fast` PASS (8,315 jobs) |
 | Modelo de revisión y requisito original | [Declaración GPT-6/XHIGH y trazabilidad](AGENT_PROVENANCE_AND_RERUN.md) | **GPT-6 en revisión posterior; XHIGH declarado por el autor, sin log exportable.** Generación original atribuida a Claude; sustitución de modelo requiere aceptación del profesor |
 | Correspondencia fuente–Specs v11 | [Cotejo de nueve filas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | **NO CERRADA**; 9 teoremas Lean correctos no son 9 equivalencias integrales |
 
@@ -72,3 +72,11 @@ Se incorporó [gaussian-bayes-diagnostic.yml](../.github/workflows/gaussian-baye
 **PENDIENTE, no disimulado por el CI verde:** probar que el kernel candidato `G` satisface la identidad `(Q ∘ₘ μ) ⊗ₘ G = (μ ⊗ₘ Q).map Prod.swap`; por la unicidad casi segura ya formalizada, esto identificaría la candidata con la posterior regular del modelo de muestreo original. La igualdad de la densidad normalizada para cada vector *no equivale por sí sola* a esa identidad conjunta. Además siguen pendientes la auditoría v11 fuente–Spec y la evidencia de ejecución auténtica del agente `gpt-5.6-sol`/`xhigh`.
 
 **Estado de la entrega:** candidatura técnicamente reforzada; sin certificación de cumplimiento íntegro y PR en borrador. No modificar `lean/` generado ni registros históricos.
+
+## Puente adicional: factorización gaussiana puntual — verificado
+
+El nuevo módulo [AppendixA7JointDensityFactorization.lean](../extensions/AppendixA7JointDensityFactorization.lean) introduce el producto de constantes de altura gaussianas del prior y de las señales, una expresión de densidad conjunta normalizada por esas alturas, y un factor de evidencia dependiente solo de las señales. El teorema `bayesA7_joint_density_eq_evidence_mul_candidate` **demuestra en Lean** que la expresión conjunta se factoriza como evidencia × densidad posterior candidata para toda productividad latente, dados prior positivo y varianzas positivas. No presupone que el candidato es un posterior regular.
+
+**GitHub Actions [#45443996146](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45443996146): SUCCESS.** Compilación Lean con 8,331 tareas, 82 declaraciones inspeccionadas por `#print axioms`, sin `sorryAx` ni `unsafeAx`; EconCSLib `check --fast` PASS (8,315 tareas). La primera corrida del nuevo módulo falló por una táctica `ring` redundante y se corrigió en el [commit d9825ed](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/d9825edbe69dd3563e39d38a544eca5307d001b4).
+
+**Frontera no cerrada:** para deducir la posterior condicional explícita falta identificar el factor de evidencia con la densidad de la ley marginal de las observaciones, y demostrar la igualdad de medidas conjuntas (`compProd`) entre el modelo generativo y el kernel candidato. Una igualdad puntual de funciones aún no es una identidad de desintegración.
