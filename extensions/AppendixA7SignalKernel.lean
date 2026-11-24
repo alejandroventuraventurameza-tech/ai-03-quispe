@@ -104,8 +104,6 @@ theorem bayesA7_signal_kernel_apply_eq_shifted_noise
   rw [Measure.dirac_prod]
   rw [Measure.map_map (bayesA7_signal_map_measurable n) (by fun_prop)]
   congr 1
-  funext ε k
-  rfl
 
 /-- A common theta shift of independent Gaussian errors is the product
 of Gaussian marginals N(theta, variance_k). In particular the
