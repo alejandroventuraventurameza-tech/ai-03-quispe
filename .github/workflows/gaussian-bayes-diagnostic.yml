@@ -1,9 +1,9 @@
 name: Gaussian Bayes identity (numerical diagnostic)
 
 on:
-  push:
+  pull_request:
     branches:
-      - work/issue2-quality-closeout-20261123
+      - main
     paths:
       - scripts/check_gaussian_bayes_identity.py
       - .github/workflows/gaussian-bayes-diagnostic.yml
