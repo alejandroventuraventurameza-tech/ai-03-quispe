@@ -36,6 +36,14 @@ jobs:
       - name: Check out submitted weekly repository
         uses: actions/checkout@v4
 
+      - name: Gaussian factorization numerical diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence
+          python3 scripts/check_gaussian_bayes_identity.py | tee ci-evidence/gaussian-bayes-logdensity.txt
+          echo 'Gaussian identity: numerical only; no Lean posterior-equivalence claim.' >> "$GITHUB_STEP_SUMMARY"
+
       - name: Download pinned EconCSLib successor
         shell: bash
         run: |
