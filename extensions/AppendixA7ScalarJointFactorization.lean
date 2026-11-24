@@ -56,7 +56,7 @@ theorem bayesA7_scalar_joint_real_pdf_eq_height_kernel
   unfold gaussianPDFReal
   rw [Real.coe_toNNReal _ (le_of_lt (one_div_pos.mpr hPrior))]
   rw [Real.coe_toNNReal _ (le_of_lt hVar)]
-  rw [← Real.exp_add, hExponent]
+  rw [← hExponent, Real.exp_add]
   ring
 
 /-- The exact true scalar joint pdf factorizes pointwise as the
