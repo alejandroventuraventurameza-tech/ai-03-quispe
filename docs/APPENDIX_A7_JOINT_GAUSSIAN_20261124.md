@@ -64,3 +64,10 @@ La anterior [demostración de densidad normalizada](APPENDIX_A7_NORMALIZED_DENSI
 para todos los conjuntos medibles \(A,B\) pertinentes. Solo esa identidad (o una forma equivalente de esperanza condicional) habilita la frase **«posterior regular condicional formalmente demostrada»**.
 
 **No se altera** la carpeta generada `lean/`, ni sus estados de auditoría `not started`; tampoco se sustituye el recibo fuente→`Spec` v11 de EconCSLib por este resultado matemático. El trabajo se desarrolla con GPT-6 en esta conversación y el código se compila exclusivamente con **GitHub Actions, sin Codex ni API**.
+
+
+## Registro de primera ejecución y corrección Lean (2026-11-24)
+
+La primera [ejecución #45335578219](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45335578219) **FAIL** (no se reetiqueta como válida): los 51 teoremas anteriores compilaron, pero la extensión falló porque la inferencia de instancias no identificaba la familia `∀ i, IsProbabilityMeasure (bayesA7DrawCoordLaw ... i)` para las medidas coordenadas, y porque `by decide` no puede cerrar una proposición con índice libre `k`.
+
+En el commit [`08446c9`](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/08446c9af27e1072eafbea689b9ac187cb7bd0fc) se añadió una instancia **demostrada** para cada medida gaussiana y se cambió la prueba de desigualdad entre índices `none` y `some k` por `by simp`. No se supuso la independencia como axioma ni se alteraron las hipótesis del artículo. La [segunda corrida #45335958632](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45335958632) debe completar la compilación, los axiomas y el chequeo fast; **no declararla aprobada hasta consultar los logs**.
