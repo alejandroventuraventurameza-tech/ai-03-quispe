@@ -4,7 +4,17 @@
 
 ## Decisión
 
-**No certificar cumplimiento integral ni fusionar como entrega completamente conforme por ahora.** La evidencia de compilación formal es real, pero **no** certifica la procedencia/modelo del agente requerido por el curso ni la equivalencia semántica completa entre artículo y formalización.
+**No certificar cumplimiento académico integral.** La evidencia de compilación formal es real, pero **no** certifica la procedencia/modelo del agente requerido por el curso ni la equivalencia semántica completa entre artículo y formalización. La integración técnica del PR #2 en `main`, si se efectúa, significa consolidar un trabajo **parcial y trazable**, no declarar satisfechas dichas obligaciones.
+
+## Dictamen de integración técnica — 24 de noviembre de 2026
+
+**Alcance decidido para el cierre de RP2:** detener las extensiones Lean voluntarias y conservar los resultados comprobados; integrar las mejoras auditadas de PR #2 como **formalización parcial documentada**, sin esperar a demostrar la posterior gaussiana completa ni falsear la corrida de agente. Esto es una decisión de integración de archivos, **no** un visto bueno del profesor ni una acreditación de cumplimiento pleno.
+
+**Evidencia reproducida en CI:** [run #45486549728](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45486549728) concluyó **SUCCESS** con 8,337 tareas y 99 declaraciones Lean inspeccionadas sin `sorryAx`/`unsafeAx`; [compilación Beamer #45224605435](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45224605435) acreditó PDF de 13 páginas e imágenes de la derivación manuscrita. Estos recibos prueban sus verificaciones propias, no la equivalencia semántica integral ni la identidad del modelo generador.
+
+**Deudas explícitas que permanecen tras la integración:** (1) transcript completo y ejecución exigida `gpt-5.6-sol`/`xhigh`, o aceptación docente de la sustitución declarada GPT-6/XHIGH; (2) cotejo semántico EconCSLib v11 completo entre fuente y nueve Specs; (3) identificación de la posterior gaussiana regular en el caso de señales positivas (ampliación no indispensable para presentar formalización parcial). La publicación del repositorio en el issue ocurrió después del plazo original, lo que tampoco cambia con la fusión.
+
+**Regla interpretativa:** `main` puede contener el entregable técnico **con límites**. Ninguna etiqueta, documento o fusión debe decir “cumplimiento integral”, “100%” ni “auditoría v11 superada”. La carpeta generada `lean/` y sus artefactos de estado se dejan intactos.
 
 ## Matriz de salida
 
@@ -47,10 +57,10 @@ El trailer del commit histórico [b10f831](https://github.com/alejandroventurave
 
 ## Reglas de entrega
 
-- Mantener el PR abierto en **draft** mientras no se acredite el requisito explícito del agente; no declarar «finalizado» sin ese elemento.
+- No declarar **finalizado con cumplimiento académico integral** mientras no se acredite la configuración requerida del agente. Se permite integrar técnicamente el PR como **trabajo parcial y auditado**, sin simular la aprobación docente.
 - No editar `lean/status.json`, auditorías generadas ni hashes para forzar aprobación.
 - No modificar la fecha de entrega: el comentario al Issue #2 existe, pero fue posterior al plazo histórico.
-- Al disponer de la nueva corrida auténtica: revisar diff del `lean/` nuevo, contrastar Specs, compilar Beamer, ejecutar CI Lean, actualizar esta matriz con URLs de evidencias y recién entonces evaluar la fusión.
+- Si posteriormente existe una nueva corrida auténtica: revisar diff del `lean/` nuevo, contrastar Specs, compilar Beamer, ejecutar CI Lean y actualizar esta matriz. Evaluar entonces la **conformidad académica**, aunque las mejoras técnicas existentes ya estén fusionadas.
 
 **Conclusión:** entregables visibles y verificación formal parcial sólida, pero **cierre académico integral aún bloqueado** por configuración/proveniencia del agente y auditoría semántica fuente–Lean.
 
