@@ -1,6 +1,6 @@
 # Apéndice A.7 — aprendizaje después de delegación: auditoría de ecuaciones (28)–(29)
 
-**Fecha:** 2026-11-24, Lima. **Fuente primaria:** [Quispe y Xu (2026), arXiv 2605.25438v2, apéndice A.7](https://arxiv.org/html/2605.25438v2). **Extensión Lean:** [`extensions/AppendixA7BayesianLearning.lean`](../extensions/AppendixA7BayesianLearning.lean). No modifica los archivos de `lean/` generados por EconCSLib. **Estado de compilación:** contrastar el nuevo workflow de GitHub Actions antes de declarar PASS.
+**Fecha:** 2026-11-24, Lima. **Fuente primaria:** [Quispe y Xu (2026), arXiv 2605.25438v2, apéndice A.7](https://arxiv.org/html/2605.25438v2). **Extensión Lean:** [`extensions/AppendixA7BayesianLearning.lean`](../extensions/AppendixA7BayesianLearning.lean). No modifica los archivos de `lean/` generados por EconCSLib. **Estado de compilación — VERIFICADO EN LEAN:** [GitHub Actions #45331830830](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45331830830) **PASS** (8,322 jobs, 40 teoremas inspeccionados sin `sorryAx` ni `unsafeAx`, paper check `--fast` exitoso). [Artefacto de la ejecución](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45331830830/artifacts/14892850522).
 
 ## 1. Inventario matemático en la fuente
 
@@ -41,7 +41,7 @@ La forma que usa \(\bar x_q\) requiere **\(q>0\)**. Con **cero señales**, \(q=0
 
 ## 3. Compuertas de seguridad de las afirmaciones
 
-- **Aprobación Lean:** verificar que la ejecución compila el target `QX26AgenticDelegation.AppendixA7BayesianLearning` junto con los otros 33 teoremas, inspecciona siete nuevos `#print axioms` sin `sorryAx`/ `unsafeAx` y termina `check --fast` exitosamente.
+- **Aprobación Lean — COMPLETA:** el runner [#45331830830](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45331830830) compiló `QX26AgenticDelegation.AppendixA7BayesianLearning` junto con 33 resultados anteriores (**8,322 jobs**), inspeccionó siete nuevos `#print axioms` y los 33 previos (**40**, sin `sorryAx` ni `unsafeAx`) y terminó `check --fast` exitosamente. Esto acredita los enunciados algebraicos, no la conjugación Normal–Normal como igualdad de medidas.
 - **Correspondencia semántica:** no elevar la fila A.7 a “formalización Bayesiana completa” solo por álgebra del exponente.
 - **Fuente y alcance:** ecuaciones 28 y 29 del HTML v2 consultado; sin reclamar transcripción byte-pinned de las líneas TeX ni aprobación v11 de EconCSLib.
 - **Proveniencia:** las nuevas pruebas son mejoras posteriores de esta conversación y se publican como `extensions/` separadas. No se presentan como artefactos recuperados de la sesión histórica del agente.
