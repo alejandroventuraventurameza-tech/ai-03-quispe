@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity"
+          build-args: "QX26AgenticDelegation.AppendixA7JointGaussianSignals"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7NormalizedPosteriorDensity
+          import QX26AgenticDelegation.AppendixA7JointGaussianSignals
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -130,6 +130,12 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_normalized_density_eq_gaussian_pdf
           #print axioms QX26AgenticDelegation.bayesA7_normalized_density_integral_one
           #print axioms QX26AgenticDelegation.bayesA7_normalized_density_measure_eq_gaussian_candidate
+          #print axioms QX26AgenticDelegation.bayesA7_joint_draw_probability
+          #print axioms QX26AgenticDelegation.bayesA7_joint_coordinates_independent
+          #print axioms QX26AgenticDelegation.bayesA7_joint_prior_marginal
+          #print axioms QX26AgenticDelegation.bayesA7_joint_noise_marginal
+          #print axioms QX26AgenticDelegation.bayesA7_prior_independent_of_noise
+          #print axioms QX26AgenticDelegation.bayesA7_observed_signal_marginal
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
