@@ -1,0 +1,59 @@
+name: Build and review Beamer
+
+on:
+  push:
+    branches:
+      - work/issue2-quality-closeout-20261123
+    paths:
+      - presentation.tex
+      - hand/**
+      - .github/workflows/beamer.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  beamer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install TeX packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-lang-spanish latexmk poppler-utils
+      - name: Check required handwritten evidence
+        run: |
+          for file in hand/prop-3-page-1.jpg hand/prop-3-page-2.jpg; do
+            if [ ! -f "$file" ]; then
+              echo "::warning title=Handwritten evidence missing::$file is not present. The PDF will show a placeholder and is NOT a final compliant submission."
+            fi
+          done
+      - name: Compile and check PDF
+        run: |
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error presentation.tex
+          pdfinfo presentation.pdf | grep -E 'Pages:|Page size:'
+          if grep -E 'Overfull \\[hv]box|LaTeX Warning: Reference.*undefined' presentation.log; then
+            echo "::warning::Review LaTeX box overflow or unresolved reference warnings."
+          fi
+      - name: Publish compiled deck as a build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-3-beamer-review
+          path: presentation.pdf
+      - name: Commit compiled PDF only if branch has not advanced
+        if: github.ref == 'refs/heads/work/issue2-quality-closeout-20261123'
+        run: |
+          git fetch --no-tags origin "$GITHUB_REF_NAME"
+          actual_sha="$(git rev-parse "refs/remotes/origin/$GITHUB_REF_NAME")"
+          if [ "$actual_sha" != "$GITHUB_SHA" ]; then
+            echo "::notice::Branch advanced from $GITHUB_SHA to $actual_sha; skip stale PDF commit. Run the workflow again for the latest source."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add presentation.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "build(slides): compile review PDF from current Beamer source"
+            git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          fi

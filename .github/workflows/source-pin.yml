@@ -1,0 +1,141 @@
+name: Pin primary paper v2 source digests (no Codex)
+
+on:
+  push:
+    branches:
+      - work/issue2-quality-closeout-20261123
+    paths:
+      - .github/workflows/source-pin.yml
+      - scripts/source_span_audit.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pin-arxiv-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+
+      - name: Download exact cited arXiv v2 and compute evidence hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence/source
+          src="https://arxiv.org/html/2605.25438v2"
+          curl --fail --location --retry 3 --retry-delay 4 --connect-timeout 30 --max-time 180 \
+            --user-agent "Repository3-AcademicSourceAudit/1.0" \
+            "$src" -o /tmp/arxiv-2605.25438v2.html
+          test -s /tmp/arxiv-2605.25438v2.html
+          grep -q 'Learning after agentic interaction' /tmp/arxiv-2605.25438v2.html
+          grep -q '2605.25438' /tmp/arxiv-2605.25438v2.html
+          {
+            printf 'source_url=%s\n' "$src"
+            printf 'retrieval_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf 'workflow_sha=%s\n' "$GITHUB_SHA"
+            printf 'source_size_bytes=%s\n' "$(wc -c < /tmp/arxiv-2605.25438v2.html)"
+            printf 'source_sha256=%s\n' "$(sha256sum /tmp/arxiv-2605.25438v2.html | awk '{print $1}')"
+            printf 'html_a7_anchor_found=true\n'
+          } | tee ci-evidence/source/arxiv-v2-html-manifest.txt
+          echo 'Pinning the exact downloaded HTML bytes is documentary evidence, not a complete source-to-Spec validation.' \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Attempt the author TeX source archive independently (optional)
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://arxiv.org/src/2605.25438v2"
+          if curl --fail --location --retry 2 --retry-delay 3 --connect-timeout 30 \
+              --max-time 180 "$url" -o /tmp/arxiv-v2-source.tar; then
+            if test -s /tmp/arxiv-v2-source.tar; then
+              {
+                printf 'author_source_url=%s\n' "$url"
+                printf 'archive_size_bytes=%s\n' "$(wc -c < /tmp/arxiv-v2-source.tar)"
+                printf 'archive_sha256=%s\n' "$(sha256sum /tmp/arxiv-v2-source.tar | awk '{print $1}')"
+                printf 'source_archive_retrieved=true\n'
+              } | tee -a ci-evidence/source/arxiv-v2-html-manifest.txt
+            else
+              echo 'source_archive_retrieved=false (empty)' | tee -a ci-evidence/source/arxiv-v2-html-manifest.txt
+            fi
+          else
+            echo 'source_archive_retrieved=false (HTTP unavailable; do not infer content)' \
+              | tee -a ci-evidence/source/arxiv-v2-html-manifest.txt
+          fi
+
+      - name: Inspect source archive and hash individual TeX files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import tarfile
+          from pathlib import Path
+
+          archive = Path("/tmp/arxiv-v2-source.tar")
+          result = {
+              "archive_url": "https://arxiv.org/src/2605.25438v2",
+              "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
+              "source_artifact_type": None,
+              "entries": 0,
+              "tex_files": [],
+              "a7_candidates": [],
+          }
+          with tarfile.open(archive, mode="r:*") as tf:
+              result["source_artifact_type"] = "tar-readable"
+              members = sorted((m for m in tf.getmembers() if m.isfile()), key=lambda m: m.name)
+              result["entries"] = len(members)
+              for m in members:
+                  if not m.name.lower().endswith((".tex", ".ltx")):
+                      continue
+                  stream = tf.extractfile(m)
+                  if stream is None:
+                      continue
+                  data = stream.read()
+                  item = {
+                      "archive_path": m.name,
+                      "bytes": len(data),
+                      "sha256": hashlib.sha256(data).hexdigest(),
+                  }
+                  result["tex_files"].append(item)
+                  snippet = data.decode("utf-8", errors="replace").lower()
+                  if any(term in snippet for term in (
+                      "learning after agentic interaction",
+                      "bayesian learning",
+                      "posterior kernel",
+                  )):
+                      result["a7_candidates"].append(m.name)
+          out = Path("ci-evidence/source/arxiv-v2-tex-inventory.json")
+          out.write_text(json.dumps(result, indent=2, ensure_ascii=True) + "\n")
+          print(f"archive_entries={result['entries']}")
+          print(f"tex_files_hashed={len(result['tex_files'])}")
+          print(f"a7_candidate_paths={result['a7_candidates']}")
+          for item in result['tex_files']:
+              if item['archive_path'].endswith(('03_theory.tex', '10_appendix.tex')):
+                  print(f"source_tex_path={item['archive_path']} sha256={item['sha256']} bytes={item['bytes']}")
+          if not result["a7_candidates"]:
+              raise SystemExit('No A.7 source heading located in TeX; cannot claim matching source')
+          if not result["tex_files"]:
+              raise SystemExit("No TeX members found; do not describe this as verified source TeX")
+          PY
+
+      - name: Record nine source-TeX and Lean-Spec candidate anchors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/source_span_audit.py \
+            /tmp/arxiv-v2-source.tar \
+            lean/PaperInterface.lean \
+            ci-evidence/source/source-lean-anchor-receipt.json
+          echo "This label/line receipt is NOT EconCSLib v11 semantic validation." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload hashes and retrieval provenance, not source redistribution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo3-primary-source-v2-hashes
+          path: ci-evidence/source/
+          if-no-files-found: warn

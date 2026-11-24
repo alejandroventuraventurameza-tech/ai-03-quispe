@@ -1,0 +1,27 @@
+EconCSLib paper-scoped development check
+=========================================
+
+Paper: QX26AgenticDelegation
+Source: https://arxiv.org/abs/2605.25438v2
+Date recorded: 2026-09-04
+Environment: WSL Ubuntu; repository toolchain Lean v4.30.0-rc2
+
+Commands run from the EconCSLib repository root:
+
+  lake build QX26AgenticDelegation.PaperInterface
+  python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast
+
+Reported result: PASS
+Focused build: completed successfully (8,315 jobs reported by the local run)
+Proof endpoints: 9
+Remaining sorry/admit declarations in the paper Lean files: 0
+
+Scope note
+----------
+
+This is the fast development check required before copying the generated paper
+folder. It verifies the focused Lean surface and paper-owned structure. It is
+not the full source-grounded EconCSLib closeout. The generated audit files still
+record that the independent source-to-Spec review and human sign-off are
+pending, so the weekly repository treats the result as a successful Lean build
+with an incomplete semantic audit.
