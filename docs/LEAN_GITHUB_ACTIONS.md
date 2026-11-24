@@ -60,3 +60,12 @@ Los módulos corresponden a **extensiones separadas**, no a modificaciones de la
 | [#45457640213](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45457640213) | Prior gaussiano como densidad y ley conjunta en Lebesgue² con densidad producto `pdf_prior · pdf_signal` | **PASS:** 8,335 tareas, 94 declaraciones auditadas y EconCSLib `check --fast` PASS (8,315 tareas) |
 
 El módulo de la segunda fila tuvo dos intentos previos fallidos por referencias de nombres de Mathlib y forma de la función de densidad; se corrigió sin alterar la conclusión matemática ni introducir axiomas. **Estas pruebas no completan la identificación de la posterior para todo `n>0`**.
+
+## Puente escalar de evidencia y marginal — ejecución de 99 declaraciones
+
+| CI | Prueba y objeto | Resultado |
+| --- | --- | --- |
+| [#45485098502](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45485098502) | Densidad conjunta gaussiana auténtica = factor de evidencia × densidad candidata posterior para una señal | **PASS:** 8,336 tareas, 97 declaraciones sin axiomas no admitidos |
+| [#45486549728](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45486549728) | Tonelli: segunda marginal de densidad conjunta y aplicación a la señal original | **PASS:** 8,337 tareas, **99** declaraciones; `check --fast` PASS (8,315 tareas) |
+
+**Compuerta faltante:** identificación de la integral marginal real con la evidencia normalizada `ENNReal.ofReal` y desintegración gaussiana explícita en la ley conjunta para `n > 0`. Las pruebas ya compiladas no presuponen esta igualdad ni cambian la procedencia de la generación original.
