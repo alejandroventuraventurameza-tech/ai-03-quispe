@@ -17,7 +17,7 @@
 | Manuscrito verdadero | [PDF original e imágenes](../hand/REVISION_MANUSCRITA_2026-11-23.md) | Incorporado (7 páginas), con imágenes en presentación |
 | Prompts y respuestas relevantes | [prompts.md](../prompts.md) | Parcial: no sustituye transcript de la corrida original |
 | Carpeta generada EconCSLib intacta | [lean](../lean/), [proveniencia](AGENT_PROVENANCE_AND_RERUN.md) | Conservada; informes semánticos generados siguen abiertos |
-| Formalización Lean | [Actions #45433888348](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45433888348), [puente de ley conjunta](../extensions/AppendixA7ObservedJointBridge.lean) | PASS: 8,329 jobs, 76 endpoints auditados, sin sorryAx/unsafeAx; check --fast PASS (8,315 jobs) |
+| Formalización Lean | [Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519), [kernel gaussiano explícito](../extensions/AppendixA7ExplicitGaussianKernel.lean) | **PASS: 8,330 jobs y 81 endpoints auditados**, sin `sorryAx` ni `unsafeAx`; `check --fast` PASS (8,315 jobs) |
 | Agente `gpt-5.6-sol` / `xhigh` | [Auditoría](AGENT_PROVENANCE_AND_RERUN.md) | **NO ACREDITADO**; commit original atribuido a Claude Opus 4.8 |
 | Correspondencia fuente–Specs v11 | [Cotejo de nueve filas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) | **NO CERRADA**; 9 teoremas Lean correctos no son 9 equivalencias integrales |
 
@@ -51,3 +51,18 @@ El trailer del commit histórico [b10f831](https://github.com/alejandroventurave
 ## Nueva compuerta CI diagnóstica (24 noviembre de 2026)
 
 Se incorporó [gaussian-bayes-diagnostic.yml](../.github/workflows/gaussian-bayes-diagnostic.yml), commit [0490851](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/commit/0490851d13806b6261e2f23a0212a72e16b8da85). Ejecuta en GitHub Actions el script numérico [check_gaussian_bayes_identity.py](../scripts/check_gaussian_bayes_identity.py) y conserva un log como artefacto. **Ejecuciones verificadas posteriormente:** [Actions #45430272827](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45430272827) y [Actions #45433888488](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45433888488), ambas **SUCCESS**, para el diagnóstico numérico de 1,003 casos. En cualquier caso, un resultado verde acredita únicamente el diagnóstico numérico de factorización, no la equivalencia de kernels Lean ni la ejecución con el agente especificado por el profesor.
+
+## Kernel gaussiano explícito — CI verificada, 24 noviembre 2026
+
+**Evidencia nueva:** [GitHub Actions #45440212519](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45440212519) **SUCCESS**, a partir del módulo [AppendixA7ExplicitGaussianKernel.lean](../extensions/AppendixA7ExplicitGaussianKernel.lean): **8,330 jobs**, **81 declaraciones** inspeccionadas por `#print axioms`; sin `sorryAx` ni `unsafeAx`, y chequeo `paper_contribution.py ... --fast` **PASS** (8,315 jobs). Además se verificó el diagnóstico independiente de 1,003 casos en la misma corrida.
+
+**DEMOSTRADO EN LEAN (extensión externa a `lean/` generado):**
+- `bayesA7_posterior_mean_on_signals_measurable`: la media posterior ponderada es función medible del vector observado.
+- `bayesA7_explicit_gaussian_kernel_apply`: se construye un kernel Markov medible cuya ley en cada vector es la candidata gaussiana explícita.
+- `bayesA7_explicit_gaussian_updated_precision_pos`: su precisión es positiva si el prior y todas las varianzas de las señales satisfacen las condiciones económicas.
+- `bayesA7_explicit_gaussian_kernel_eq_normalized_density`: ese kernel coincide exactamente con `volume.withDensity` de la densidad bayesiana normalizada, para parámetros positivos.
+- `bayesA7_explicit_gaussian_kernel_mean`: la esperanza bajo la medida candidata es la media ponderada por precisiones.
+
+**PENDIENTE, no disimulado por el CI verde:** probar que el kernel candidato `G` satisface la identidad `(Q ∘ₘ μ) ⊗ₘ G = (μ ⊗ₘ Q).map Prod.swap`; por la unicidad casi segura ya formalizada, esto identificaría la candidata con la posterior regular del modelo de muestreo original. La igualdad de la densidad normalizada para cada vector *no equivale por sí sola* a esa identidad conjunta. Además siguen pendientes la auditoría v11 fuente–Spec y la evidencia de ejecución auténtica del agente `gpt-5.6-sol`/`xhigh`.
+
+**Estado de la entrega:** candidatura técnicamente reforzada; sin certificación de cumplimiento íntegro y PR en borrador. No modificar `lean/` generado ni registros históricos.
