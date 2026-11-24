@@ -77,7 +77,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7ScalarJointLebesgueDensity"
+          build-args: "QX26AgenticDelegation.AppendixA7ScalarJointFactorization"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -93,7 +93,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7ScalarJointLebesgueDensity
+          import QX26AgenticDelegation.AppendixA7ScalarJointFactorization
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -188,6 +188,9 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_scalar_joint_eq_withDensity
           #print axioms QX26AgenticDelegation.bayesA7_prior_eq_gaussian_withDensity
           #print axioms QX26AgenticDelegation.bayesA7_scalar_joint_eq_joint_gaussian_density
+          #print axioms QX26AgenticDelegation.bayesA7_scalar_joint_real_pdf_eq_height_kernel
+          #print axioms QX26AgenticDelegation.bayesA7_scalar_joint_pdf_eq_evidence_candidate
+          #print axioms QX26AgenticDelegation.bayesA7_scalar_joint_pdf_eq_evidence_gaussian_pdf
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
