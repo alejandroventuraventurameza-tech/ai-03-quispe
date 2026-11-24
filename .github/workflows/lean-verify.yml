@@ -62,7 +62,7 @@ jobs:
         with:
           auto-config: "false"
           build: "true"
-          build-args: "QX26AgenticDelegation.AppendixA7JointGaussianSignals"
+          build-args: "QX26AgenticDelegation.AppendixA7SignalKernel"
           test: "false"
           lint: "false"
           mk_all-check: "false"
@@ -78,7 +78,7 @@ jobs:
           mkdir -p ../ci-evidence
           lake env lean --version | tee ../ci-evidence/lean-version.txt
           cat > ../ci-evidence/axioms-check.lean <<'LEAN'
-          import QX26AgenticDelegation.AppendixA7JointGaussianSignals
+          import QX26AgenticDelegation.AppendixA7SignalKernel
           #print axioms QX26AgenticDelegation.frontier_expansion
           #print axioms QX26AgenticDelegation.activation_band
           #print axioms QX26AgenticDelegation.cumulative_effect_nonneg
@@ -136,6 +136,15 @@ jobs:
           #print axioms QX26AgenticDelegation.bayesA7_joint_noise_marginal
           #print axioms QX26AgenticDelegation.bayesA7_prior_independent_of_noise
           #print axioms QX26AgenticDelegation.bayesA7_observed_signal_marginal
+          #print axioms QX26AgenticDelegation.bayesA7_noise_coordinates_independent
+          #print axioms QX26AgenticDelegation.bayesA7_signal_shift_measurable
+          #print axioms QX26AgenticDelegation.bayesA7_signal_map_measurable
+          #print axioms QX26AgenticDelegation.bayesA7_signal_kernel_markov
+          #print axioms QX26AgenticDelegation.bayesA7_signal_kernel_apply_eq_shifted_noise
+          #print axioms QX26AgenticDelegation.bayesA7_shifted_noise_eq_gaussian_product
+          #print axioms QX26AgenticDelegation.bayesA7_signal_kernel_eq_gaussian_product
+          #print axioms QX26AgenticDelegation.bayesA7_signals_independent_given_theta
+          #print axioms QX26AgenticDelegation.bayesA7_conditional_signal_marginal
           LEAN
           lake env lean ../ci-evidence/axioms-check.lean 2>&1 | tee ../ci-evidence/axioms-output.txt
           if grep -E 'sorryAx|unsafeAx' ../ci-evidence/axioms-output.txt; then
