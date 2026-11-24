@@ -56,11 +56,11 @@ theorem bayesA7_scalar_joint_eq_joint_gaussian_density
       Measurable (gaussianPDF priorMean
         (Real.toNNReal (1 / priorPrecision))) :=
     measurable_gaussianPDF _ _
-  rw [Measure.prod_withDensity_left hf]
+  rw [prod_withDensity_left hf]
   have hg : Measurable (fun z : ℝ × ℝ =>
       gaussianPDF z.1 (Real.toNNReal variance) z.2) :=
     bayesA7_scalar_likelihood_density_measurable variance
-  rw [← Measure.withDensity_mul
+  rw [← withDensity_mul
     ((volume : Measure ℝ).prod (volume : Measure ℝ))
     (hf.comp measurable_fst) hg]
   rfl
