@@ -32,3 +32,7 @@
 ## 2026-11-24: auditoría row-by-row y aprendizaje bayesiano
 
 La [matriz semántica específica de las nueve firmas](SEMANTIC_AUDIT_NINE_SPECS_20261124.md) separa teoremas algebraicos exactos, supuestos faltantes, reparaciones de dominio y el contraejemplo añadido. El resumen presente sigue siendo **provisional**: no se han reemplazado los recibos semánticos generados por EconCSLib ni se ha validado un TeX source byte-pinned. La [extensión A.7](../extensions/AppendixA7BayesianLearning.lean) de las ecuaciones 28–29 fue **verificada por GitHub Actions #45331830830** (8,322 jobs, 40 teoremas sin `sorryAx`, `check --fast` PASS). La [auditoría de sus límites](APPENDIX_A7_BAYESIAN_20261124.md) deja claro que las siete pruebas son **algebraicas** y no establecen la posterior como distribución Normal.
+
+## Anclajes de fuente de autores confirmados en Actions
+
+La ejecución [#45333392245](https://github.com/alejandroventuraventurameza-tech/ai-03-quispe/actions/runs/45333392245) verificó el contenido del tar v2 (46 entradas, 26 archivos TeX) y generó un recibo de 9 filas que enlaza etiquetas y declaraciones textuales sin afirmar corrección semántica. Localizó los `\label` originales de P1, P2, P3 en `sections/03_theory.tex` (líneas 156, 166, 283) y P4, P5 en `sections/10_appendix.tex` (líneas 139, 252). Hashes completos en [manifiesto de la fuente](PRIMARY_SOURCE_PIN_20261124.md). El `Spec` elaborado y la correspondencia exhaustiva de hipótesis **siguen pendientes**.
